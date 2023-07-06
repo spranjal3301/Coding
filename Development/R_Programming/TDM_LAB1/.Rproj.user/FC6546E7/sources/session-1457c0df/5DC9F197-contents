@@ -1,0 +1,29 @@
+  #---------Classification-------------
+ir_data=iris
+str(ir_data)
+levels(ir_data$Species)
+sum(is.na(ir_data))  
+ir_data<-ir_data[1:100,] #taking only two species
+#set.seed(100)
+samp<-sample(1:100,80)  
+ir_train<-ir_data[samp,]
+str(ir_train)
+ir_test<-ir_data[-samp,]
+str(ir_test)
+y<-ir_train$Species
+x<-ir_train$Sepal.Width
+plot(x,y)
+glfit<-glm(y~x, family = 'binomial') #fits a generalized linear model (GLM) using the binomial family. It assumes that you have a dependent variable y and an independent variable x in your dataset.
+# summary(glfit)
+#single prediction
+newdata<- data.frame(x=2.0)
+predicted_val<-predict(glfit, newdata, type="response")
+predicted_val
+predict_reg <- ifelse(predicted_val >0.5, print("Versicolor"), print("Setosa"))
+predict_reg
+
+#Tabular view of actual and predicted values
+prediction <- data.frame(ir_test$Sepal.Width, ir_test$Species, predicted_val,
+                         Predicted_Species=ifelse(predicted_val >0.5, print("Versicolor"), print("Setosa")))
+prediction[,]
+View(prediction)
