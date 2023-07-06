@@ -1,0 +1,110 @@
+/*! External CSS  */
+
+*{/** Universal Selector */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{ /** element selector */
+    background-color: rgb(212, 11, 11);
+}
+.box{ /** class selector */
+    margin: 0;
+}
+.box p{/*? <p> elements inside class="box" */
+    margin: 0;
+}
+p.center{/*? <p> elements with class="center" */
+    text-align: center;
+}
+#title{/** id selector */
+    font-style: italic;
+}
+h1,p,span{/** group selector */
+    color: black;
+}
+a:hover{/** pseudo-selectors */
+    color: rebeccapurple;
+}
+a:visited{
+    color: green;
+}
+a:active{
+    color: yellow;
+}
+
+body{
+    /** 1/96inch=1px 16px=100%=1rem */
+/*! Fonts  */
+    font-family: monospace; /* Web safe fonts,Web fonts */
+    font-size: 100rem;
+    line-height: 10rem; /*? distane between two lines */
+    font-weight: bold ;
+
+/*! Background */
+    background-color: black;
+    background-image: url("/IMAGE/Pranjal.jpg");
+    background-image: url("https://media.geeksforgeeks.org/wp-content/uploads/box-model-1.png");
+    background-repeat: no-repeat; /*?how many image we want */
+    background-position: center top;/*?image position in X(L) Y(T) */
+
+/*! Color */
+    color: white;
+    color: rgb(255, 255, 255);
+    color: #ffff; /* Hex color */
+
+ /*! Padding    */
+    /** Distance b/w height X width & content   */
+    padding: 0 auto 0 auto;/*? Top Right Bottom left */
+    padding: 50px 100px; /*? Y(top/bottom) X(left/right) */
+     /** Box_size= given_size(width x height) + padding + margin + border */
+     box-sizing: border-box; /*? Box_size= given_size(width x height) */
+
+/* !Margin */
+    /** Distance b/w two box*/
+    margin: 0 auto 0 auto;/*? Top Right Bottom left */
+
+/*! Border */
+    border: 0 10px 0 10px; /*? Top Right Bottom left =border-width */
+    /** border: 10px solid green; */
+    border-width: 10px;
+    border-style: solid;
+    border-color: green;
+    border-radius: 100%;
+    border-top-right-radius: 10px;
+
+/* !alignment  */
+    margin: auto; /*? center element with child have width */
+    text-align: center;/*? use in parent element to center if child do not have width  */
+    text-align: justify;/*?Stretches the lines so that each line has equal width */
+    float: left;/* ?rap contain || using float overflows the contant from parent  */
+    clear: left;/*?do not overlap with float left */
+    /* list-style: none;? remove bullit from list tag  */
+
+/*! overflow */
+    /** controls what happens to content that is too big to fit into an area. */
+    overflow: visible;/*? Default.content renders outside the element's box */
+    /*? hidden - overflow  of the content will be invisible*/
+    /*? scroll - The overflow scrollbar is added to see the rest of the content */
+    /*? auto - Similar to scroll, but it adds scrollbars only when necessary */
+   
+/*!Display property */
+    /** inline element only takes reqired space but we can t change width of inline element  */
+    /** block element takes full space  */
+    /*? center element */
+    display: block;
+    width: 783px;
+    margin: auto;
+    /* ?display: inline-block; change width of inline element */
+
+/*! Position property  */
+    position: static;/* default */
+    position: relative;/*? move relative to its original postion. its moves gost of orignal element.*/ 
+    position: absolute;/*? move relative to its first parent. its moves orignal element.*/ 
+    position: fixed;/*? element get fixed relative to its first parent in page it do not move if i scroll through website */
+    position: sticky;/*? sticky to its parent element on scroll  */
+
+
+
+}
+

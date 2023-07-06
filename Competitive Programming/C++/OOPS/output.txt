@@ -1,0 +1,5 @@
+I 
+reading 
+this file 
+using ifstream 
+class from FileI/O in C++

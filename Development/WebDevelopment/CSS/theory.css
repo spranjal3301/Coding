@@ -1,0 +1,109 @@
+/* extenal css */
+
+/* inline css > internal css > external css */
+
+body {
+  background-color: #e9eeed;
+  margin: 0;
+  
+}
+
+hr {
+  background-color: white;
+  border-style: dotted;
+  border-width: 0px 0px 6px 6px;
+  /*top right bottom left */
+  border-color: gray;
+  height: 0px;
+  width: 5%;
+}
+
+h1 {
+  color: #2e4f4f; /* text color */
+  font-family:cursive;
+  font-size: 1em;
+  /* 16px=100%=1em=rem */
+  /* font size: in em parent +child; not in rem*/
+}
+h3 {
+  color: #2e4f4f;
+
+  /* text-decoration: ; */
+}
+
+img:hover {
+  /* hover:putting curser on it */
+  background-color: gray;
+}
+a:hover {
+  color: rgb(1, 1, 53);
+}
+
+/* css on class */
+.contact {
+  background-color: white;
+  width: 2%;
+  height: 2%;
+}
+.round {
+  border-radius: 100%;
+}
+
+/* css on Id */
+#contactform {
+  background-color: black;
+  color: white;
+}
+/* id is uniqe but not class */
+/* multiple element have same class but not id */
+/* one element have multiple class but one id  */
+
+/* <!-- div create sections of page for styling differently -->
+<!-- span allow us to select  and style but we can t change width  -->
+<!-- we can t change width of inline element we have to use display: inline-block; /* both property of inline and block */ --> */
+
+/* using display we can change the inline/display */
+p {
+  display: inline;
+  display: block;
+  display: inline-block; /* both property of inline and block */
+  
+  display: none; /*disappear the content from user like it  never exist */
+  visibility: hidden;/* exist but invisible */
+}
+
+div {
+  background-color: red;
+  height: 200px;
+  width: 200px;
+  margin-left: 40%;  /*distance between two element*/
+  border: 10px;
+  padding: 200px;
+
+  /* position: ; */
+
+  position: relative;
+  /* its move gost of orignal element*/
+  /* element move in opposite of change */
+  bottom: 200px; /*move in top direction*/ 
+
+  position: absolute;
+  /* it move orignal element */
+  /* it move  distance from  edge of parent/body */
+   bottom: 200px; /*move bottom relative to parent */
+   right: 100px; /*move 100px right relative to parent */
+
+   position: fixed;
+   /* element get fixed in page 
+   it do not move if i scroll through website */
+   top: 0;
+
+    text-align: center;    /* use in parent element to center if child do not have width  */
+
+    /* if we want to use width and center the element use :- */
+    margin: 0 auto 0 auto;
+
+  /* use float: ; wrap image with text */
+    /* use clear: ; unwrap image with text */
+
+}

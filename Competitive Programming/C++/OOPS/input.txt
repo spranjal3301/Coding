@@ -1,0 +1,1 @@
+I writing this using ofstream class form FileI/O in C++

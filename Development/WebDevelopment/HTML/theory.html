@@ -1,0 +1,214 @@
+<!-- ! for syntex -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta use for search engine optimization -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="this is description">
+    <meta name="keywords" content="html,css,js,wd">
+    <meta name="robots" content="INDEX,FOLLOW">
+
+    <title>HTML</title>
+
+<!--! internal CSS -->
+    <style>
+        body {
+            background-color: white;
+        }
+
+        hr{
+            background-color: white;
+            border-style:dotted;
+            border-width: 0px 0px 6px 6px; 
+            border-color: gray;
+            height: 0px;
+            width: 5%;
+        }
+    </style>
+
+
+<!-- including external file -->
+    <link rel="stylesheet" href="/WebDevelopment/CSS/theory.css">
+    <script src="gatepass.js"></script>
+    
+</head>
+ <body> <!-- what to show on screen -->
+
+
+
+<!--! headingsize -->
+ <h1>1</h1>  
+ <H2>2</H2> <!-- not case senstive  -->
+ <h3>3</h3>
+ <h4>4</h4>
+ <h5>5</h5>
+ <h6>6</h6>
+
+ <p>paragraph <br>newline <strong>bold</strong> <em>italic</em> <hr>straight line</p>  
+ <!-- b tag for bold and i tag for italic but prefer strong & em -->
+ 
+ <!-- !add link in new tab -->
+ <a href="https://www.instagram.com/p/CpNliK7PXsf/?utm_source=ig_web_copy_link"target="_blank">HTML NOTES<br></a>
+ <a href="https://devdocs.io/html/"target="_blank">HTML RESOURCE 1<br></a>
+ <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"target="_blank">HTML RESOURCE 2<br></a>
+<!-- target  use for open link in new tab -->
+ <!--! add flie in new tab -->
+ <a href="/WebDevelopment/theory.html"target="_blank">myfile <br></a>
+ <!--! add image using link like -->
+ <img src="https://source.unsplash.com/WLUHO9A_xik/200x100" alt="image is not showing" width="200" height="100">
+ 
+
+ <!--! listing item  -->
+  <ol type="i"> <!-- 5 types of ordered list -->
+    <li>this</li>
+    <li>is</li>
+    <li>ordered</li>
+    <li>list</li>
+ </ol>
+ <ul type="disc"> <!-- 3 types of unordered list -->
+    <li>this</li>
+    <li>is</li>
+    <li>unordered</li>
+    <li>list</li>
+ </ul>
+
+
+ <!--! Table -->
+ <table>
+   
+    <!--  table head -->
+    <thead> 
+        <tr> <!--  table headrow -->
+            <!-- element in table headrow -->
+            <th>name no.</th>
+            <th>roll no.</th>
+            <th>room no.</th>
+        </tr>
+    </thead>
+    
+    <!--  table body -->
+    <tbody> 
+      <tr>  <!-- table bodyRow  -->
+         <!-- element in table bodyRow -->
+            <td>pranjal</td>
+            <td>122ad0027</td>
+            <td>126</td>
+        </tr>
+      <tr>  
+            <td>c2</td>
+            <td>122ad0072</td>
+            <td>127</td>
+        </tr>
+    </tbody>
+ </table>
+
+ <!--! form -->
+ <form action="backend.json">
+    <label for="name">Name</label>
+    <div> 
+        <input type="text" name="myname" id="name">
+        <!-- name tag use give information to backend -->
+        <!-- id=for in label  -->
+    </div>
+
+    <div>
+        Roll:   <input type="text" name="roll">
+    </div>
+
+    <div>
+        Email:  <input type="email" name="myemail" id="email">
+    </div>
+
+    <div>
+        Number: <input type="number" name="num"> 
+    </div>
+
+    <div>
+        Date:   <input type="date" name="mydate" id="">
+    </div>
+
+    </div>
+        country:<select name="country" id="">
+        <option value="ind">india</option>
+        <option value="pak">pak</option>
+        <option value="chn">china</option>
+    </select>
+    <div>
+
+    <div>
+        Are u Robot:<input type="checkbox" name="checkbox" id="">
+    </div>
+
+    <div>
+        gender:Male<input type="radio" name="gender" id=""> 
+           Female<input type="radio" name="gender" id="">
+           <!-- same name mean you can select only one of them -->
+    </div>
+
+    <div>
+        <select name="" id=""></select>
+        About:<textarea name="about" id="" cols="30" rows="10"></textarea>
+    </div>
+
+    <div>
+        <input type="submit" value="Sumbmit Now">
+        <input type="reset" value="reset">
+    </div>
+
+ </form>
+  <!--! paragraph is block element -->
+<p>paragraph use whole line </p>
+<p>paragraph use whole line </p>
+ <!--!span inline element -->
+<span>span not use whole line</span>  
+<span>span not use whole line</span>
+<img src="" alt="">  
+<a>pranjal</a>
+<a>pranjal</a>
+
+<!--! IDs(#) & classes(.)  -->
+<div id="usename" class="redBg">
+class is property of id and class also have its name eg:redBg.
+id is uniqe but not class
+emmet default use div in class  
+</div>
+<span class="redbg"></span>
+<!-- div create sections of page for styling differently -->
+<!-- span allow us to select  and style but we can t change width  -->
+<!-- we can t change width of inline element -->
+
+<!--! ENTITIES = reserved symbol in HTML or which are not avblible in keybord -->
+
+<!-- &nbsp; use for spaces -->
+<p> C&nbsp;2 </p>
+<!-- &lt;lessthan<  &gt;greaterthan> -->
+<!-- &pound; = £  -->
+<!-- &copyright; -->
+<!-- &#8203; = empty character -->
+
+<!--! Semantic tag -->
+    <article>
+    <aside>
+    <details>
+    <figcaption>
+    <figure>
+    <footer>
+    <header>
+    <main>
+    <mark>
+    <nav>
+    <section>
+    <summary>
+    <time>
+
+        <div class="parent">
+            <h1 class="child">childern sit on parent we can change using position property</h1>
+            <!-- div parent in background
+            h1 childern in fornt -->
+        </div>
+        
+</body>
+</html> 

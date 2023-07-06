@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+}
+div{
+    background-color:whitesmoke;
+    margin: 0;
+}
+h1{
+    margin: 0;
+}
+h3{
+    margin: 0;
+}
+.pp-img{
+    width: 115x;
+    height: 135px;
+    margin: 2rem;
+    border-radius: 50%;
+    float: left;
+}
+.intro{
+   display:inline-block;
+   margin: 50px auto auto 30px ;
+   background-color: red;
+}
+.contact{
+    display: inline-block;
+    margin-left: 840px;
+    line-height: 2;
+    text-align: right;
+    
+    
+}

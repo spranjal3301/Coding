@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <!--! External CSS file-->
+    <link rel="stylesheet" href="/CSS/theory2.css">
+    
+    <!--! internal CSS -->
+    <style>
+    /*inline css  > internal css >< external css */
+    /* last writen css property having higher priority */
+    /* use !important for changing priority */
+     body{ 
+        background-color: seagreen !important;
+    }
+    
+    </style>
+    
+    <!-- font API -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar&display=swap" rel="stylesheet">
+
+</head>
+<body>
+ <!--! inline CSS -->
+<!-- <body style="background-color: #e2edef"> -->
+    <div class="box">
+        <h1>A class name cannot start with a number!</h1>
+        <span id="title"></span>
+        <p class="center"></p>
+    </div>
+    
+</body>
+</html>
