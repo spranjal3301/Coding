@@ -1,79 +1,87 @@
-//! Polymorphism++
-// “Poly” means several and “morphism” means form.
-//  So we can say that polymorphism is something that has several forms or we can say it as one name and multiple forms. 
- 
-// There are two types of polymorphism:
-//* Compile-time polymorphism
-    //? Function Overloading
-    //? Operator Overloading
-//* Run time polymorphism
-    //? Virtual Function
-#include<iostream>
+//! Operator Overloading:
+    // Operator overloading in C++ allows you to redefine the behavior of certain operators when they are used with objects of a class. 
+    // This means you can make operators work with user-defined types in a way that is appropriate for those types
+    // there are certain operators that cannot be overloaded.:
+                                    // Scope Resolution Operator (::)
+                                    // Sizeof Operator (sizeof)
+                                    //Class Member access S Operator (.) ,(->),(*)
+                                    // Conditional Operator (? :)
+                                    // Function Call Operator ()
+                                    // Assignment Operator (=): The assignment operator can be overloaded, but it has some restrictions and considerations. 
+                                    // It should always be overloaded as a member function, and it should return a reference to the object being assigned to.
+                                            // MyClass& operator=(const MyClass& other) {
+                                                                    //     if (this != &other) {
+                                                                    //         value = other.value;
+                                                                    //     }
+                                                                    //     return *this;
+                                                                    // }
+                                                        
+#include<iostream>                                                        
 using namespace std;
 
-//* Abstract Base Class(ABC)
-// abstract base class (ABC) is a class that cannot be used directly.
-//  It is used to define a common interface for derived classes
-// Abstract base class is a class that has at least one pure virtual function in its body
-class Base
+class base
 {
-protected: 
-    int data1=27; 
-public:
-        // Virtual Functions
-        virtual void getData(){
-        // BY making base class fn virtual function we can use getData function of Derived by Pointing base class pointer to derived class.
-            cout<<"Base Class "<<endl;
-        }
-
-    // !  Pure Virtual Functions -> Do Nothing Function
-        virtual void Display()=0;
-        // A pure virtual function is a virtual function that is required to be implemented by a derived class.
-        // Pure virtual function is a function that doesn’t perform any operation and the function is declared by assigning the value 0 to it.
-        // Pure virtual functions are declared in abstract classes .
-        // class must need to override the virtual function of the abstract class otherwise compiler will throw an error.
-
-};
-class Derived:public Base
-{
+private:
     int a;
-    int data2=72;
+    int b;
 public:
-    Derived(int a){
-        this->a=a;
-        
-    }
-      Derived & setData(int a){
-            this->a = a;
-            return *this;
-        }
+    base():a(1),b(2){}
     void getData(){
-            cout<<"The value of data2 is "<<data2<<endl;
-        }
-        void Display(){
-            cout<<"The value of data2 is "<<data2<<endl;
-        }
-  
-};
+        cout<<a<<" "<<b<<endl;
+    }
+//* + operator over loading
+// operator which can be overloaed +,-,*,/,++,--,!=,==,&,[],<,>etc 
+// obj= o1+o2
+// we are calling a function with reference of o1 object;
+// return_type operator@(parameters){
+        // @ ->operator we want to overload
+//      overloaed operator work defind 
+// }
+    base operator+(base o2){
+        base obj;
+        obj.a=a+o2.a;
+        obj.b=b+o2.b;
+        return obj;
+    }
+    void operator++(){
+        a++;
+        b++;
+    }
+    void operator=(base obj){
+        a=obj.a;
+        b=obj.b;
+    }
+    friend ostream& operator<<(ostream& os, base& obj) {
+        os << obj.a<<obj.b;
+        return os;
+    }
 
+    
+};
 int main(){
- //! Pointers to Derived Classes
-    Base *Bptr;
-    Derived d1(1),*Dptr;
-    // run time binding or Late binding:
-    // Late binding is a programming technique in which the type of an object is not known until runtime. 
-    Bptr=&d1; // Pointing base class pointer to derived class.
-    //Bptr->getData();// Only access base class member not derived class.
-    // To access Derived class member function by Pointing base class pointer to derived class using  Virtual function.
-   
-    //! Virtual Functions
-         Bptr->getData();
-        //*virtual function is defined in a base class, having same name in derived class
-      // Rules for virtual functions
-        // They cannot be static
-        // They are accessed by object pointers
-        // Virtual functions can be a friend of another class
-        // A virtual function in the base class might not be used.
-        //*Maybe there will be no use of virtual function defind in base class.
+
+base o1,o2,o3;
+o3=o1+o2;
+o3.getData();
+
+++o3;
+// o3++ we can use postfix operator  but we have to defind (o3=o3+1):
+//    void operator++(int){  //it automatic take 1.
+//         a++;
+//         b++;
+//     }
+o3.getData();
+
+base o4;
+o4=o3;
+o4.getData();
+cout<<o4;
+
+
+
+
+
+
+    
     return 0;
 }

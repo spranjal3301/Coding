@@ -3,7 +3,6 @@
 // It is part of the C++ Standard Library and offers a set of generic classes and functions that can be used to solve common programming problems efficiently.
 
 // COMPONENTS OF STL:
-// We have three components in STL:
 //*1.Containers: store and manage collections of objects with different characteristics, such as dynamic resizing, ordered or unordered data, or unique elements.
 // Containers are themselves of three types: 
     //? Sequence Containers
@@ -59,10 +58,30 @@ int main(){
         cin>>element;
         vec1.push_back(element);
     }
-    display(vec1);   
+    display(vec1);
+    vec1[0]=27 ;  
+    cout<<vec1[0]<<endl;
     vector<int> :: iterator iter = vec1.begin(); //pointing iterator to first element of vector
     vec1.insert(iter,566);
     display(vec1);
     
+// push_back: Adds an element to the end of the vector.
+// pop_back: Removes the last element from the vector.
+// size: Returns the number of elements in the vector.
+// empty: Checks if the vector is empty.
+// clear: Removes all elements from the vector.
+// resize: Resizes the vector to a specified size.
+// front: Returns a reference to the first element of the vector.
+// back: Returns a reference to the last element of the vector.
+// at: Accesses the element at a specified index with bounds checking.
+// operator[]: Accesses the element at a specified index without bounds checking.
+// begin: Returns an iterator pointing to the beginning of the vector.
+// end: Returns an iterator pointing to the end of the vector.
+// insert: Inserts elements at a specified position in the vector.
+// erase: Removes elements at a specified position or range from the vector.
+// swap: Swaps the contents of two vectors.
+// emplace_back: Constructs an element in-place at the end of the vector.
+// reserve: Requests a change in capacity of the vector.
+// capacity: Returns the current capacity of the vector.
     return 0;
 }

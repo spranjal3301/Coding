@@ -11,6 +11,11 @@ void display(list<int> &lst){
     {
         cout<<*it<<" ";
     }
+    // for (auto i: lst)
+    // {
+    //     cout<<i<<" ";
+    // }
+    
     
 }
 

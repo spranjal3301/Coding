@@ -1,5 +1,6 @@
 //! Map:
 // It is a data structure that allows storing key-value pairs, where each key is unique within the map 
+#include<bits/stdc++.h>
 #include<iostream>
 #include<string>
 #include<map>
@@ -20,5 +21,10 @@ int main(){
         cout<<(*iter).first<<" "<<(*iter).second<<"\n";
     }
     marksMap.insert( { {"Rohan", 89}, {"Akshat", 46} } );
+    // for(auto var1: marksMap)
+    // {
+    //     cout<<var1.first<<var1.second<<" ";
+    // }
+    
     return 0;
 }
