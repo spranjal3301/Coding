@@ -30,7 +30,7 @@ static void diplaycount(){ //static function
 }
 int salary=count;
 };
-int shop::count;
+int shop::count=0;
 
 int main(){
     complex c1, c2, c3;
