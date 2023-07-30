@@ -9,21 +9,6 @@ void display(int arr[], int size)
         cout << arr[i] << " ";
     }
 }
-void swap(int arr[], int a)
-{
-    arr[a] = arr[a] + arr[a - 1];
-    arr[a - 1] = arr[a] - arr[a - 1];
-    arr[a] = arr[a] - arr[a - 1];
-}
-void arr_swap_alternet()
-{
-    for (int i = 1; i < 6; i += 2)
-    {
-
-        swap(arr, i);
-    }
-    display(arr, 6);
-}
 int find_unique()
 {
     for (int i = 0; i < 7; i++)
