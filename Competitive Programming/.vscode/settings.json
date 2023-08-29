@@ -2,5 +2,8 @@
     "files.associations": {
         "*.ejs": "html",
         "iosfwd": "cpp"
-    }
+    },
+    "cSpell.enableFiletypes": [
+        "!c"
+    ]
 }

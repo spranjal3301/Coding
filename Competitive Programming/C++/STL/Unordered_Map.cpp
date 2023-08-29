@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unordered_map>
+using namespace std;
 /*
 In C++, an unordered map is an associative container that stores a collection of key-value pairs in no particular order.
 It provides fast access to values based on their corresponding keys, similar to a regular map, but without the inherent sorting order.
@@ -16,7 +17,7 @@ Hash-based implementation: Unordered maps use a hash table or hash-based data st
 Iterators: Unordered maps support iterators that allow you to traverse the key-value pairs in the map, but the order of iteration is not guaranteed.
 */
 int main() {
-    std::unordered_map<std::string, int> myMap;
+    std::unordered_map<string, int> myMap;
 
     myMap.insert(std::make_pair("Alice", 25));    // Insert "Alice" with value 25
     myMap.insert(std::make_pair("Bob", 30));      // Insert "Bob" with value 30
