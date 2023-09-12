@@ -17,7 +17,7 @@ public:
         if (i < size - 1)
         {
             i++;
-            arr[i] = element;
+            arr[i] = element; 
         }
         else
         {
