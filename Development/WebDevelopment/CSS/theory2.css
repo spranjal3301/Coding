@@ -1,5 +1,11 @@
 /*! External CSS  */
 
+/*! @import */
+ @import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("mystyle.css");
+ @import "mystyle.css";
+
+    
 *{/** Universal Selector */
     margin: 0;
     padding: 0;
@@ -7,6 +13,28 @@
 }
 body{ /** element selector */
     background-color: rgb(212, 11, 11);
+}
+div>p{/*? <p> elements is first child of div*/
+/* <div>
+    <p> </p>
+</div> */
+    margin: 0;
+}
+div p{/*? <p> elements inside div*/
+    margin: 0;
+}
+div ul li{/*? <li> elements inside ul and ul inside div*/
+/* <div>
+    <ul>
+        <li></li>
+    </ul>
+ </div>   */
+    margin: 0;
+}
+div+p{/*? <p> elements which last sbling is div*/
+/* <div></div>
+    <p></p> */
+    margin: 0;
 }
 .box{ /** class selector */
     margin: 0;
@@ -32,6 +60,23 @@ a:visited{
 a:active{
     color: yellow;
 }
+input[type='text']{
+    width: auto;
+}
+a[target]{/*? <a> elements with target attribute */
+    /* <a href="" target="_blank">myfile </a> */
+    color: red;
+}
+li:nth-child(4){/*? <li> elements which is 4th child of parent */    
+    color: red;
+}
+section::after{/*? after <section> elements insert content Hello*/
+/* section::before */
+    content: "Hello";
+    color: red;
+}
+
+
 
 body{
     /** 1/96inch=1px 16px=100%=1rem */
@@ -74,7 +119,7 @@ body{
     border-top-right-radius: 10px;
 
 /* !alignment  */
-    margin: auto; /*? center element with child have width */
+    margin: auto; /*? center the block element with child have width */
     text-align: center;/*? use in parent element to center if child do not have width  */
     text-align: justify;/*?Stretches the lines so that each line has equal width */
     float: left;/* ?rap contain || using float overflows the contant from parent  */
@@ -103,8 +148,260 @@ body{
     position: absolute;/*? move relative to its first parent. its moves orignal element.*/ 
     position: fixed;/*? element get fixed relative to its first parent in page it do not move if i scroll through website */
     position: sticky;/*? sticky to its parent element on scroll  */
+    
+    z-index: 1;/*?higher z index on (top decreasing order):will work only for position: relative, absolute, fixed or sticky; */
+
+/*! Visibility */
+    visibility: visible;/* Default. The element is visible */
+    visibility: hidden;/*? The element is invisible (but still takes up space) */
+    visibility: collapse;/*? Only for table elements. Removes the element, but it does not affect the table layout. */
+    visibility: initial;/*? Sets this property to its default value. */
+    visibility: inherit;/*? Inherits this property from its parent element. */
+    /** display: none; disappear the content from user like it  never exist 
+    /** visibility: hidden;exist but invisible */
 
 
+/*! Flexbox  */
+
+    display: flex;/** Initialize the container as a flex box */
+    display: inline-flex;/*? Initialize the container as an inline flex box */
+/* 
+<div class="container">
+    <div id="item1">1</div>
+    <div id="item2">2</div>
+    <div id="item3">3</div>
+ </div>     */
+    
+/** Flex properties for flex container */
+    /*! flex-direction */
+    flex-direction: row;/*Default. Element inside flexbox is in one line |1,2,3   |*/ 
+    flex-direction: row-reverse;/*? Element inside flexbox is in one line in reverse order |   1,2,3|*/
+    flex-direction: column;/*? Element inside flexbox is in column |1| |2| |3|*/
+
+    /*! flex-wrap */
+    flex-wrap: nowrap;/*Default.Overflow contain in container in change size of screen*/
+    flex-wrap: wrap;/*?wrap contain in container*/
+    flex-wrap: wrap-reverse;/*?wrap contain in container in reverse order*/
+
+    /*! flex-flow */
+    flex-flow: row wrap;/*?flex-direction flex-wrap*/
+
+    /*! justify-content */
+    justify-content: flex-start;/*Default.Start aligns the flex items at the beginning of the container |1,2,3   |*/
+    justify-content: flex-end;/*?End aligns the flex items at the end of the container |   1,2,3|*/
+    justify-content: center;/*?Center aligns the flex items at the center of the container |  1,2,3  |*/
+    justify-content: space-between;/*?Equal Space between displays the flex items |1, 2, 3|*/
+    justify-content: space-around;/*?Equal Space b/w one item in both direction | 1,  2,  3 |*/
+    justify-content: space-evenly;/*?Equal Space  start to end | 1, 2, 3 |*/
+
+    /*! align-items */
+    align-items: stretch;/*Default.Stretch aligns the flex items to fill the container + Vertical evenly Space |1,2,3   |*/
+    align-items: flex-start;/*?Start aligns the flex items at the beginning of the container |1,2,3   |*/
+    align-items: flex-end;/*?End aligns the flex items at the end of the container |   1,2,3|*/
+    align-items: center;/*?Center item inside Container (Horizontal + Vertical Center) |  1,2,3  |*/
+    align-items: baseline;/*?Baseline aligns the flex items such as their baselines aligns |  1,2,3  |*/
+
+   
+   
+    /** Flex properties for flex container */
+    /*! align-content */
+    align-content: stretch;/*Default.Stretch displays the flex lines with equal space between them |1,2,3   |*/
+    align-content: flex-start;/*?Start displays the flex lines at the start of the container |1,2,3   |*/
+    align-content: flex-end;/*?End displays the flex lines at the end of the container |   1,2,3|*/
+    align-content: center;/*?Center displays the flex lines at the center of the container |  1,2,3  |*/
+    align-content: space-between;/*?Equal Space between displays the flex lines |1, 2, 3|*/
+    align-content: space-around;/*?Equal Space b/w one line in both direction | 1,  2,  3 |*/
+    align-content: space-evenly;/*?Equal Space  start to end | 1, 2, 3 |*/
+
+    /*! Order */
+    order: 1;/*?order of element in flexbox In ascending order of Value of Order */
+
+    /*! Flex-grow*/
+    flex-grow: 1;/*?Speed of grow element in flexbox as Container grow (negative value is invalid)*/     
+
+    /*! Flex-shrink*/
+    flex-shrink: 1;/*?Speed of shrink element in flexbox as Container shrink (negative value is invalid)*/
+
+    /*! Flex-basis*/
+    flex-basis: 100px;/*?set width or height of element in flexbox */
+    /** when flex-direction is set to row flex-basis: will control width */
+   /** when flex-direction is set to column flex-basis: will control height */
+
+    /*! Flex */
+    flex: 1 1 100px;/*?Flex-grow Flex-shrink Flex-basis */
+
+    /*! Align-self */
+    align-self: auto;/*Default. Aligns the element according to the default value of the flex container's align-items property */
+    align-self: stretch;/*?Stretch aligns the flex items to fill the container */
+    align-self: flex-start;/*?Start aligns the flex items at the beginning of the container */
+    align-self: flex-end;/*?End aligns the flex items at the end of the container */
+    align-self: center;/*?Center aligns the flex items at the center of the container */
+    align-self: baseline;/*?Baseline aligns the flex items such as their baselines aligns */
+
+/*! Responsive Design */
+
+    /*! em/rem/vh and vw */
+    /** 1em = 16px : in em parent + child  (parent dependent size)*/
+        font-size: 10em;/**10 times font size of  parent front size */
+        /** 1rem = 16px : not depend upon parent (browser size dependent)*/
+        /** 1vh = 1% of viewport or screen height (more used)*/
+        /** 1vw = 1% of viewport or screen width */
+        /** 1vmin = 1vw or 1vh, whichever is smaller */
+        /** 1vmax = 1vw or 1vh, whichever is larger */
+    
+    
+    /*! Media query */
+    @media screen and (max-width: 600px) {/**Property apply when screenSize 0-600px*/
+        body {
+          
+          background-color: lightblue;
+        }
+      } 
+    @media screen and (min-width: 600px) {/**Property apply when screenSize greter than 600px*/
+        body {
+          background-color: pink;
+        }
+    }
+    @media screen and (min-width: 600px) and (max-width: 900px) {/**Property  apply in between 600px-900px*/
+        body {
+          background-color: yellow;
+        }
+    }
+
+/*! Box Shadow and Text Shadow */
+    box-shadow: 10px 10px 5px grey; /*? Horizontal offset, Vertical offset, Blur radius, Spread radius, color */
+    box-shadow: inset 10px 5px grey;/*? inset shadow inside the box */
+
+    text-shadow: 2px 2px 5px red; /*? Horizontal offset, Vertical offset, Blur radius, color */
 
 }
+/*!Set Background Image*/
+header::before{
+    background: url('');
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: .4; 
+} 
+/*! Variables & Custom Properties */
+:root {/*? define variable in root element */
+    --main-bg-color: brown;
+    --main-txt-color: white;
+    --maxw:100px;
+}
+body {
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+    width: var(--maxw);
+}
+/*! Animation */
+.box{
+    animation-name: ani1;
+    animation-duration: 1s;
+    animation-iteration-count: 10;
+    animation-fill-mode: forwards;/*? keep the last frame of animation */
+    animation-fill-mode: alternate;/*? keep the start frame of animation */
+    animation-direction: alternate;/*? alternate animation */
+    animation-direction: reverse;/*? revese animation */
+    animation-timing-function: ease-in-out;/*? animation speed  ease->slow in->start out->last*/
+    animation-delay: 1s;/*? delay animation*/
+
+/** animation: animation-name animation-duration animation;timing-function animation-delay animation-iteration-count animation- */
+}
+@keyframes ani1{
+    from{
+        width: 0%;
+    }
+    to{
+        width: 100%;
+    }
+}
+@keyframes ani1{
+/** animation completion stage */
+    0%{
+        width: 0%;
+    }
+    50%{
+        width: 50%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+/*! Transition */
+.box{
+    background-color: red;
+    transition-property: background-color;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 1s;
+    /*?transition:  transition-property transition-duration transition-timing-function transition-delay; */
+}
+.box:hover{
+    background-color: green;
+}
+/*! Transform */
+.box{ 
+    transform: rotate(45deg);
+    transform: scale(1.5,1.5);
+    transform: skew(20deg,20deg);
+    transform: translate(20px,20px);
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    /*?transform: rotate() scale() skew() translate() matrix() */
+}
+/*! Grid  */
+.container{
+    display: grid;/** Initialize the container as a grid .inside container everythings was grid item*/
+
+    grid-template-columns: 100px 100px 100px;/*? 3 columns of 100px width */
+    grid-template-columns: 100px 100px auto;/*? 2 columns of 100px width and 1columns remaining space */
+    grid-template-columns: 1fr 2fr 3fr;/*?  3 columns of 1:2:3 */
+    grid-template-columns: repeat(3, 1fr);/*?  3 columns of 1:1:1 */
+    grid-template-columns: repeat(3, auto);/*?  3 columns of equal size*/
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));/** responsive  3 columns of 100px width and 1columns remaining space */
+    grid-auto-columns: 3fr;/*?  remaining grid item are 3fr. by default it is 1fr */
+    /** Same for row  */
+    grid-template-rows: 100px 100px 100px;
+
+    grid-gap: 2rem;/*? gap b/w grid item */
+    grid-gap: 2rem 1rem;/*? gap b/w grid item in row and column */
+
+    justify-content: center;/*? it also work in grid container like flex box */
+    /*! Grid area  */
+    grid-template-areas: 
+    "header header header"
+    "main main sidebar"
+    "footer footer footer";
+    /*? 3 rows and 3 columns */
+    /*? 1st row 3 columns */
+    /*? 2nd row 2 columns */
+    /*? 3rd row 3 columns */
+
+}
+.box:first-child{
+    grid-column-start: 1;/*? start from 1st column */
+    grid-column-end: 3;/*? end at 3rd column */
+    grid-column: 1 / span 3;/*? start from 1st column and span or merge 3 column */
+
+}
+#header{
+    grid-area:header;    
+}
+#main{
+    grid-area:main;
+}
+#sidebar{
+    grid-area:sidebar;
+}
+#footer{
+    grid-area:footer;
+}
+
+    
+
+
 

@@ -72,5 +72,6 @@
     },
     "cSpell.enableFiletypes": [
         "!cpp"
-    ]
+    ],
+    "cmake.configureOnOpen": false
 }

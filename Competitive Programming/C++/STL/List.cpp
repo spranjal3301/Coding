@@ -1,4 +1,6 @@
-//! List 
+//! Forward_list (Singly linklist)
+//! List (Doubly linklist)
+
 // An array stores the elements in a contiguous manner in which inserting some element calls for a shift of other elements, which is time taking. 
 // But in a list, we can simply change the address the pointer is pointing to
 
@@ -11,6 +13,7 @@
 
 #include<iostream>
 #include<list>
+#include<forward_list>
 using namespace std;
 
 void display(list<int> &lst){
@@ -28,7 +31,7 @@ void display(list<int> &lst){
 }
 
 int main(){
-    list<int> list1;  //empty list of 0 length
+    list<int> list1;  //empty list of 0 length 
     list1.push_back(5);
     list1.push_back(7);
     list1.push_back(1);

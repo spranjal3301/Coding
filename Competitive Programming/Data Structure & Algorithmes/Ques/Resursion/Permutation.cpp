@@ -1,5 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+// Example 1:
+// Input: nums = [1,2,3]
+// Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 void solve(vector<int> nums ,vector<vector<int>> &ans,int i){
     if (i>nums.size()-1)
     {
@@ -7,7 +11,7 @@ void solve(vector<int> nums ,vector<vector<int>> &ans,int i){
         return;
     }
 
-    for (size_t j = i; j < nums.size(); j++)
+    for (int j = i; j < nums.size(); j++)   
     {
        swap(nums[i],nums[j]);
        solve(nums,ans,i+1);

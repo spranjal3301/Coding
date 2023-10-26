@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+// Example 1:
+// Input: nums = [1,2,3]
+// Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
 void solve(vector<int> nums,vector<vector<int>> &ans,vector<int> output,int i){
     if (i>nums.size()-1)
     {

@@ -1,15 +1,14 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-struct Node
+
+int main()
 {
-    int data;
-    Node* left;
-    Node* right;
-}; 
-
-int main(){
-
-    pair<int,int> a={0,0};
-    
+    int x = 6;
+    int y = 1;
+    int N = 49;
+    if ((x | y) * (x ^ y) == N)
+    {
+        std::cout << x << " " << y << std::endl;
+    }
     return 0;
 }

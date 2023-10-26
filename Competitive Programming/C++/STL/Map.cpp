@@ -1,9 +1,9 @@
-//! Map:
+//! Map: (key:value)
 // It is a data structure that allows storing key-value pairs, where each key is unique within the map 
 // Each key in the map is unique, and the map is typically implemented using a balanced binary search tree or a hash table.
 #include<bits/stdc++.h>
-#include<iostream>
-#include<string>
+// #include<iostream>
+// #include<string>
 #include<map>
 using namespace std;
 /*
