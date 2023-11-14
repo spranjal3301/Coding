@@ -189,7 +189,7 @@ body{
     /*! justify-content */
     justify-content: flex-start;/*Default.Start aligns the flex items at the beginning of the container |1,2,3   |*/
     justify-content: flex-end;/*?End aligns the flex items at the end of the container |   1,2,3|*/
-    justify-content: center;/*?Center aligns the flex items at the center of the container |  1,2,3  |*/
+    justify-content: center;/*!Center aligns the flex items at the center of the container (Horizontal) |  1,2,3  |*/
     justify-content: space-between;/*?Equal Space between displays the flex items |1, 2, 3|*/
     justify-content: space-around;/*?Equal Space b/w one item in both direction | 1,  2,  3 |*/
     justify-content: space-evenly;/*?Equal Space  start to end | 1, 2, 3 |*/
@@ -198,12 +198,12 @@ body{
     align-items: stretch;/*Default.Stretch aligns the flex items to fill the container + Vertical evenly Space |1,2,3   |*/
     align-items: flex-start;/*?Start aligns the flex items at the beginning of the container |1,2,3   |*/
     align-items: flex-end;/*?End aligns the flex items at the end of the container |   1,2,3|*/
-    align-items: center;/*?Center item inside Container (Horizontal + Vertical Center) |  1,2,3  |*/
+    align-items: center;/*!Center item inside Container ( Vertical Center) |  1,2,3  |*/
     align-items: baseline;/*?Baseline aligns the flex items such as their baselines aligns |  1,2,3  |*/
 
    
    
-    /** Flex properties for flex container */
+    /** Flex properties for flex item */
     /*! align-content */
     align-content: stretch;/*Default.Stretch displays the flex lines with equal space between them |1,2,3   |*/
     align-content: flex-start;/*?Start displays the flex lines at the start of the container |1,2,3   |*/
@@ -276,6 +276,7 @@ body{
 
 }
 /*!Set Background Image*/
+/*! M01 */
 header::before{
     background: url('');
     content: '';
@@ -287,6 +288,16 @@ header::before{
     z-index: -1;
     opacity: .4; 
 } 
+/*! M02 */
+body{
+    min-height: 100vh;
+    background-image: url(/img/image1.png);
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5); /**adjust the opacity of the background color without affecting the opacity of the text change opacity (0.5 for 50%) */
+}
 /*! Variables & Custom Properties */
 :root {/*? define variable in root element */
     --main-bg-color: brown;
@@ -362,7 +373,7 @@ body {
     grid-template-columns: 1fr 2fr 3fr;/*?  3 columns of 1:2:3 */
     grid-template-columns: repeat(3, 1fr);/*?  3 columns of 1:1:1 */
     grid-template-columns: repeat(3, auto);/*?  3 columns of equal size*/
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));/** responsive  3 columns of 100px width and 1columns remaining space */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));/*! responsive  3 columns of 100px width and 1columns remaining space */
     grid-auto-columns: 3fr;/*?  remaining grid item are 3fr. by default it is 1fr */
     /** Same for row  */
     grid-template-rows: 100px 100px 100px;
@@ -371,6 +382,7 @@ body {
     grid-gap: 2rem 1rem;/*? gap b/w grid item in row and column */
 
     justify-content: center;/*? it also work in grid container like flex box */
+    place-items: center; /*! Center both horizontally and vertically */
     /*! Grid area  */
     grid-template-areas: 
     "header header header"

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORM</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;1,100;1,200;1,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100&family=Sigmar&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="head">
+          <img id="logo" src="/white_Blue 1.svg" alt="JOINT" />
+          <h1>Create a valid account for your career</h1>
+        </div>
+
+        <form action="backend.json">
+          <div class="form_container">
+            <div class="form_control">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter Your Name"
+              />
+            </div>
+            <div class="form_control">
+              <label for="email">Email (Relevant) :</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter Your Email"
+              />
+            </div>
+            <div class="form_control">
+              <label for="phone">Phone Number:</label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="Enter Your Phone Number"
+              />
+            </div>
+            <div class="verify">
+              <div class="form_control">
+                <label for="otp">Verify OTP By Institute Mail :</label>
+                <input
+                  type="number"
+                  name="otp"
+                  id="otp"
+                  placeholder="Enter OTP"
+                />
+              </div>
+              <div class="form_control" id="adhaar">
+                <label for="Aadhaar">Aadhaar Card No:</label>
+                <input
+                  type="number"
+                  name="Aadhaar"
+                  id="Aadhaar"
+                  placeholder="Enter Aadhaar Card No"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="submit_btn">
+            <button class="btn" type="submit">FINISH</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

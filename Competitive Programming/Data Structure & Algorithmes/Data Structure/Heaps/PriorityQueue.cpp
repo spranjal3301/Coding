@@ -11,6 +11,10 @@ int main(){
     maxpq.push(40);    
     maxpq.push(50);
 
+//! Custom comparator for the priority_queue to sort based on frequency
+    //* auto comp = [&](const T & a, const T & b) {
+    //*     return a.second > b.second;
+    //* };
     
     cout<<maxpq.top()<<endl;
     maxpq.pop();

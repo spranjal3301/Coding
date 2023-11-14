@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Agbalumo&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,300;0,400;1,100;1,200;1,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100&family=Sigmar&display=swap");
+html {
+  /* color-scheme: dark light; */
+  scroll-behavior: smooth;
+}
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+  all: unset;
+  display: revert;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+table {
+  border-collapse: collapse;
+}
+textarea {
+  white-space: revert;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: monospace;
+  color: #fff;
+}
+.section1 {
+  min-height: 100vh;
+  background-image: url(/img/developer.png);
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+.bgtext {
+  font-size: 72px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+}
+.Hi {
+  font-size: 36px;
+}
+.section2 {
+  background-color: #161619;
+  padding: 65px 80px;
+  text-align: center;
+  font-style: italic;
+}
+.section2 {
+  font-size: 72px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+}
+.you {
+  font-size: 10rem;
+}
+.section3 {
+  background-color: #fff;
+  color: black;
+  padding: 6rem 8rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  /* gap: 2rem; */
+}
+.skill {
+  flex-grow: 1;
+  flex-shrink: 0;
+  max-width: 320px;
+  /* height: 450px; */
+  /* border: 6px solid black; */
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  
+}
+
+.aboutskill{
+  margin: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* align-items: center; */
+  /* text-align: center; */
+}
+.aboutskill h2 {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+}
+.aboutskill p{
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.section4{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(720px, 1fr));
+  /* align-content: center; */
+  justify-content: center;
+}
+.contactme{
+  background: #515603;
+  padding: 65px 6rem;
+}
+.aboutme{
+  background: #722300;
+  padding: 65px 6rem;
+}
+.credits{
+  background: #000;
+  grid-column: 1 / span 2;
+  text-align: center;  
+}
+.contactme h2,.aboutme h2{
+  color: #FFF;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.contactme p,.aboutme p{
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px; /* 164.286% */
+}

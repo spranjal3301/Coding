@@ -1,0 +1,165 @@
+/* Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property */
+/* html{
+    color-scheme: dark light;
+} */
+body {
+  min-height: 100vh;
+}
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+    Remove list styles (bullets/numbers)
+    in case you use it with normalize.css
+  */
+ol,
+ul {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* Removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+/*!------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;1,100;1,200;1,300&family=Roboto:wght@100;300;400;500&family=Sigmar&display=swap");
+main {
+  /* background-color: #ccc; */
+  background: url(https://source.unsplash.com/random);
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  font-family: Roboto;
+
+}
+.container {
+  /* background-color:transparent; */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); 
+  width: 50%;
+  height: 85vh;
+  margin: 0 auto;
+  border-radius: 0 0 1rem 1rem;
+  fill: linear-gradient(180deg, #0b0b0c 0%, rgba(0, 5, 12, 0.67) 100%); 
+  filter: drop-shadow(5px 5px 11px rgba(0, 0, 0, 0.24));
+  /* filter: blur(8px); */
+  /* -webkit-filter: blur(8px); */
+
+
+}
+.head {
+  text-align: center;
+  padding-top: 5%;
+  
+}
+.head h1 {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.form_container {
+  margin-top: 2rem;
+  /* border: 2px solid red; */
+  padding: 0 4rem;
+}
+.form_control {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+label {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-bottom: 5px;
+}
+input {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(141, 141, 141, 0.7);
+  /* font-family: Poppins; */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+input:focus {
+  outline: 1px ridge #209b8c;
+}
+.verify {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  column-gap: 3rem; */
+
+  display: flex;
+  flex-direction: row;
+}
+#adhaar {
+  margin-left: 2rem;
+}
+.submit_btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+.btn {
+  color: #fff;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #209b8c;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 10px 60px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.5s ease-in;
+}
+.btn:hover {
+  background-color: #095c52;
+  padding: 12px 62px;
+  transition: 0.5s ease-out;
+}
+@media screen and (max-width: 1050px) {
+  .verify {
+    display: flex;
+    flex-direction: column;
+  }
+  #adhaar {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 750px){
+.container{
+    width: 100%;
+    max-height: 100vh;
+}
+}

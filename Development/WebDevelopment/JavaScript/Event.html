@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn{
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid repellendus corrupti dolores sequi, libero, nisi expedita officiis culpa eligendi tempore unde ex molestiae ullam laudantium quas alias suscipit excepturi nesciunt fuga quisquam! Natus, voluptas modi. Recusandae asperiores consectetur inventore aliquid, optio harum excepturi voluptates sint ullam corporis necessitatibus obcaecati. Hic ab labore minima quos accusamus aspernatur magnam ullam odit earum, veritatis facere, repudiandae ex doloremque voluptatum ipsam, sapiente mollitia officia asperiores ipsa. Ex sit veritatis aliquam autem. Perferendis nostrum autem, animi quod ipsa veritatis, dolorum doloribus, assumenda aliquid sed fuga praesentium nam impedit qui rerum facilis totam ab debitis earum!</p>
+        <label for="name">Name:</label>
+        <input type="text" name="name">
+
+    </div>
+    <button id="btn" onclick="toggleH()">+</button>
+    <script>
+        function toggleH(){
+            let btn=document.getElementById("btn");
+            let box=document.getElementById('box');
+            if(box.style.display!='none'){
+                box.style.display='none';
+                btn.innerText="+";
+            }
+            else{
+                box.style.display='block';
+                btn.innerText="x";
+            }
+        }
+    </script>
+</body>
+</html>
