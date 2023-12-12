@@ -35,7 +35,7 @@ struct Node {
 
 void Insert(BST *&root, int data)
 {
-    //! Time Complexity: O(logN), where N is the number of nodes of the BST
+    //! Time Complexity: O(logN)/O(H) where N is the number of nodes of the BST
     //! Auxiliary Space: O(1)
     if (!root)
     {

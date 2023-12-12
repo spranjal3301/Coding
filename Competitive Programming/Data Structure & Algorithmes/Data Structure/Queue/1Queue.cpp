@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 //!Queue is just a Line people(FIFO)
-//! A queue is a linear data structure that is open at both ends and the operations are performed in First In First Out (FIFO) order.
+//! A queue is a linear data structure that is open at both ends and the operations are performed
+//! in First In First Out (FIFO) order.
 //* We define a queue to be a list in which all additions to the list are made at one end, and all deletions from the list are made at the other end.
 //delete/pop/enqueue->front
 //insert/push/dequeue->back

@@ -2,6 +2,9 @@
 using namespace std;
 
 //!Detect cycle in a directed graph DFS
+//* To find cycle in a directed graph we can use the Depth First Traversal (DFS) technique.
+//*  It is based on the idea that there is a cycle in a graph only if there is a back edge
+//* [i.e., a node points to one of its ancestors] present in the graph.
 class Solution {
     bool DFS(int V,vector<int> adj[],unordered_map<int ,bool> &visited,unordered_map<int, bool> &dfsStack){
         

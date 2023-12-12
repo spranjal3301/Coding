@@ -3,8 +3,8 @@ using namespace std;
 class DoublyLinkList{
     public:
         //! -><-[prev |data| next]-><-
-        DoublyLinkList *prev; 
         int data;
+        DoublyLinkList *prev; 
         DoublyLinkList *next;
     DoublyLinkList(int data):data(data),prev(NULL),next(NULL){}
 };

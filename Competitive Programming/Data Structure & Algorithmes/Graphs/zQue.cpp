@@ -1,5 +1,5 @@
 //!Question Types
-//*BFS
+//*BFS(minization problem)
 //*DFS
-//*Use Parent Data Structure
+//*Use track Parent Data Structure
 //*Topological Sort

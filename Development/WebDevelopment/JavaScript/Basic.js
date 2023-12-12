@@ -223,11 +223,13 @@ console.log(myfuntion(2,3));
 //* The function keyword is omitted.
 //* Parentheses are omitted.
 //* The function is written after the arrow (=>) sign.
-//* Arrow fn do not have this. (lexical this)
+//* Arrow fn do not have "this". (lexical this)
 //~ Arrow functions are lexically scoped, which means that their this binding is bound to the context of the surrounding scope.
-//~ This means that whatever this refers to can be preserved by using an arrow function.
+//~ This means that whatever "this" refers to can be preserved by using an arrow function.
 
-const x = (x, y) => x * y;
+const x = (x, y) =>{ x * y};
+y = (x, y) => x * y;
+c = z => z*3;
 console.log(x(5, 6)); //*30
 
 
@@ -252,7 +254,30 @@ do {
     i++;
 }while(i<5) 
 
+//! throw Error
+throw new Error("Your error message here");
 
+
+
+//!Date
+let dates=new Date();
+console.log(dates);
+console.log(dates.getTime());
+console.log(dates.getFullYear());
+console.log(dates.getMinutes());
+console.log(dates.getHours());
+console.log(dates.getSeconds());
+console.log(dates.getDay());
+console.log(dates.getMonth());
+console.log(dates.getDate());
+dates=new Date("2027-11-27");
+
+
+//! Math
+let ma=Math;
+console.log(ma);
+let r=ma.random();
+console.log(r);
 
 
 

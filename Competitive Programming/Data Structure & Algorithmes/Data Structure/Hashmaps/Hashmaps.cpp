@@ -21,7 +21,7 @@ using namespace std;
 //* The situation where the newly inserted key maps to an already occupied,
 //* and it must be handled using some collision handling technology.
 
-// There are mainly two methods to handle collision: 
+//! There are mainly two methods to handle collision: 
 //* Separate Chaining :The idea behind separate chaining is to implement the linked list inside array called a chain.
 //* Open Addressing / closed hashing :all elements are stored in the hash table itself. 
 //* So at any point, the size of the table must be greater than or equal to the total number of keys 

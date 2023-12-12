@@ -89,7 +89,7 @@ body{
 /*! Background */
     background-color: black;
     background-image: url("/IMAGE/Pranjal.jpg");
-    background-image: url("https://media.geeksforgeeks.org/wp-content/uploads/box-model-1.png");
+    background-image: url("https://source.unsplash.com/random");
     background-repeat: no-repeat; /*?how many image we want */
     background-position: center top;/*?image position in X(L) Y(T) */
 
@@ -239,6 +239,8 @@ body{
     align-self: baseline;/*?Baseline aligns the flex items such as their baselines aligns */
 
 /*! Responsive Design */
+
+    /*~ width: clamp(min,default,max); */
 
     /*! em/rem/vh and vw */
     /** 1em = 16px : in em parent + child  (parent dependent size)*/
