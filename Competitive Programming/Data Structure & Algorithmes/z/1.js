@@ -21,4 +21,4 @@ for(elements of directions){
         console.log(element);   
     });
 }
-let obj={};
+let obj={};multiverse-neon

@@ -5,6 +5,7 @@ using namespace std;
 //* To find cycle in a directed graph we can use the Depth First Traversal (DFS) technique.
 //*  It is based on the idea that there is a cycle in a graph only if there is a back edge
 //* [i.e., a node points to one of its ancestors] present in the graph.
+//*on the same path it is possible to reach a previously visited node.
 class Solution {
     bool DFS(int V,vector<int> adj[],unordered_map<int ,bool> &visited,unordered_map<int, bool> &dfsStack){
         
@@ -43,7 +44,7 @@ public:
 
 // Function to detect cycle in a directed graph.
     bool isCyclic(int V, vector<int> adj[]) {
-        int count=0;
+        int no_of_elements_in_topological_sort=0;
         vector<int> indegree(V, 0);   // V [0,V)
         queue<int> q;
 
@@ -65,7 +66,7 @@ public:
             int currentVertex = q.front();
             q.pop();
 
-            count++;
+            no_of_elements_in_topological_sort++;
 
             //* Update indegree and enqueue neighbors with 0 indegree.
             for (auto neighbor : adj[currentVertex]) {
@@ -75,6 +76,12 @@ public:
             }
         }
 
-        return !(count==V);//~In valid Topological Sort count==no. of vertex
+        if (no_of_elements_in_topological_sort==V)//~cycle not present(no_of_elements_in_topological_sort==no. of vertex)
+        {
+            return false;
+        }
+        
+
+        return true;//~cycle present
     }
 };

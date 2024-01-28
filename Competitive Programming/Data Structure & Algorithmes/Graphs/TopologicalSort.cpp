@@ -6,6 +6,7 @@ using namespace std;
 //* Note: Topological Sorting for a graph is not possible if the graph is not a DAG
 //~ Time Complexity: O(V+E).simply DFS with an extra stack.So time complexity is the same as DFS
 //~ Auxiliary space: O(V). The extra space is needed for the stack
+//*Intution: Path of DFS will be in topological order
 class Solution
 {   void dfs(int V,vector<int> adj[],unordered_map<int,bool> &visited,stack<int> &s){
     
@@ -39,7 +40,3 @@ class Solution
 };
 
 
-int main(){
-    
-    return 0;
-}

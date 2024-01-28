@@ -1,4 +1,5 @@
 //! Objects : key:value
+//* only allows strings and symbols as keys
 //* Objects are variables too. But objects can contain many values.
 //* Objects are written with curly braces {}.
 //*common practice to declare objects with the const keyword.
@@ -23,9 +24,21 @@ console.log(car.fullName()); //*you access a method without the () parentheses, 
 //* Object.getOwnPropertyDescriptor(): Returns a property descriptor for a named property on an object.
 
 //! Object Iteration
-for(key in car){
-    console.log(key,car[key]);
+const myObject = { a: 1, b: 2, c: 3 };
+
+for (let key in myObject) {
+  if (myObject.hasOwnProperty(key)) {
+    console.log(key, myObject[key]);
+  }
 }
+Object.keys(myObject).forEach(key => {
+  console.log(key, myObject[key]);
+});
+
+
+
+
+
 
 //!JSON :JavaScript object notation
 //* JSON is a syntax for storing and exchanging data or data transportation

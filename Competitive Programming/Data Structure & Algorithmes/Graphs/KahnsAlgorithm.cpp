@@ -18,7 +18,7 @@ public:
             }
         }
 
-        //* Enqueue vertices with 0 indegree.
+        //* Enqueue vertices with 0 indegree.(In DAG always there will be at least one vertex with 0 indegree)
         for (int i = 0; i < V; ++i) {
             if (indegree[i] == 0)
                 q.push(i);

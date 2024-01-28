@@ -1,8 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
-//!Detect cycle in a Undirected graph using BFS 
+//!Detect cycle in a Undirected graph  
 //* For every visited vertex ‘v’, if there is an adjacent ‘u’ such that u is already visited and u is not a parent of v,
 //* then there is a cycle in the graph. If we don’t find such an adjacent for any vertex, we say that there is no cycle. 
+
+
+//! using BFS
 class Solution1 {
     bool BFS(int node, vector<int> adj[], vector<int> &parent, vector<bool> &visited) {
         queue<int> q;
@@ -43,7 +46,7 @@ public:
     }
 };
 
-//!Detect cycle in a Undirected graph using DFS
+//! using DFS
 class Solution2 {
     bool isCyclicDFS(int node, int parent, vector<int> adj[], vector<bool> &visited) {
         visited[node] = true;

@@ -232,6 +232,15 @@ y = (x, y) => x * y;
 c = z => z*3;
 console.log(x(5, 6)); //*30
 
+//! Immediately Invoked Function Expressions IIFE
+//*auto executed function expression 
+//* used to avoid polluting global scope
+//* used to create a private scope
+(function() {
+    console.log("IIFE");
+})();
+
+
 
 
 

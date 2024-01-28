@@ -33,20 +33,20 @@ public:
         if (!direction)
             AdjacencyList[v].remove(u);
     }
-    void BFS(int start,unordered_map<int, bool> &visited);
-    void BFS(){
+    // void BFS(int start,unordered_map<int, bool> &visited);
+    void BFS_DisconnectedComponents(){
     unordered_map<int, bool> visited;
        for (auto &vertex : AdjacencyList)
         {
             int i=vertex.first;
-           if(!visited[i])BFS(i,visited);     
+           if(!visited[i])BFS(i,AdjacencyList,visited);     
         }     
             
     }
 };
 //~ Time Complexity: O(V+E), where V is the number of nodes and E is the number of edges.
 //~ Auxiliary Space: O(V)
-void Graph::BFS(int start,unordered_map<int, bool> &visited)
+void BFS(int start,unordered_map<int, list<int>> &AdjacencyList,unordered_map<int, bool> &visited)
 {
     queue<int> q;
 
@@ -81,6 +81,6 @@ int main()
     g.addEdge(3, 4);
 
     g.print();
-    g.BFS();
+    g.BFS_DisconnectedComponents();
     return 0;
 }

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*,*:after,*:before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #036444;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+img{
+    width: 100%;
+    aspect-ratio: 1;
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+@media(min-width:1100px){
+    img{
+        width: 180%;
+    }
+}
+.app{
+    background: #ffffff7b;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+}
+.app >h1{
+    font-size: 25px;
+    color: #222;
+    font-weight: bold;
+    border-bottom: 1px solid #cdcdcd;
+    color: #036444;
+    padding-bottom: .7rem;
+}
+.quiz{
+    padding: 20px 0;
+}
+.quiz >h2{
+    font-size: 18px;
+    color: #00291c;
+    font-weight: 100;
+}
+#answer-buttons{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    background-color: #fff;
+    color: #00291c;
+    font-weight: 100;
+    width: 100%;
+    border: 1px solid #00291c;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    transition: all .25s linear;
+}
+.btn:hover:not([disabled]){
+    background-color: #00291c;
+    color: #fff;
+}
+.btn:disabled{
+    cursor:not-allowed;
+}
+#next-btn{
+    font-family: 'Poppins', sans-serif;
+    background-color: #00291c;
+    color: #fff;
+    font-weight: 100;
+    width: 140px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: all .2s linear;
+    /* visibility: hidden; */
+    display: none;
+}
+#next-btn:hover{
+    transform: translateY(-2px);
+    opacity: .9;
+}
+.correct{
+    background-color: #036444;
+    color: #fff;
+    border-color: #036444;
+}
+.incorrect{
+    background-color: #e36060;
+    color: #fff;
+    border-color: #e36060;
+}
+</style>
+<body>
+    <div class="app">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Earth_Western_Hemisphere_transparent_background.png" alt="">
+        <h1>GEO quiz</h1>
+        <div class="quiz">
+            <h2 id="question"></h2>
+            <div id="answer-buttons">
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+            </div>
+            <button id="next-btn">Next</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+   
+
+</html>

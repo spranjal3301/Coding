@@ -1,44 +1,39 @@
-#include <bits/stdc++.h>
-using namespace std;
-long countSubarrays(int a[], int n, int L, int R)
-{
-    deque<int> q;
-    long res=0;
-    int maxi=0;
+#include <iostream>
 
-    for (int i = 0; i < n; i++)
-    {
-        int num=a[i];
-        if(q.empty() && (num>=L and num<=R )){
-            maxi=max(maxi,num);
-            q.push_back(num);
-            res++;
-        }
-        else if(!q.empty() && (num>=L and num<=R )){
-            maxi=max(maxi,num);
-            q.push_back(num);
-            res+=q.size();
-        }
-        else if(!q.empty() && !(num>=L and num<=R )){
-            if(maxi<num){
-                q.push_back(num);
-                res+=(q.size()-1);
+int main() {
+    int t;
+    std::cin >> t;
+
+    for (int testCase = 0; testCase < t; ++testCase) {
+        int g, b;
+        std::cin >> g >> b;
+
+        if (b == 0) {
+            // Case when b is 0, just print the numbers from 1 to g.
+            for (int k = 1; k <= g; ++k) {
+                std::cout << k << " ";
             }
-            else{
-                maxi=0;
-                q.clear();
-            }
+            std::cout << '\n';
+            continue;
         }
-        
+
+        if (g - b <= 1) {
+            // Case when g - b is less than or equal to 1.
+            std::cout << "-1\n";
+            continue;
+        }
+
+        // Calculate the starting point for the sequence.
+        int start = b + 1;
+
+        // Print the sequence.
+        std::cout << start << " ";
+        for (int j = 1; j < g; ++j) {
+            std::cout << start + j << " ";
+        }
+
+        std::cout << '\n';
     }
-    
-    
-}
-void display(auto fn){
 
-}
-int main()
-{
-display(countSubarrays);
     return 0;
 }

@@ -16,10 +16,10 @@ using namespace std;
 //* Map systems to find the shortest path between starting point and the Destination 
 
 
-class Solution
-{
 //@ Time complexity : O(E log V)
 //@ Space Complexity:O(V^2) , here V is number of Vertices.
+class Solution
+{
 	public:
     vector <int> dijkstra(int Vertex, vector<vector<int>> adj[], int source)
     {

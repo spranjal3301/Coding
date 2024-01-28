@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+</head>
+<style>
+    html {
+    /* color-scheme: dark light; */
+    scroll-behavior: smooth;
+    }
+    *:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+    all: unset;
+    display: revert;
+    }
+    *,*::before,*::after {
+    box-sizing: border-box;
+    }
+    ol,ul {
+    list-style: none;
+    }
+    img {
+    max-width: 100%;
+    }
+     table {
+    border-collapse: collapse;
+    }
+    textarea {
+    white-space: revert;
+    }
+    img,picture,video,canvas,svg {
+    display: block;
+    max-width: 100%;
+    }
+    input,button,textarea,select {
+    font: inherit;
+    }
+     p,h1,h2,h3,h4,h5,h6 {
+    overflow-wrap: break-word;
+    }
+    #root,#__next {
+    isolation: isolate;
+    }
+     body {
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    /* font-family: 
+    ,sans-serif; */
+    /* color: #666; */
+    }
+    main{
+        min-height: 100vh;
+        width: 100%;
+        background-color: #272a31;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .maincenter {
+        background-color: #FFF;
+        margin: auto;
+        width: 50%;
+        max-width: 400px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    }
+    .maincenter h1 {
+        color: #272a31;
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .maincenter input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        color: green;
+        border: 1px solid #272a31;
+    }
+    .maincenter input:focus {
+        outline: none;
+        border: 2px solid green;
+
+    }
+    .maincenter .generatebtn {
+        width: 100%;
+        padding: 10px;
+        background-color: green;
+        color: #FFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+    .maincenter .generatebtn:hover {
+        background-color: #272a31;
+        color: green;
+    }
+    #qrcode img {
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+</style>
+<body>
+    <main>
+        <div class="maincenter">
+            <h1>QR Code Generator</h1>
+            <input type="text" id="textorURL" placeholder="Text or URL">
+            <div id="qrcode">
+                <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt=""> -->
+                <img id="qrcodeimg" src="" alt="" >
+            </div>
+            <button class="generatebtn">Generate QR Code</button>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
