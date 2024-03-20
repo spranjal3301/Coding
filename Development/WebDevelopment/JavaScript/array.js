@@ -41,6 +41,8 @@ for(elements of directions){
     });
 }
 
+const [a1,a2]=[1,2];//~Array destructuring
+
 //! Array.from
 //*Array.from() lets you create Array s from: iterable objects (objects such as Map and Set );
 //*or, if the object is not iterable, array-like objects (objects with a length property and indexed elements).
@@ -66,10 +68,14 @@ const newArray2 = Array.from(arrayLike);
 const newArray3 = Array.from(existingArray, item => item * 2);
 // Result: Each element of the new array is doubled.
 
-//~2D Array intialization
+//!2D Array intialization
 let n=9;
 let m=9;
 const arr1 = Array.from({ length: n }, () => Array(m).fill(0));
+
+//!Array of Object
+const arr2 = Array.from({ length: 5 }, (_, i) => ({ index: i }));
+arr2 = Array.from({ length: 5 }, () => ({})); //->empty object
 
 //!map
 //* The map() method creates a new array populated with the results of calling a provided function
@@ -112,7 +118,22 @@ const array1 = [1, 2, 3, 4];
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 console.log(array1.reduce(reducer)); //* 10 
 
+//!Some
+//* The some() method tests whether at least one element in the array passes the test implemented by the provided function.
+//* It returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false.
 
+const array2 = [1, 2, 3, 4, 5];
+const even = (element) => element % 2 === 0;
+console.log(array2.some(even)); //* true
+
+//!Find
+//* The find() method returns the value of the first element in the provided array that satisfies the provided testing function.
+
+const array3 = [1, 2, 3, 4, 5];
+
+const found = array.find(element => element > 3);
+
+console.log(found); // 4
 
 
 

@@ -1,46 +1,67 @@
+// #include<iostream>
+// using namespace std;
+
 #include <stdio.h>
-#include <string.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-#define MAX_SIZE 128
 
-int size_of_grid, cnt = 0;
-int arr[MAX_SIZE][MAX_SIZE];
-
-void place(int x1, int y1, int x2, int y2, int x3, int y3) {
-    cnt++;
-    arr[x1][y1] = arr[x2][y2] = arr[x3][y3] = cnt;
+// Function to print the y-positions of queens
+void printBoard(int *board, int N) {
+    for (int i = 0; i < N; i++) {
+        printf("%d ", board[i] + 1);  // Adding 1 to convert from 0-index to 1-index
+    }
+    printf("\n");
 }
 
-void tile(int n, int x, int y) {
-    if (n == 2) {
-        cnt++;
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                arr[x + i][y + j] = cnt;
+// Function to check if a queen can be placed at board[row][col]
+bool isSafe(int *board, int row, int col) {
+    for (int i = 0; i < col; i++) {
+        if (board[i] == row || abs(board[i] - row) == abs(i - col)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Recursive function to solve the N-Queens problem
+void solveNQueens(int *board, int col, int N) {
+    if (col >= N) {
+        // Solution found, print the y-positions
+        printBoard(board, N);
         return;
     }
 
-    int mid = n / 2;
-    place(x + mid, y + mid - 1, x + mid, y + mid, x + mid - 1, y + mid);
-    tile(mid, x, y + mid);
-    tile(mid, x, y);
-    tile(mid, x + mid, y);
-    tile(mid, x + mid, y + mid);
+    for (int i = 0; i < N; i++) {
+        if (isSafe(board, i, col)) {
+            board[col] = i;  // Place queen
+
+            // Recur to place queens in the remaining columns
+            solveNQueens(board, col + 1, N);
+        }
+    }
 }
 
 int main() {
-    size_of_grid = 8;
-    memset(arr, 0, sizeof(arr));
+    int N;
 
-    arr[0][0] = -1;
+    printf("Enter the number of queens (N): ");
+    scanf("%d", &N);
 
-    tile(size_of_grid, 0, 0);
+  
 
-    for (int i = 0; i < size_of_grid; i++) {
-        for (int j = 0; j < size_of_grid; j++)
-            printf("%d \t", arr[i][j]);
-        printf("\n");
-    }
+    int *board = (int *)malloc(N * sizeof(int));
+
+
+
+    solveNQueens(board, 0, N);
+
+    free(board);  
 
     return 0;
 }
+// 5
+// 1 4 2 5 3
+// 2 4135
+
+

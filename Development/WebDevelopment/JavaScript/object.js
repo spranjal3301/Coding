@@ -23,6 +23,14 @@ console.log(car.fullName()); //*you access a method without the () parentheses, 
 //* Object.defineProperties(): Adds the named properties described by the given descriptors to an object.
 //* Object.getOwnPropertyDescriptor(): Returns a property descriptor for a named property on an object.
 
+//!Object Length
+
+console.log(Object.keys(car).length);
+console.log(Object.keys(car));
+console.log(Object.values(car));
+console.log(Object.entries(car));
+
+
 //! Object Iteration
 const myObject = { a: 1, b: 2, c: 3 };
 
@@ -36,8 +44,15 @@ Object.keys(myObject).forEach(key => {
 });
 
 
+//!Difference between Object and JSON
+//? objects are native data structures in JavaScript,
+//? while JSON is a text-based data format that is used to store and transmit data.
+//? JSON is based on JavaScript objects, but it has a stricter syntax. 
 
-
+// object = {               JSON = {
+//   name: "John Doe",              "name": "John Doe", //~JSON keys must be strings
+//   age: 30,                       "age": 30,
+// };                               }
 
 
 //!JSON :JavaScript object notation

@@ -43,14 +43,14 @@ outerFunction(callbackfn);
         }
       });
       function callback(result){
-        // This function is called when the promise is fulfilled
+        // This function is called when the promise is fulfilled 
           console.log(result);
       }
       // Handling the promise
       //~ resolve ---> .then(callbackFn)
       //~ resolve(result) ---> by default pass one argument to callbackFn after promise is resolved.
       //~ chaining ---> .then(callbackFn).then(callbackFn).then(callbackFn)...........
-      myPromise.then(callback);
+      myPromise.then(callback); //*fetch.then(callback)
     
       //~ reject ---> .catch 
       myPromise.catch((error) => {

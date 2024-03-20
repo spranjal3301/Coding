@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 #include"1BinaryTree.cpp"
 using namespace std;
+
+
 int HeightofTree(TreeNode* root) {
     if(root==NULL)return 0;
     
@@ -53,8 +55,3 @@ pair<bool, int> isBalancedHeight(TreeNode* root) {
     return result;
 }
 
-
-int main(){
-    
-    return 0;
-}

@@ -1,39 +1,38 @@
-#include <iostream>
-
-int main() {
-    int t;
-    std::cin >> t;
-
-    for (int testCase = 0; testCase < t; ++testCase) {
-        int g, b;
-        std::cin >> g >> b;
-
-        if (b == 0) {
-            // Case when b is 0, just print the numbers from 1 to g.
-            for (int k = 1; k <= g; ++k) {
-                std::cout << k << " ";
-            }
-            std::cout << '\n';
-            continue;
-        }
-
-        if (g - b <= 1) {
-            // Case when g - b is less than or equal to 1.
-            std::cout << "-1\n";
-            continue;
-        }
-
-        // Calculate the starting point for the sequence.
-        int start = b + 1;
-
-        // Print the sequence.
-        std::cout << start << " ";
-        for (int j = 1; j < g; ++j) {
-            std::cout << start + j << " ";
-        }
-
-        std::cout << '\n';
+#include<bits/stdc++.h>
+using namespace std;
+int minimumDeletions(std::string word, int k) {
+    std::unordered_map<char, int> freq;
+    for (char c : word) {
+        freq[c]++;
     }
-
-    return 0;
+    
+    std::vector<int> frequencies;
+    for (auto& pair : freq) {
+        frequencies.push_back(pair.second);
+    }
+    
+    std::sort(frequencies.begin(), frequencies.end(), std::greater<int>());
+    
+    int min_deletions = std::numeric_limits<int>::max();
+    
+    for (size_t i = 0; i < frequencies.size(); ++i) {
+        int target = frequencies[i];
+        int deletions = 0;
+        
+        for (int f : frequencies) {
+            if (f > target + k) {
+                deletions += f - (target + k);
+            } else if (f < target) {
+                deletions += f;
+            }
+        }
+        
+        min_deletions = std::min(min_deletions, deletions);
+        if (min_deletions == 0) {
+            break;
+        }
+    }
+    return min_deletions == std::numeric_limits<int>::max() ? 0 : min_deletions;
 }
+
+

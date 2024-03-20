@@ -288,7 +288,66 @@ console.log(ma);
 let r=ma.random();
 console.log(r);
 
+//!spread and rest operator 
+//-{ both represented by three consecutive dots (...) }
 
+//!Spread Operator (...iterable_object)
+//* The spread operator is used to spread the elements of an iterable object into individual elements
+
+//-Copied array
+let arr1 = [1, 2, 3];
+let arr2 = [...arr1];
+console.log(arr2); // [1, 2, 3]
+
+//-Concatenated array
+ arr1 = [1, 2, 3];
+ arr2 = [4, 5, 6];
+let arr3 = [...arr1, ...arr2];
+console.log(arr3); // [1, 2, 3, 4, 5, 6]
+
+//-Adding new Elements in an array
+const arr = [1, 2, 3];
+arr.push(...[4, 5, 6]);
+console.log(arr); // [1, 2, 3, 4, 5, 6]
+
+const obj = { a: 1, b: 2, c: 3 };
+const newObj = { ...obj, d: 4 };
+console.log(newObj); // { a: 1, b: 2, c: 3, d: 4 }
+
+//!Rest Operator ...
+//* The rest operator is used to collect multiple elements and condense them into a single element
+
+
+//- Collect function arguments.
+function sum(...args) {
+    let total = 0;
+    for (const arg of args) {
+      total += arg;
+    }
+    return total;
+  }
+  console.log(sum(1, 2, 3, 4, 5)); // 15
+
+//-Destructure arrays.
+arr = [1, 2, 3, 4, 5];
+let [first, second, ...rest] = arr;
+console.log(first); // 1
+console.log(second); // 2
+console.log(rest); // [3, 4, 5]
+
+//-Destructure objects.
+ obj = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const { o1, o2, ...rests } = obj;
+console.log(o1); // 1
+console.log(o2); // 2
+console.log(rest); // { c: 3, d: 4, e: 5 }
+
+//!Window Object
+//* The window object represents an open window in a browser.
+//* The window is the top-level object.
+//* The window object is the same for all pages in a browser.
+//* All global JavaScript objects, functions, and variables automatically become members of the window object.
+console.log(window);
 
 
 
