@@ -199,46 +199,7 @@ switch(expression) {
     default:
         // code block
 }
-//!Functions
-//* In Js you  decelerated function any where in js it automatic pushed to top of js at compile time
-//* function name(parameter1, parameter2, parameter3) {
-     //* code to be executed
-//*   }
-function myfuntion(a,b){
-    return a+b;
-}
-function greet(){
-    console.log("Hey");
-    return 0;
-}
-function greet(a){
-    console.log("Hey");
-    return 0;
-}
-console.log(myfuntion(2,3));
 
-//!Arrow Function
-//* Arrow functions allow us to write shorter function syntax:
-//* The return keyword is omitted.
-//* The function keyword is omitted.
-//* Parentheses are omitted.
-//* The function is written after the arrow (=>) sign.
-//* Arrow fn do not have "this". (lexical this)
-//~ Arrow functions are lexically scoped, which means that their this binding is bound to the context of the surrounding scope.
-//~ This means that whatever "this" refers to can be preserved by using an arrow function.
-
-const x = (x, y) =>{ x * y};
-y = (x, y) => x * y;
-c = z => z*3;
-console.log(x(5, 6)); //*30
-
-//! Immediately Invoked Function Expressions IIFE
-//*auto executed function expression 
-//* used to avoid polluting global scope
-//* used to create a private scope
-(function() {
-    console.log("IIFE");
-})();
 
 
 
@@ -286,6 +247,8 @@ dates=new Date("2027-11-27");
 let ma=Math;
 console.log(ma);
 let r=ma.random();
+Math.min()
+Math.max()
 console.log(r);
 
 //!spread and rest operator 
@@ -350,7 +313,11 @@ console.log(rest); // { c: 3, d: 4, e: 5 }
 console.log(window);
 
 
+//! === vs ==
+console.log(3=="3"); //*Equal to
+console.log(3===3); //*equal value and equal type
 
+//- ==  :  in case of array,objects and function its check referencecal equality
 
 
 

@@ -1,13 +1,7 @@
 #include <bits/stdc++.h>
 #include "1BinaryTree.cpp"
 using namespace std;
-void SearchMap(vector<int> in, unordered_map<int, int> &Inorder_Index)
-{
-    for (int i = 0; i < in.size(); i++)
-    {
-        Inorder_Index[in[i]] = i;
-    }
-}
+
 int search(vector<int> &in, int key)
 {
     for (int i = 0; i < in.size(); i++)
@@ -42,6 +36,19 @@ TreeNode *buildTree_Inorder_PreorderTraversal(vector<int> &preorder, vector<int>
     TreeNode *root = solve(preorder, inorder, i, 0, end, Inorder_Index);
     return root;
 }
+
+
+
+
+
+void SearchMap(vector<int> in, unordered_map<int, int> &Inorder_Index)
+{
+    for (int i = 0; i < in.size(); i++)
+    {
+        Inorder_Index[in[i]] = i;
+    }
+}
+
 TreeNode* Inorder_PostorderBuild(vector<int> postorder,int i,int start,int end,unordered_map<int, int> Inorder_Index){
     if(i<=0 or start>end)return NULL;
 
@@ -55,6 +62,7 @@ TreeNode* Inorder_PostorderBuild(vector<int> postorder,int i,int start,int end,u
     return root;
 
 }
+
 TreeNode *buildTree(vector<int> &inorder, vector<int> &postorder)
 {
     unordered_map<int, int> Inorder_Index;
@@ -63,9 +71,4 @@ TreeNode *buildTree(vector<int> &inorder, vector<int> &postorder)
     int end = inorder.size() - 1;
     TreeNode *root = Inorder_PostorderBuild(postorder, i, 0, end, Inorder_Index);
     return root;
-}
-int main()
-{
-
-    return 0;
 }

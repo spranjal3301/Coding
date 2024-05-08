@@ -1,0 +1,17 @@
+.accordion{
+    width: 480px;
+    /* border: 2px solid red; */
+    box-shadow: -20px 18px 10px rgba(0, 0, 0, 0.1);
+  }
+  .accordion .accordion-item{
+    border-bottom: 1px solid #f1f1f1;
+  }
+  /* .accordion-content{
+    display: none;
+  }
+  .accordion-content.active{
+    display: block;
+  } */
+  .accordion-title{
+    cursor: pointer;
+  }

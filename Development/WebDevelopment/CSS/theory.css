@@ -98,9 +98,9 @@ div {
    it do not move if i scroll through website */
   top: 0;
 
-  text-align: center; /*! use in parent element to center if child do not have width  */
+  text-align: center; /*- use in parent element to center if child do not have width  */
 
-  /*!use in container  if we want to use width and center the element use :- */
+  /*!-use in container  if we want to use width and center the element use :- */
   margin: 0 auto 0 auto;
 
   /* use float: ; wrap image with text */

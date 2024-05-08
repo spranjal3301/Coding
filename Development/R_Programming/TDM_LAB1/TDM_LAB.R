@@ -67,23 +67,21 @@ class(y)
 # DESCCISION MAKING 
 # if  | Else  |  Else if  |  Switch 
 
-# LOOPS 
-# repeat Loops  |  While Loops  | for Loops 
+# LOOPS
+# repeat Loops  |  While Loops  | for Loops
 
-# for loops 
-#for (i in 1:5){  print i }  ---> so values from 1 to 5 would be printed 
-# this would include last value also  -- 1 2 3 4 5 
-
-# while loops
-# while(__){}
-
-# repeat{
+# for loops
+#for (i in 1:5){  print i }  ---> so values from 1 to 5 would be printed
+#this would include last value also  -- 1 2 3 4 5
+#while loops
+ #while(__){}
+ #repeat{
 # do something
-# if(some condition is true){
-# break
+#if(some condition is true){
+#break
 # }
 #}
-# 
+#
 
 
 

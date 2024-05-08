@@ -87,3 +87,29 @@ public:
         return s;
     }
 };
+
+
+
+//- function inside function
+
+int main(){
+    int a = 10;
+
+    //!  C++14 syntax for lambda expressions
+    auto add = [&](int b) {
+        return a + b;
+    };
+
+    //! C++11 syntax for lambda expressions
+    //- function<ReturnType(parameterTypes)>
+     function<void(int, int)> dfs = [&](int node, int parent) {
+        // Do something
+    };
+
+    auto dfs = [&](int node, int parent) -> void {
+    // ...
+    };
+
+    cout << add(5) << endl;
+    return 0;
+}

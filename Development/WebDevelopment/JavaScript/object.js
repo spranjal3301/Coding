@@ -43,6 +43,27 @@ Object.keys(myObject).forEach(key => {
   console.log(key, myObject[key]);
 });
 
+//!Toggle present of element in object
+
+const obj = {
+  name: 'John',
+  age: 30,
+  city: 'New York'
+};
+
+//- Toggle the presence of the 'city' property
+if ('city' in obj) {
+  delete obj.city;
+} else {
+  obj.city = 'New York';
+}
+
+//- Shorter version
+obj.city = obj.city ? undefined : 'New York';
+
+
+console.log(obj); // { name: 'John', age: 30 }
+
 
 //!Difference between Object and JSON
 //? objects are native data structures in JavaScript,

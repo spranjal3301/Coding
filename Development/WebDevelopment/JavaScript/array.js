@@ -13,7 +13,7 @@ let num = arr[0];
 //* Array shift(): Removes the first element from the array.
 //* Array unshift(): Adds one or more elements to the beginning of the array.   
 //* Array splice(): Adds or removes elements from the array.
-//* Array slice(): Extracts a section of the array and returns a new array.
+//* Array slice(): Extracts a section of the array and returns a new array.  splice(indexOf(),)
 //* Array concat(): Joins two or more arrays and returns a new array.
 //* Array includes(): Checks whether an array contains a specified element.
 //* Array indexOf(): Returns the first index of an element in the array.
@@ -72,6 +72,11 @@ const newArray3 = Array.from(existingArray, item => item * 2);
 let n=9;
 let m=9;
 const arr1 = Array.from({ length: n }, () => Array(m).fill(0));
+
+//!Empty Array
+const m01=Array.from({length: 10})
+const m02=Array.from({length: 10},()=>0)
+const m03=[...Array(10)];
 
 //!Array of Object
 const arr2 = Array.from({ length: 5 }, (_, i) => ({ index: i }));
@@ -134,6 +139,33 @@ const array3 = [1, 2, 3, 4, 5];
 const found = array.find(element => element > 3);
 
 console.log(found); // 4
+
+
+//!Includes
+const numbers = [1, 5, 10, 15];
+const numberToFind = 10;
+
+// Check if the number exists within the array
+let doesInclude = numbers.includes(numberToFind);  
+console.log(doesInclude); // Output: true
+
+const sentence = "Hello, world!";
+const wordToFind = "world";
+
+// Check if the word exists within the sentence
+doesInclude = sentence.includes(wordToFind);  
+console.log(doesInclude); // Output: true
+
+// Case-Sensitive:  .includes() is case-sensitive. "World" and "world" are treated as different values.
+
+// Index Position (Optional): You can provide an optional second argument to .includes() that specifies the index to start searching from:
+
+// Searching for NaN: .includes() can correctly find NaN within arrays, unlike indexOf
+
+const text = "Hello, hello again"; 
+console.log(text.includes("hello", 7)); // Output: false (Starts search after 'Hello,')
+
+
 
 
 

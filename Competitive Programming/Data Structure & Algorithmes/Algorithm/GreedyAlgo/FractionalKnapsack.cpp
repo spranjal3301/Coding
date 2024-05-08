@@ -14,7 +14,7 @@ class Solution
         vector<pair<double,int>> v;
         
         for(int i=0;i<n;i++){
-            v.push_back({arr[i].value*1.0/arr[i].weight,i});
+            v.push_back({arr[i].value*1.0/arr[i].weight,i});  //-Sort in decreasing order of value/weight
         }
         sort(v.begin(),v.end(),greater<pair<double,int>>());
         

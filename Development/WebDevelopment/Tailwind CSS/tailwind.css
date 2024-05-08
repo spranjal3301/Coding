@@ -1,0 +1,22 @@
+/*!Tailwind CSS */
+/** Css Framwork */
+
+/*-Install Guide for vite  */
+/*? https://tailwindcss.com/docs/guides/vite */
+
+/** tailwind work mobile first mean opposite media query    */
+/** OverWrite for bigger screen */
+
+/*- Breakpoint prefix	Minimum width	CSS
+        sm	640px	@media (min-width: 640px) { ... }  /**Property apply above Smaller (when screenSize greter than 600px)*/ /*
+        md	768px	@media (min-width: 768px) { ... }
+        lg	1024px	@media (min-width: 1024px) { ... }
+        xl	1280px	@media (min-width: 1280px) { ... }
+        2xl	1536px	@media (min-width: 1536px) { ... } */
+
+/*`Thing for larger Screen first(sm:)  */
+
+/* const FullScreen = styled.div({
+    width: '100vw',
+    height: '100vh'
+}) */

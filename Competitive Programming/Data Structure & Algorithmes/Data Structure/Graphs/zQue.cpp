@@ -1,6 +1,7 @@
 //!Question Types
 //*1.BFS(minization problem)
 //*2.DFS
+//* Two DFS 
 //*3.Use track Parent Data Structure
 //*4.Topological Sort
 //*5.Cycle Detection

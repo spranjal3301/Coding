@@ -58,4 +58,7 @@ class MyClass {
   
   // Calling static method
   MyClass.staticMethod();
+
+
+
   

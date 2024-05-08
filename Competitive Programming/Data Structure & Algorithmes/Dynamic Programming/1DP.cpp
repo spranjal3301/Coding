@@ -19,8 +19,10 @@
 // https://leetcode.com/discuss/general-discussion/1050391/Must-do-Dynamic-programming-Problems-Category-wise
 //*Count no of ways
 //*min or max output
-//*pick, Nopick
-//*subsequence
+//*2D/3D DP and DP on Grids    (pick/Nopick)
+//*Subsequence (Match/NoMatch)
+
+//-for Square problem use Tabulation create 2D array
 
 //*Shortcuts
 //*1.Try to represent the problem in terms of Index
@@ -28,8 +30,20 @@
 //*3.Sum of all possible operations->count all ways
 //* Min or Max of all possible operations->min or max of all ways
 
+//!Memoization->Tabulation
+//*1. run loop in reverse order
+//*2. 2D array-> 2 loops (i,j) dp(n+1,vector<int>(m+1,0)
+//*3. copy the recurence
+//* recursive call(i,j)->dp[i][j]
 
 
+
+//!Partition DP
+//-Multipal ways of solve the problem and choose the best one
+
+//- int dp[10][10];
+//- memset(dp, 0, sizeof dp); //  Initialize the 2D array with zero.
+//-  vector<int> dp(n+1,-1);
 
 
 #include<bits/stdc++.h>

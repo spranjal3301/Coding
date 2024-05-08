@@ -74,7 +74,7 @@ const userSchema=new mongoose.Schema({
 const User=mongoose.model("User",userSchema)
 
 //~M01 Create a new user
-const newUser=new User({
+const newUser=new User({   //-  id=newUser._id
     username:"Pranjal",
     password:"Pranjal123",
     name:"Pranjal Singh"

@@ -95,17 +95,17 @@ public:
 
 typedef pair<int, int> pii;
 int spanningTree(int V, vector<vector<int>> adj[]) {
-    // Initialize visited array to track visited nodes
+    //- Initialize visited array to track visited nodes
     vector<int> visited(V, 0);
     
-    // Initialize minimum spanning tree vector to store edges of MST
-    vector<pii> mst;
+    //- Initialize minimum spanning tree vector to store edges of MST
+    vector<pii> mst;//`(node, parent)`
     
-    // Priority queue to store edges (distance, {node, parent}) in increasing order of distance
+    //- Priority queue to store edges (distance, {node, parent}) in increasing order of distance
     priority_queue<pair<int,pii>, vector<pair<int,pii>>, greater<pair<int,pii>>> pq;
     
     // Start with node 0 and no parent with initial distance 0
-    pq.push({0, {0, -1}});
+    pq.push({0, {0, -1}});//`(distance, {node, parent}) 
     
     int totalWeight = 0; // Total weight of the minimum spanning tree
     
@@ -117,7 +117,7 @@ int spanningTree(int V, vector<vector<int>> adj[]) {
         int parent = pq.top().second.second;
         pq.pop();
         
-        // If node is already visited, skip it
+        //- If node is already visited, skip it
         if (visited[node]) continue;
         
         // Add the edge to the minimum spanning tree if it's not the starting node

@@ -136,6 +136,22 @@ void reverse(Linklist *&head,Linklist *&tail){
     //     if (head != NULL)
     //         head = head->next;
     // }
+
+
+
+
+    //    ListNode *prev = nullptr, *curr = head;
+
+    //     while (curr != nullptr) {
+    //         swap(curr->next, prev);
+    //         swap(prev, curr);
+    //     }
+    // n->c->cn
+    // cn c n
+    // c  cn n
+
+    // n<-c<-cn
+    // cn->c->n
 }
 Linklist* Recursive_reverse(Linklist *head){
 //!Recursive
@@ -148,20 +164,7 @@ Linklist* Recursive_reverse(Linklist *head){
     head->next=NULL;
     return new_head;
 }
-//!floyd cycle detection alogorithm: 
-Linklist* getmid(Linklist* head){
-    if (head==NULL || head->next==NULL)return head;
-    //!floyd cycle detection alogorithm: also use to find LL is cyclic or not 
-    Linklist *slow=head; 
-    Linklist *fast=head->next;
-    while (fast!=NULL)
-    {
-        fast=fast->next;
-        if (fast!=NULL)fast=fast->next;
-        slow=slow->next;
-    }
-    return slow;
-}
+
 int main()
 {
     Linklist *head = NULL;
@@ -180,6 +183,6 @@ int main()
     // tail=head;
     // head=Recursive_reverse(head);
     print(head);
-    cout<<(getmid(head))->data;
+    // cout<<(getmid(head))->data;
     return 0;
 }

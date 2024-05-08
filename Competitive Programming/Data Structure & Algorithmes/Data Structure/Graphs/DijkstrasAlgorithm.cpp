@@ -30,7 +30,7 @@ class Solution
         //* provided priority queue doesn’t support decrease key and delete operations but Set Provide
         //* set<pair<int,int>> distNode;
         
-        pq.push({0,source});
+        pq.push({0,source});//- Distance , Node
         distance[source]=0;
         
         while(!pq.empty()){
