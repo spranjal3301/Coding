@@ -28,6 +28,7 @@
 
 
 //!Option 3: Using Vite (Recommended for React 17+)
+//*Vite is bundler
 //- Create a new project directory:
 //- Run the Vite setup: "npm create vite@latest"
 //- Follow the prompts:

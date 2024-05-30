@@ -45,14 +45,22 @@ function CustomButton(props) {//~Props is object always receive   (Props={count,
 //-     <div /> is recognized as an HTML div element.  
 
 
-//!Props
+
+
+
+
+
+
+
+
+//!Props  (properties) 
 //*Props is an object that holds information about the component.
 //*props is not a reserved keyword in React. Props is a convention for dev, not a rule.
 //* Props in React is a way to pass data from one component to another. Props are immutable
 
 
 
-//!Argument passing to the component
+//Argument passing to the component
 //!M01
 //- <CompomentName parameter1={Argument1}   parameter2={Argument2}  /> 
 //~ access prpos.parameter1, props.parameter2
@@ -93,5 +101,19 @@ function CustomButton(props) {//~Props is object always receive   (Props={count,
     )
   }
   
+
+//!Proptypes
+//*PropTypes are a mechanism for type-checking the props that are passed to a component.
+//* They help ensure that the data received by a component is of the correct type, which can prevent errors and improve code reliability.
+
+import PropTypes from 'prop-types';
+
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+Greeting.propTypes = {
+  name: PropTypes.string.isRequired
+};
 
 

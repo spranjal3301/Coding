@@ -17,7 +17,7 @@
 //* JWT is a compact, URL-safe means of representing claims to be transferred between two parties.
 //* Send in the header of HTTP request or in the body of HTTP request.
 
-//~ JWT Stored at localStorage or Cookies or SessionStorage or in the URL for verification without Login or hiting DB again and again.
+//~ JWT Stored at "localStorage or Cookies or SessionStorage" or in the URL for verification without Login or hiting DB again and again.
 //~ Token in Requests: Each subsequent request from the user's browser includes the JWT in the Authorization header.
 
 //*Some JWT Functions

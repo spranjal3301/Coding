@@ -3,6 +3,8 @@ import './App.css'
 
 //! State Variables, Return , JSX, Class vs className
 
+//- "rfce" --- react boilerplate pages
+//- "rfc" --- react boilerplate components
 
 //!Main component
 function App() {
@@ -11,7 +13,7 @@ function App() {
   const [count, setCount] = useState(0) //~useState(initialState) returns an array with 2 elements 
   //- count is the current state value
   //- setCount is the function that updates the state value
-  //! *** To update the state, call setCount with a new state value
+  //! *** To update the state, call setCount with a new state valuez
 
 
 function handleClick() {
@@ -99,6 +101,7 @@ setCount(currCount => currCount + 1)
 //- Put Curly braces to use "JavaScript" inside XML
 //-example : count is {count},onClick={fn}
 //*onClick={fn name} do not call() the function, just pass the reference
+//`Every Js ans Css properties and function in camalCase (onclick->onClick) 
 
 
 //-Put double Curly braces to use "CSS" inside XML

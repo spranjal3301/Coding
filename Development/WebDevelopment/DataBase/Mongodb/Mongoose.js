@@ -67,7 +67,16 @@ mongoose.connection.on('error', (err) => {
 const userSchema=new mongoose.Schema({
     username:String,
     password:String,
-    name:String
+    name:String,
+    userId:{
+        type:String,
+        required:true, //- *mendatory
+        unique:true,  
+        trim:true, //-No white Space in last or front
+        lowercase:true,
+        minLength:3,
+        maxLength:30
+    }
 })
 
 //~Model
@@ -80,7 +89,7 @@ const newUser=new User({   //-  id=newUser._id
     name:"Pranjal Singh"
 })
 
-newUser.save()//~Save the user
+await newUser.save()//~Save the user
 
 //~M02 Create a new user
 async function findUsers() {
@@ -103,6 +112,9 @@ async function findUsers() {
         const users = await User.find({});//~Find all users
         // const users = await User.findById("5f9e3e3e3e3e3e3e3e3e3e3e"); //~ Find by id
         // const users = await User.findOne({ username: "Pranjal" }); //~ Find by username
+        // const existingUser = await Userdb.findOne({
+        //     $or: [{ email }, { userId }]
+        // });
         console.log(users);
     } catch (err) {
         console.error(err);

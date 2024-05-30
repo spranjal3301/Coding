@@ -15,7 +15,7 @@ using namespace std;
 //* The algorithm works for  directed graphs(but we can also use it for undirected graphs).
 //~ Bellman-Ford is slower than Dijkstra’s algorithm, 
 
-//! Drawback of Bellman Ford’s Algorithm: fail if the graph contains any negative edge cycle.
+//! Drawback of Bellman Ford’s Algorithm: fail if the graph contains any "negative edge cycle" not a "negative egde weights".
 //*  The shortest path cannot be found if there exists a negative cycle in the graph
 //* If we continue to go around the negative cycle an infinite number of times, 
 //* then the cost of the path will continue to decrease (even though the length of the path is increasing). 

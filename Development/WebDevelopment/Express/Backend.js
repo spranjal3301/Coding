@@ -67,5 +67,30 @@
 //!We use NodeJs for Backend Viva Express Library
 // NVM:Node Version Manager
 //NPM: Node Pakage Manager
+//NPX: Node Pakage Executor
+
+
+
+//! Cross-Origin Resource Sharing (CORS) :
+//- is a security mechanism implemented by web browsers. It controls how a web page running on one domain (origin) can access resources from a different domain.
+//- Why it's needed: CORS helps prevent malicious websites from accessing sensitive data or performing actions on trusted domains without permission.
+
+//! What are CORS Errors?
+//* A CORS error occurs when the web browser blocks a cross-origin request because the server's CORS configuration does not permit it
+
+//? npm install cors 
+//? const cors=require("cors");
+//? app.use(cors());
+//? app.use(cors({
+    //? origin:"http://localhost:3000",
+    //? optionsSuccessStatus: 200 
+
+//?})); //specify the origin that can access the server
+
+app.get('/products/:id', cors(), function (req, res, next) {
+    res.json({msg: 'This is CORS-enabled for a Single Route'})
+  })
+
+
 
 

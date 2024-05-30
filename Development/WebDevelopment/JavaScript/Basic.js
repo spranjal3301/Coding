@@ -99,6 +99,19 @@ const pi=3.14; //Declares a block constant
     // can NOT reassign the object
     car = {type:"Volvo", model:"EX60", color:"red"};    // ERROR
 } 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //! Operators
 console.log(3+2); //Addition
 console.log(3-2); //Subtraction
@@ -128,6 +141,75 @@ console.log(3 + + "3"); //* 3 (number) + +"3" (converted to a number) = 3 (numbe
 console.log(3 - - "3"); //* 3 (number) - -"3" (converted to a number) 3 - (-3) =6
 console.log(16 + 4 + "Volvo")//* 20Volvo
 console.log("Volvo" + 16 + 4)//* Volvo164
+
+
+//! Nullish Coalescing Operator (??) vs (||)
+//* checks if a value is specifically "null or undefined"
+let x = null;
+y = undefined;
+let z = 0;
+let w = '';
+let u = [];
+let v = {};
+b=false;
+
+console.log(x ?? "default"); // Output: "default"
+console.log(y ?? "default"); // Output: "default"
+console.log(z ?? "default"); // Output: 0
+console.log(w ?? "default"); // Output: ''
+console.log(u ?? "default"); // Output: []
+console.log(v ?? "default"); // Output: {}
+console.log(b ?? "default"); // Output: false
+
+
+ x = null;
+ y = undefined;
+ z = 0;
+ w = '';
+ u = [];
+ v = {};
+ b=false;
+
+console.log(x || "default"); // Output: "default"
+console.log(y || "default"); // Output: "default"
+console.log(z || "default"); // Output: "default"
+console.log(w || "default"); //  Output: "default"
+console.log(b || "default"); // Output: "default"
+console.log(u || "default"); // Output: []
+console.log(v || "default"); // Output: {}
+
+//- Falsy values include false, 0, '' (empty string), null, undefined, and NaN
+
+//! Optional Chaining Operato (.?)
+//* ?. is used for optional chaining, allowing you to safely access properties of objects that might be null or undefined.
+//* If the object is null or undefined, the expression short-circuits and returns undefined.
+
+let user = {
+    address: {
+        street: "123 Main St"
+    }
+};
+
+console.log(user?.address?.street); // Output: "123 Main St"
+console.log(user?.phone?.number);   // Output: undefined (no phone property)
+
+
+
+//!Pattern Matching
+//* ? (it can appear zero or one times)
+
+let text = "color";
+let regex = /colou?r/; // Matches both "color" and "colour"
+console.log(regex.test(text)); // Output: true
+
+
+
+
+
+
+
+
+
 
 //! Data Types
 // JavaScript has 8 Datatypes

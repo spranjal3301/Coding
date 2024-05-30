@@ -29,7 +29,3 @@ int Recursive_Pow(int a , int b){
    
    
 }
-int main(){
-    cout<< Recursive_Pow(5,10);
-    return 0;
-}

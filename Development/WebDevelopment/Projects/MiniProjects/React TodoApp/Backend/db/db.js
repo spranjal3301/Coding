@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const mongodbKey="mongodb+srv://spranjal3301:Pranjalc2@cohort0-100.6yp4i6v.mongodb.net/todoApp";
+const mongodbKey="";
 
 mongoose.connect(mongodbKey);
 

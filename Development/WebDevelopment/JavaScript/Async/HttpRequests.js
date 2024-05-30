@@ -7,7 +7,7 @@
 
 function fetchData(){
     const xhr=new XMLHttpRequest();
-    xhr.open('GET','https://jsonplaceholder.typicode.com/posts');
+    xhr.open('GET',URL);
     xhr.send();
     xhr.onload=function(){
         if(xhr.status===200){
@@ -16,27 +16,48 @@ function fetchData(){
     }
 }
 
-
-//!Axios
-
-const { default: axios } = require("axios");
-
-async function fetchData(){
-    const response=await axios.get('https://jsonplaceholder.typicode.com/posts');
-    console.log(response);
-}
-
-fetchData()
-
-
 //!Fetch
-
 async function fetchData(){
-    const response=await fetch('https://jsonplaceholder.typicode.com/posts');
+    const response=await fetch(URL); //-Default GET request
+    await fetch(URL,{
+        method:"POST",
+        body:{
+            username:"",
+            password:""
+        },
+        headers:{
+            "Authorization":"Bearer 123"
+        }
+    });
+
+
     const data=await response.json();
     console.log(data);
 }
 fetchData()
+
+
+//!Axios
+const  axios  = require("axios");
+
+async function fetchData(){
+    const response=await axios.get(URL);  //- axios.post/put/delete
+
+    const body={
+        username:"",
+        password:""
+    }
+    const headers={
+        "Authorization":"Bearer 123"
+    }
+    await axios.get(URL,{headers});  //-get request can not send body
+    await axios.post(URL,body,{headers});  
+
+    console.log(response.data);
+}
+
+fetchData()
+
 
 //!AJAX
 //- AJAX is a group of interrelated technologies used together to create applications that are faster,more interactive,

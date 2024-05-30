@@ -1,4 +1,4 @@
-//! Lazy Loading ,Suspense ,Error Boundaries,React Query
+//! Lazy Loading ,Suspense ,Error Boundaries
 
 
 

@@ -23,7 +23,7 @@ function App() {
        
         <Routes>
           <Route path="/" element={ <ProjectList />} />
-          {components.map((component, index) => (
+          {components.map((component, index) => ( 
             <Route key={index} path={component.path} element={<Suspense fallback={<div>Loading...</div>}><component.component /></Suspense>} />
           ))}
         </Routes>

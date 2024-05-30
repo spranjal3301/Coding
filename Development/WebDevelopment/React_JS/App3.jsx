@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import './App.css'
 
-//!React.memo , Re-rendering ,Keys,Wapper Components -->  
+//React.memo , 
+// Re-rendering ,
+// Reconciliation
+// Virtual DOM
+// React fiber
+// Keys,
+// Wapper Components -->  
 
 function App() {
   const [title, setCount] = useState(0)
@@ -68,6 +74,7 @@ const MemoizedHeader = React.memo(
 
 
 //!Reconciliation
+//* The algorithm React uses to diff one tree with another to determine which parts need to be changed.
 //* React reconciliation is the process of comparing the current state of the UI with the desired state,
 //* and updating the UI to match. 
 //* This is done by comparing the virtual DOM with the real DOM, and making the necessary changes to the real DOM.
@@ -97,6 +104,16 @@ const MemoizedHeader = React.memo(
 // };
 
 // const MemoizedMyComponent = React.memo(MyComponent);
+
+//!React fiber
+//* React's core algorithm, enabling incrementzal rendering, improved performance, and enhanced user experience through advanced rendering scheduling and concurrency capabilities.
+
+
+
+
+
+
+
 
 
 

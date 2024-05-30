@@ -1,6 +1,10 @@
 const express=require("express");
 const app=express();
-const PORT=3001;
+const PORT=parseInt(process.env.PORT) || 3001;
+// # node --env-file=.env  index.js
+
+
+
 
 function calculation(n){
     return Math.random()*n;
@@ -20,7 +24,7 @@ app.get("/",(request,response)=>{
 });
 app.get("/:id",(request,response)=>{
     let n=request.query.n; //~ /?n=23  
-    n=request.params.id;    //~ /:id(/331) req.params.id
+    n=request.params.id;    //~ /:id (/331) req.params.id
 
 
 });
