@@ -1,5 +1,8 @@
 //!Props Drilling
-//* The process of passing data from a parent component down through multiple layers of nested components, even if some of those intermediate components don't actually need that data themselves.
+//* The process of passing data from a parent component down through multiple layers of nested components,
+//* even if some of those intermediate components don't actually need that data themselves.
+
+const { useState } = require("react");
 
 
 
@@ -33,22 +36,22 @@
  
 //* createContext:
 //? The createContext function is used to create a context. It returns an object with two components - Provider and Consumer.
- const MyContext = React.createContext();
+ const ContextName = React.createContext();
  
 //* Provider:
 //? The Provider component is responsible for providing the context value to its descendants. It is placed at the top of the component tree.
-<MyContext.Provider value={SomeValue}>
+<ContextName.Provider value={SomeValue}>
   {/* Components that can access the context value */}
-</MyContext.Provider>
+</ContextName.Provider>
  
 //* Consumer (or useContext hook):
 //? The Consumer component allows components to consume the context value. Alternatively, the useContext hook can be used for a more concise syntax.
 
-//?<MyContext.Consumer>
+//?<ContextName.Consumer>
 //?  {value => /* render something based on the context value */}
-//?</MyContext.Consumer>
+//?</ContextName.Consumer>
 or
-const value = useContext(MyContext);
+const value = useContext(ContextName);
 
 //- Use the useContext hook inside a component to retrieve the current value provided by the nearest matching Provider above in the component tree.
 
@@ -60,6 +63,7 @@ const UserContext = React.createContext();
 // Top-level component with a Provider
 function App() {
   const user = { username: "john_doe", role: "user" };
+  const [isLogin,setIsLogin]=useState("");
 
   return (
     <UserContext.Provider value={user}>

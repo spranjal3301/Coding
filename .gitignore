@@ -5,4 +5,5 @@
 *.env
 node_modules/
 .tmp.driveupload.*
+*.tmp.*
 
