@@ -1,0 +1,4 @@
+#! .env
+#` Run: node --env-file=.env  index.js
+#` access: prosses.env.VariableName 
+URL="https://localhost:3000"
