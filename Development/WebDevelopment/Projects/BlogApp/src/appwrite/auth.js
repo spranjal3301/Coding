@@ -52,7 +52,7 @@ class AuthService {
         return response;
     } catch (error) {
         console.log("🚀 ~ AuthService ~ getCurrentUser ~ error:", error)
-        return false;
+        throw error;
     }
   }
 
@@ -64,8 +64,6 @@ class AuthService {
         throw error;
     }
   }
-
-
 
 }
 

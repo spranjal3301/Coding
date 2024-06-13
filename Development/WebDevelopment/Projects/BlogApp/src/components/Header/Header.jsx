@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./Navbar";
 
 function Header() {
   return (
-    <div>Header</div>
-  )
+    <header className="border-b-2 border-slate-300/10">
+      <Navbar />
+    </header>
+  );
 }
 
-export default Header
+
+
+
+export default Header;

@@ -68,7 +68,9 @@
 //*to the active link. It helps indicate which route is currently active, making it useful for navigation menus.
 //? activeClassName: The class to apply when the link is active.
 //? exact: A boolean that, if set to true, will only apply the active class/style when the route is exactly matched.
-//? ClassName={(isActive)=>{ `${isActive}` }}
+//? ClassName={
+  // ({isActive,isPending,isTransitioning})=>
+    // { `${isActive}` }}
 
 
 //!Routing M01

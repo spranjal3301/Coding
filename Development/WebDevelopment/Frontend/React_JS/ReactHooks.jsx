@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { forwardRef, useEffect, useMemo, useState } from 'react'
 import './App.css'
 
 
@@ -198,6 +198,14 @@ function App() {
         </div>
     );
   }
+
+
+  //!forwardRef
+  //- forwardRef is a higher-order component that allows you to access the ref object passed to it.
+  //- passing Ref of componenet from child to parent
+
+  //? Syntax
+  //? const Component = forwardRef((props, ref) => {return <input ref={ref} />;});
 
  
  

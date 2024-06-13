@@ -13,7 +13,7 @@ class DatabaseService {
         .setProject(config.appwriteProjectId); // Your project ID
 
         this.databases = new Databases(this.client);
-        this.storage = new Storage(client);
+        this.storage = new Storage(this.client);
     }
 
     async createPost({title,slug,content,featureImage,status,userId}){
@@ -27,6 +27,7 @@ class DatabaseService {
             );
         } catch (error) {
             console.log("🚀 ~ DatabaseService ~ createPost ~ error:", error)
+            throw error;
         }
     }
 
@@ -45,23 +46,25 @@ class DatabaseService {
             )
         } catch (error) {
             console.log("🚀 ~ DatabaseService ~ updatePost ~ error:", error)
+            throw error;
         }
     }
-
+    
     async deletePost(slug){
         try {
-            return await this.databases.deleteDocument(
+            await this.databases.deleteDocument(
                 config.appwriteDatabaseId,
                 config.appwriteCollectionId,
                 slug
             )
+            return true;
         } catch (error) {
             console.log("🚀 ~ DatabaseService ~ deletePost ~ error:", error);
-            return false;
+            throw error;
         }
     }
 
-    async listPost(queries=[Query.equal('status','active')]){
+    async listPosts(queries=[Query.equal('status','active')]){
         try {
             return await this.databases.listDocuments(
                 config.appwriteDatabaseId,
@@ -70,6 +73,7 @@ class DatabaseService {
             )
         } catch (error) {
             console.log("🚀 ~ DatabaseService ~ listPost ~ error:", error)
+            throw error;
         }
     }
 
@@ -82,14 +86,26 @@ class DatabaseService {
             )
         } catch (error) {
             console.log("🚀 ~ DatabaseService ~ getPost ~ error:", error)
-            return false;
+            throw error;
         }
     }
 
+    async myPosts(userData){
+        try {
+            return await this.databases.listDocuments(
+                config.appwriteDatabaseId,
+                config.appwriteCollectionId,
+                [Query.equal('userId',userData?.$id)]
+            )
+        } catch (error) {
+            console.log("🚀 ~ DatabaseService ~ listPost ~ error:", error)
+            throw error;
+        }
+    }
 
     //`file storage service
 
-    async uplodeFile(file){ // file --> BLOB
+    async uploadFile(file){ // file --> BLOB
         try {
            return await this.storage.createFile(
                 config.appwriteBucketId,
@@ -98,7 +114,7 @@ class DatabaseService {
            ) 
         } catch (error) {
             console.log("🚀 ~ DatabaseService ~ uplodeFile ~ error:", error)
-            return false;
+            throw error;
         }
     }
 
@@ -110,15 +126,19 @@ class DatabaseService {
            ) 
         } catch (error) {
             console.log("🚀 ~ DatabaseService ~ deleteFile ~ error:", error)
-            return false;
+            throw error;
         }
     }
 
     getFilePreview(fileId){
-        return this.storage.getFilePreview(
-            config.appwriteBucketId,
-            fileId
-        )
+        try {
+            return this.storage.getFilePreview(
+                config.appwriteBucketId,
+                fileId
+            )
+        } catch (error) {
+            throw error;
+        }
     }
 
 

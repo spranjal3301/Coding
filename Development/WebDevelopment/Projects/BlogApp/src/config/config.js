@@ -9,6 +9,9 @@ const config={
         VITE_APPWRITE_BUCKET_ID),
     appwriteDatabaseId:String(import.meta.env.
         VITE_APPWRITE_DATABASE_ID),
+    tinymceAPIKEY:String(import.meta.env.
+        VITE_TINYMCE_APIKEY),
+    
 }
 
 export default config;
