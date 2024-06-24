@@ -1,6 +1,11 @@
 
 
-
+## Check if two integers have opposite signs
+```c++
+if(x^y >0)
+    return false;
+else
+    return true;
 ```
 
 ## Add 1 to a given number
