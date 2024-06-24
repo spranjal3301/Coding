@@ -16,8 +16,8 @@ const port=3000;//*Port use for multiple HTTP server
 //*req.body is populated by middleware, such as body-parser or express.json().
 const bodyParser=require("body-parser");
 //?app.use(bodyParser.json());
-//? app.use(express.urlencoded({extended:true}));
-app.use(express.json());
+app.use(express.json()); //-json data parser
+app.use(express.urlencoded({extended:true})); //-urlencoded data parser
 
 
 //*Create a route : localhost:3000

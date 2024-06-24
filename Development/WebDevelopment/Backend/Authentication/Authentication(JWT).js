@@ -26,11 +26,14 @@
 //~ jwt.decode(token)
 
 //npm install jsonwebtoken
+//npm install cookie-parser
 
 const express = require("express");
+const cookieParser=require('cookie-parser')
 const jwt = require("jsonwebtoken");
 const jwtPassword = "123456"; //*Secret key for JWT only
 app.use(express.json());
+app.use(cookieParser());
 
 const ALL_USERS = [
   {
@@ -65,6 +68,9 @@ app.post("/signin", function (req, res) {
   }
 
   var token = jwt.sign({ username: username }, jwtPassword);
+  
+  res.cookie("jwtToken",token); //-set cookie in frontend;
+
   return res.json({
     token,
   });
@@ -72,6 +78,7 @@ app.post("/signin", function (req, res) {
 
 app.get("/users", function (req, res) {
   const token = req.headers.authorization;
+  const cookies=req.cookies; //-get cookies  {token}
 
   try {
     const decoded = jwt.verify(token, jwtPassword);

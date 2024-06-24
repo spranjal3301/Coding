@@ -1,0 +1,121 @@
+//- This is your Prisma schema file,
+//- learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+//- Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+//- Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" //? or "sqlite"/"mysql""sqlserver"/"mongodb"/"cockroachdb"/"oracle"/db2"
+  url      = env("DATABASE_URL")
+}
+//! model field scalar types
+//? String
+//? Boolean
+//? Int
+//? BigInt
+//? Float
+//? Decimal
+//? DateTime
+//? Json
+//? Bytes
+//? Unsupported
+
+//! model field type modifiers
+//? [] modifier:
+// Makes a field a list.
+// Cannot be optional (for example Post[]?).
+// ? modifier:Makes a field optional.
+
+
+
+
+//! Attributes
+//* Field attributes are prefixed with @ (Defines a single-field ID on the model.)
+//* Block attributes are prefixed with @@
+//? @id:PRIMARY KEY
+//? @@id:Defines a multi-field ID on the model.
+// @default
+// @unique
+// @@unique
+// @@index
+// @relation
+// @map
+// @@map
+// @updatedAt
+// @ignore
+// @@ignore
+// @@schema
+
+//! Attribute functions
+//? auto()
+//? autoincrement()
+//? sequence()
+//? cuid()
+//? uuid()
+//? now()
+//? dbgenerated(...)
+//? Attribute argument types
+//? FieldReference[]
+//? String
+//? Expression
+
+
+//` @default():You can define default values for scalar fields of your models using the @default attribute:
+// @map:
+// Native types, such as @db.ObjectId
+// The following attributes are not supported inside composite types:
+
+//` @unique:
+//*Unique attributes can be defined on a single field using @unique attribute, 
+//*or on multiple fields (also called composite or compound unique constraints) using the @@unique attribute
+// email String  @unique  |  @@unique([authorId, title])
+//` @id: A model can only have one ID
+//` @relation:foreign key to create a relation between two tables
+//` @@index You can define indexes on one or multiple fields of your models via the @@index on a model. 
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// one-to-many relation between the User and Post models
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  posts   Post[]
+  profile Profile?
+}
+
+model Profile {
+  id     Int  @id @default(autoincrement())
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique // relation scalar field (used in the `@relation` attribute above)
+}
+
+model Post {
+  id         Int        @id @default(autoincrement())
+  author     User       @relation(fields: [authorId], references: [id])
+  authorId   Int // relation scalar field  (used in the `@relation` attribute above)
+  categories Category[]
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  posts Post[]
+}
+//* one-to-one: User ↔ Profile
+//* one-to-many: User ↔ Post
+//* many-to-many: Post ↔ Category
+
+
+
+
+
+
+
+
+

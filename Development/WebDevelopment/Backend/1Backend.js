@@ -65,9 +65,23 @@
 //? 4. 500 - Internal server error
 
 //!We use NodeJs for Backend Viva Express Library
-// NVM:Node Version Manager
-//NPM: Node Pakage Manager
-//NPX: Node Pakage Executor
+//*NVM:Node Version Manager: 
+// allows you to easily install and manage different versions of Node and switch between them on a per-shell basis
+
+
+//*NPM: Node Pakage Manager:install, update, and manage dependencies.
+//` npm run <script>: Runs a script defined in the package.json file.
+// npm install <package>: Installs a package and adds it to your node_modules directory.
+// npm init: Creates a package.json file, which is used to manage project dependencies and scripts.
+// npm publish: Publishes a package to the npm registry.
+// npm update: Updates the installed packages to the latest version according to the version ranges specified in package.json.
+// npm uninstall <package>: Removes a package from your project.
+
+
+//*NPX: Node Pakage Executor:
+//` npm affects your project’s node_modules and package.json.
+//` npx is more transient, often used for quick, ad-hoc tasks.
+
 
 
 

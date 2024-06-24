@@ -4,9 +4,9 @@ using namespace std;
 void sieveOfEratosthenes(int n) {
     std::vector<bool> prime(n + 1, true);
 
-    for (int p = 2; p * p <= n; p++) {
+    for (int p = 2; p * p <= n; p++) {  //?p<sqrt(n) is also correct
         if (prime[p]) {
-            for (int i = p * p; i <= n; i += p) {
+            for (int i = p * p; i <= n; i += p) { //?marking multiples of p as not prime
                 prime[i] = false;
             }
         }
@@ -44,7 +44,3 @@ void sieveOfEratosthenes(int n) {
         
     }
 
-int main(){
-    
-    return 0;
-}
