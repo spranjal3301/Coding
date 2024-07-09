@@ -10,7 +10,7 @@
 
 //` Problems with this approach
 //? More expensive at scale
-//? Cold start problem
+//? Cold start problem 
 
 //` Famous serverless providers
 //? AWS Lambda
@@ -44,6 +44,8 @@
 //`dependency Wrangler
 //* The Workers command-line interface, Wrangler, allows you to create, test, and deploy your Workers projects.
 
+//!Env (.env-->wrangler.toml)
+
 //~Express is not working in cloudflare workers because it is a hevely dependent on nodejs 
 //~and cloudflare workers are not nodejs based it have there own Runtime.
 //`We use "Hono" instead of express in cloudflare workers
@@ -53,3 +55,21 @@
 //* Cloudflare Workers, Fastly Compute, Deno, Bun, Vercel, Netlify, AWS Lambda, Lambda@Edge, and Node.js.
 
 // npm create hono@latest my-app
+
+
+//`Prisma
+//*Prisma is not working in cloudflare workers because it is a hevely dependent on nodejs
+//*and cloudflare workers are not nodejs based it have there own Runtime.
+//*We use "Fauna" instead of Prisma in cloudflare workers 
+//*Fauna is a serverless cloud database that offers global access, real-time data, and built-in security.
+
+//*And other reason to not use Prisma because every cloudflare workers try to connect repeatedly to DB and  user limit exceed.
+//* using Connection Pooling in cloudflare workers to avoid this problem.
+// https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare#prerequisites
+
+//`Connection Pooling
+//* Connection pooling is a technique used to improve performance in applications with a large number of clients.
+//* It reduces the overhead of opening and closing connections to the database by reusing existing connections.
+//* Connection pooling can be implemented in the application code or by using a connection pool library.
+
+//- Cloudflare[Workers1,Workers2,Workers3...]--->Connection Pool--->Prisma[DB]

@@ -37,7 +37,7 @@ if(!(x & (x-1))){
 
 ## Compute modulus division by a power-of-2-number
 ```c++
-x & (powerOf2 - 1);
+x & (powerOf2 - 1); 
 ```
 
 ## Rotate bits of a number

@@ -107,21 +107,11 @@ function createPair<S, T>(v1: S, v2: T): [S, T] {
   }
   console.log(createPair<string, number>('hello', 42)); // ['hello', 42]
 
-//* Type assertions
-//* Type aliases
-//* Classes
-//* Type Compatibility
 
-//` Advanced Types
-//* Decorators
-//* Modules
-//* Namespaces
-//* Declaration Merging
-//* Triple-Slash Directives
-//* Type Checking JavaScript Files
-//* Mixins
-//* Emitting Decorators Metadata
-//* Emitting with Source Maps
+
+
+
+
 
 
 //` Type Inference
@@ -176,6 +166,15 @@ type Point = {
     salary: number;
   }
 
+  type user={
+      name:string;
+      age:number;
+  }
+
+  type users={
+      [key:string]:user //`Dynamic key
+  }
+
 
 //` Type Guards
 //* Type guards are a way to check the type of a variable at runtime.
@@ -185,6 +184,7 @@ type Point = {
 //` Type Assertion
 //* Type assertion is a way to tell the TypeScript compiler that you know the type of a variable better than it does.
 //* It is like type casting in other languages, but it performs no special checking or restructuring of data.
+
 
 
 interface PropsType{
@@ -197,6 +197,10 @@ function App(props:PropsType) {
       {props}
     )
   }
+
+//* Type assertions
+//* Type aliases
+//* Type Compatibility
 
 
 

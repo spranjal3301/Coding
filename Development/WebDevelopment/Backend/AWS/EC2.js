@@ -12,7 +12,7 @@
 //?Ex: ssh -i AWS_EC2_Test.pem ubuntu@13.60.36.227'
 
 
-//!PM2: 
+//!PM2: Process Manager
 //* is an advanced process manager primarily used for production Node.js applications. 
 //*Running node.js application in the background as a service.
 //* Ensures applications stay alive indefinitely Helps in maintaining application stability and uptime

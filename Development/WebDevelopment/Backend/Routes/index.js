@@ -5,12 +5,12 @@ const core = require("cors");
 
 
 const app = express();
-
+//-Standerd Practice for start route with /...
 
 app.use(express.json());
 app.use(core());
 //`Route use /api/vi/...  transfer at rootRouter 
-app.use("/api/v1", rootRouter);
+app.use("/api/v1", rootRouter); //-Standerd Practice for versioning
 
 
 //-gobal catch
