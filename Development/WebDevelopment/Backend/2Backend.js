@@ -55,6 +55,8 @@ import('./module').then(module => {
 //? devDependencies: Packages required only for development purposes (e.g., testing frameworks, build tools).
 
 //~ Scripts: Custom scripts that can be run using npm run <script-name>.
+//~ --save-dev or -D flag in npm install adds a package to a project's devDependencies section in the package.json
+//~ -g or --global flag installs a package globally, making it available to all projects on the system.
 
 const packageJson={
     "name": "my-project",

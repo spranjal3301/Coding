@@ -29,7 +29,8 @@ void FloydWarshall(vector<vector<int>>& adjacencyMatrix) {
                     if(adjacencyMatrix[source][destination] == -1)
                         adjacencyMatrix[source][destination] = adjacencyMatrix[source][intermediate] + adjacencyMatrix[intermediate][destination];
                     else
-                        adjacencyMatrix[source][destination] = min(adjacencyMatrix[source][destination], adjacencyMatrix[source][intermediate] + adjacencyMatrix[intermediate][destination]);
+                        adjacencyMatrix[source][destination] = min(adjacencyMatrix[source][destination],
+                                        adjacencyMatrix[source][intermediate] + adjacencyMatrix[intermediate][destination]);
                 }
             }
         }

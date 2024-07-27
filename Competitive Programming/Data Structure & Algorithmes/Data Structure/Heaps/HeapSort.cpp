@@ -47,7 +47,3 @@ void heapSort(int array[], int size) {
     }
 }
 
-int main(){
-
-    return 0;
-}

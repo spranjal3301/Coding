@@ -73,14 +73,18 @@ void bin(unsigned n)
 
 int main(){
 //! Bit Manipulation Cheat Sheet
+
+    //*int --> 4 bytes --> 32 bits (0-31) 31 is the sign bit (0 for +ve and 1 for -ve)
+
+
     int x=10,y=0, z=10;
     //` Basic Operations
-    //?  << : Left Shift
-    //?  >> : Right Shift
+    //-  << : Left Shift(x<<k = x*2^k)
+    //-  >> : Right Shift(x>>k = x/2^k)
     //?  & : Bitwise AND
     //?  | : Bitwise OR
     //?  ^ : Bitwise XOR
-    //?  ~ : Bitwise NOT
+    //?  ~ : Bitwise NOT (1's Complement of x (if negative then 2's complement)(else stop))
     //? setBit : 1
 
     //? Set union A | B
@@ -163,6 +167,11 @@ int main(){
     } 
 
     //- Swap two numbers
+    x=x^y;
+    y=x^y; //?y=x
+    x=x^y;
+
+    //- Swap two numbers:Shortest way
     x^=y^=x^=y;
 
     //- Swap three variables

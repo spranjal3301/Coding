@@ -10,6 +10,10 @@
 //! Classic Ways to Structure a Monorepo
 //* Create Common floder---push--->npm publish--->install in other projects{backend,frontend,devops}
 
+//!Why we don't use the direct import of the common folder in other projects{backend,frontend}
+//* It's not easy to maintain
+//* we can do this but we have to first build the common folder and then other folders and look for the changes in the common folder and then build again.
+
 //! Common monorepo framework in Node.js
 //* Lerna
 //* Nx
@@ -41,3 +45,19 @@
 // Caching
 // Parallelization
 // Dependency Graph Awareness:
+
+//`Code sharing:
+//? Two NEXT.js projects sharing the same component library
+//? A backend project sharing types with a frontend project
+//? NEXT.js EXPRESS and SOCKET.IO sharing common code
+//? A shared TypeScript configuration across all projects
+//? A shared ESLint configuration across all projects
+
+
+
+
+
+
+
+
+    
