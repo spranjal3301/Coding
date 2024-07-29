@@ -1,27 +1,4 @@
-//!NextJS
-//* Next.js is a full stack framework that allows you to build static or server-rendered web applications using React. 
-
-//?In a React project, you have to maintain a separate Backend project for your API routes
-//?React does not provide out of the box routing (you have to use react-router-dom)
-//?React is not SEO Optimised not exactly true today because of React Server components
-//?Waterfalling problem:series Request problem
-
-//` Next.js offerings
-//* Server side rendering - Get’s rid of SEO problems
-//* API routes - Single codebase with frontend and backend
-//* File based routing (no need for react-router-dom)
-//* Bundle size optimisations, Static site generation
-//* Maintained by the Vercel team
-
-//` Downsides - 
-//* Can’t be distributed via a CDN, always needs a server running that does server side rendering and hence is expensive
-//* Very opinionated, very hard to move out of it
-
-// npx create-next-app@latest
-// npm run dev
-
-//-old pages based Routing(Client Components by default)
-//-new App based Routing(Server Components by default)  
+//! Next.js Frontend(page .ts .js .tsx .jsx)
 
 //` Root directory:
 //* src/app/: This is the main directory for the App Router.
@@ -69,14 +46,16 @@
 
 //`[folder]	Dynamic route segment:
 //*"app/blog/[slug]/page.js" This would match routes like /blog/post-1, /blog/my-article, etc.
+//- not match /blog , /blog/ & /blog/my-article/post-1 .
 
 //`[...folder]	Catch-all route segment
 //*app/shop/[...categories]/page.js This would match routes like /shop/clothes, /shop/clothes/shirts, 
 //*/shop/clothes/shirts/t-shirts, etc.
+//-not match /shop or /shop/ 
 
 //`[[...folder]]	Optional catch-all route segment
 //*For example, app/shop/[[...slug]]/page.js will also match /shop, in addition to /shop/clothes,
-//* /shop/clothes/tops, /shop/clothes/tops/t-shirts
+//* /shop/clothes, /shop/clothes/tops/t-shirts
 
 
 
@@ -103,7 +82,7 @@
 //` When should you create client components ?
 //* Whenever you get an error that tells you that you need to create a client component
 //* Whenever you’re using something that the server doesn’t understand (useEffect, useState, onClick…)
-//* Rule of thumb is to defer the client as much as possible
+//~ Rule of thumb is to defer the client as much as possible
 
 
 //- If you wan’t to mark a component as a client component, you need to add the following to the top of the component - 
@@ -115,6 +94,9 @@
 {/*//? <button type="button" onClick={() => router.push('/dashboard')}>
 //?Dashboard
 //?</button> */}
+
+
+
 
 
 
