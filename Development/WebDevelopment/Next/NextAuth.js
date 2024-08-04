@@ -10,6 +10,13 @@
 
 // npm install next-auth 
 
+//` Providers
+//* OAuth(e.g Github, Twitter, Google, etc..)
+//* Email(Passwordless via Verification Token on Email) 
+//* Credentials(Username/Email and Password)
+
+
+
 //?Create a Catch-all route segment
 //`app/api/auth/[...nextauth]/route.ts   (strictly Same)
 
@@ -33,7 +40,17 @@ const handler = NextAuth({
         },
       })
   ],
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET || "secret",
+  pages: {
+    signIn: "/auth",
+  },  
+  callbacks:{
+    async session({ token, session }) {
+      session.user.id = token.sub
+
+      return session
+  }
+  }
 })
 
 export { handler as GET, handler as POST }
@@ -121,3 +138,15 @@ export default async function Home() {
   );
 }
 // https://projects.100xdevs.com/tracks/Next-Auth/next-auth-6
+
+
+import NextAuth from "next-auth"
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import { PrismaClient } from "@prisma/client"
+ 
+const prisma = new PrismaClient()
+ 
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  adapter: PrismaAdapter(prisma),
+  providers: [],
+})

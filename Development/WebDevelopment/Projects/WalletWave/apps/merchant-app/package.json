@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "merchant",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,10 +10,13 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@repo/db": "*",
     "@repo/ui": "*",
+    "@repo/store": "*",
     "next": "^14.2.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.3",

@@ -40,7 +40,7 @@
 //     "compilerOptions": {
 //       "lib": ["ES2015"],
 //       "rootDir": "./src",
-//       "outDir": "./dist"
+//       "outDir": "./dist" 
 //     },
 //     "exclude": ["node_modules"],
 //     "include": ["."]
@@ -90,7 +90,17 @@
 
 //`tsup(Typescript Compiler)
 //- npm install tsup
-//- mkdir tsup.config.ts add:
+//- touch tsup.config.ts add:
+// import { defineConfig, type Options } from "tsup";
+
+// export default defineConfig((options: Options) => ({
+//   entryPoints: ["src/index.ts"],
+//   clean: true,
+//   format: ["cjs"],
+//   ...options,
+// }));
+
+//- add tsconfig.json
 // {
 //     "extends": "@repo/typescript-config/base.json",
 //     "compilerOptions": {
@@ -113,3 +123,6 @@
 //? npm install esbuild
 // Add build script to package.json
 //? "build": "esbuild src/index.ts --platform=node --bundle --outdir=dist"
+
+
+//- Prisma setup: https://turbo.build/repo/docs/guides/tools/prisma

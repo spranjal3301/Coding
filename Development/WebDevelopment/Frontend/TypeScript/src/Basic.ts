@@ -24,9 +24,10 @@
 //- import express from 'express';
 //- export default express;
 
-//npm install xyz @types/xyz
-//npm install @types/express
-//npm install @types/node
+//` install types as devdependence
+//npm install xyz  @types/xyz --save-dev
+//npm install @types/express -save-dev
+//npm install @types/node -save-dev
 
 //!tsconfig
 //- target:which ECMA script version it converted into 
@@ -201,6 +202,13 @@ function App(props:PropsType) {
 //* Type assertions
 //* Type aliases
 //* Type Compatibility
+
+//- Ignore the Typescript error
+// @ts-ignore
+
+//`  "!" 
+//* Non-null assertion operator
+//? example; prosses.env.PORT!
 
 
 

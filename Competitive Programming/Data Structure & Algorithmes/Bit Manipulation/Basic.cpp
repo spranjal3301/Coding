@@ -84,7 +84,7 @@ int main(){
     //?  & : Bitwise AND
     //?  | : Bitwise OR
     //?  ^ : Bitwise XOR
-    //?  ~ : Bitwise NOT (1's Complement of x (if negative then 2's complement)(else stop))
+    //-   ~ : Bitwise NOT (1's Complement of x (if negative then 2's complement)(else stop))
     //? setBit : 1
 
     //? Set union A | B
@@ -165,6 +165,9 @@ int main(){
         case 2: return n + 1; // If n % 4 gives remainder 2     
         case 3: return 0;     // If n % 4 gives remainder 3   
     } 
+
+    //- Xor b/w two numbers[L,R]
+    //* (Xor of 1 to L-1) ^ (Xor of 1 to R)
 
     //- Swap two numbers
     x=x^y;

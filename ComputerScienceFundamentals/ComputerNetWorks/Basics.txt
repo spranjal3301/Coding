@@ -1,0 +1,2 @@
+! What is Computer Networking?
+* Connecting multiple computing devices, such as computers, servers, and other hardware, to share resources and communicate with each other.
