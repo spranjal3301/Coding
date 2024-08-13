@@ -2,30 +2,25 @@
 using namespace std;
 void BubbleSort(int arr[], int size)
 {
-    for (int i = 0; i < size - 1; i++)
-    {
+    for (int i = 0; i < size - 1; i++){
         bool alreadySorted = true;
-        for (int j = 0; j < size - i - 1; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
+        for (int j = 0; j < size - i - 1; j++){
+            if (arr[j] > arr[j + 1]){
                 swap(arr[j], arr[j + 1]);
                 alreadySorted = false;
             }
         }
-        if (alreadySorted)
-        {
-            break;
-        }
+        if (alreadySorted)break;  
     }
 }
+
+
+
 void Resurive_BubbleSort(int arr[], int size)
 {
 
-    if (size == 0 or size == 1)
-    {
-        return;
-    }
+    if (size == 0 or size == 1)return;
+    
     bool alreadySorted = true;
     for (int i = 0; i < size - 1; i++)
     {
@@ -35,10 +30,7 @@ void Resurive_BubbleSort(int arr[], int size)
             alreadySorted = false;
         }
     }
-    if (alreadySorted)
-    {
-        return;
-    }
+    if (alreadySorted)return;
     Resurive_BubbleSort(arr,size-1);
 }
 

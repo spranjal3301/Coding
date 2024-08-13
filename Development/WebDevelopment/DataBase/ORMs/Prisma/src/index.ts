@@ -37,6 +37,21 @@
 // npx prisma studio  //?for visual db editor
 
 
+//`Seed Data:
+//*Dummy data for dev
+// prisma/seed.ts
+//- const user=await prisma.user.upsert({}) //upsert create user if not exist update if exist
+
+//* Update package.json
+// "prisma": {
+//     "seed": "ts-node prisma/seed.ts"
+//   OR  "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"       
+// }
+
+// *Run command to seed db
+// npx prisma db seed
+
+
 
 import { PrismaClient } from '@prisma/client';
 
@@ -91,6 +106,57 @@ class userTable{
 
 const user = new userTable();
 
+//`Transaction
+//?M01 
+/*
+await db.$transaction([
+    db.balance.update({
+        where:{
+            userId:Number(paymentInformation.userId)
+        },
+        data:{
+            amount:{
+                increment:Number(paymentInformation.amount)
+            }
+        }
+    }),
+    db.onRampTransaction.update({
+        where:{
+            token:paymentInformation.token
+        },
+        data:{
+            status:"Success"
+        }
+    })
+])
+*/
+//?M02
+/* 
+   await prisma.$transaction(async (tx) => {
+        const fromBalance = await tx.balance.findUnique({
+            where: { userId: Number(from) },
+          });
+          if (!fromBalance || fromBalance.amount < amount) {
+            throw new Error('Insufficient funds');
+          }
+
+          await tx.balance.update({
+            where: { userId: Number(from) },
+            data: { amount: { decrement: amount } },
+          });
+
+          await tx.balance.update({
+            where: { userId: toUser.id },
+            data: { amount: { increment: amount } },
+          });
+    });
+}
+*/
+//`DB Locking in postgres
+//- in  Mongodb we dont need to locked if 2 request try to access same thing at same time in transaction it revert the transaction
+// await prisma.$transaction(async (tx) => {
+//     await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${Number(from)} FOR UPDATE`;
+// })
 export default user;
 
 

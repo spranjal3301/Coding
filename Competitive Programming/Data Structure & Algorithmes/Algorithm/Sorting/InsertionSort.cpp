@@ -14,6 +14,9 @@ void InsertionSort(int arr[], int n) {
         arr[j + 1] = key;   // Insert the current element in its correct position within the sorted part
     }
 }
+
+
+
 void Recursive_InsertionSort(int arr[], int n){
     // Base case: If the array has only one element or empty, it is already sorted
     if (n <= 1) {

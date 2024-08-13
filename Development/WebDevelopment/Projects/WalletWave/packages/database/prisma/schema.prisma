@@ -40,11 +40,11 @@ model OnRampTransaction {
   userId    Int
   user      User         @relation(fields: [userId], references: [id])
 }
-
+// amount 2 decimal 2020 => 20.20
 model Balance {
   id     Int  @id @default(autoincrement())
   userId Int  @unique
-  amount Int
+  amount Int  @default(0)
   locked Int
   user   User @relation(fields: [userId], references: [id])
 }

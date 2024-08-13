@@ -11,39 +11,30 @@ void merge(int arr[], int start, int end)
 
     //! Copy values to the new array
     for (int i = 0; i < len1; i++)
-    {
         arr1[i] = arr[k++];
-    }
+    
     k = mid + 1;
     for (int i = 0; i < len2; i++)
-    {
-        arr2[i] = arr[k++];
-    }
+         arr2[i] = arr[k++];
+    
 
     //! merge two sorted arrays
     k = start;
     int i = 0, j = 0;
 
-    while (len1 > i and len2 > j)
-    {
+    while (len1 > i and len2 > j){
         if (arr1[i] > arr2[j])
-        {
             arr[k++] = arr2[j++];
-        }
         else
-        {
             arr[k++] = arr1[i++];
-        }
     }
 
     while (len1 > i)
-    {
         arr[k++] = arr1[i++];
-    }
+    
     while (len2 > j)
-    {
-        arr[k++] = arr2[j++];
-    }
+         arr[k++] = arr2[j++];
+    
 
     delete[] arr1;
     delete[] arr2;
@@ -51,10 +42,8 @@ void merge(int arr[], int start, int end)
 void MergeSort(int arr[], int start, int end)
 {
     int mid = start + (end - start) / 2;
-    if (start >= end)
-    {
-        return;
-    }
+    if (start >= end)return;
+    
 
     //! Sort left part
     MergeSort(arr, start, mid);
@@ -65,8 +54,11 @@ void MergeSort(int arr[], int start, int end)
     //! merge Left & Right Part
     merge(arr, start, end);
 }
-int main()
-{
+
+
+
+
+int main(){
     //! Merge sort is defined as a sorting algorithm that works by dividing an array into smaller subarrays,
     //! sorting each subarray, and then merging the sorted subarrays back together to form the final sorted array.
     //* Merge sort is a recursive algorithm that continuously splits the array in half until it cannot be further divided

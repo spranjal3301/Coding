@@ -1,23 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void SelectionSort(vector<int> &arr)
-{
-    for (int i = 0; i < arr.size() - 1; i++)
-    {
+//! Selection Sort: 
+//`a simple sorting algorithm that works by repeatedly finding the minimum element from the unsorted part of the array and placing it at the beginning.
+void SelectionSort(vector<int> &arr){
+    for (int i = 0; i < arr.size() - 1; i++){
         int min = i;
-        for (int j = i + 1; j < arr.size(); j++)
-        {
+        for (int j = i + 1; j < arr.size(); j++){
             if (arr[min] > arr[j])
-            {
                 min = j;
-            }
         }
         swap(arr[min], arr[i]);
     }
 }
-void Recursive_SelectionSort(int arr[], int size)
-{
+
+void Recursive_SelectionSort(int arr[], int size){
     if (size == 0 or size == 1)
     {
         return;
@@ -44,7 +41,7 @@ int main()
     {
         cout << i << " ";
     }
-    //! Selection Sort is a simple sorting algorithm that works by repeatedly finding the minimum element from the unsorted part of the array and placing it at the beginning.
+
 
     // Key Points:
     // Selection Sort has a time complexity of O(n^2) in all cases, where n is the number of elements in the array.

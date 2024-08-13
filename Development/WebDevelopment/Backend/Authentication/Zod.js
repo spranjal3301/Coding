@@ -37,10 +37,17 @@ const complexSchema=zod.object({
 
 app.post('/users',(req,res)=>{
         //~validation using create schema
-        const check=userSchema.safeParse(req.body.arr);
+        const {success,error}=userSchema.safeParse(req.body.arr);
         
         //~check.success  ===> true/false
-        res.send(check);
+        if(!success){
+            return res.status(400).json({
+                message:"Invalid input",
+                error
+            });
+          }
+
+        res.send(success);
 });
 
 

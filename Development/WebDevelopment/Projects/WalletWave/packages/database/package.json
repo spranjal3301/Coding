@@ -2,7 +2,9 @@
   "name": "@repo/db",
   "version": "0.0.0",
   "dependencies": {
-    "@prisma/client": "^5.17.0"
+    "@prisma/client": "^5.17.0",
+    "bcrypt": "^5.1.1",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "prisma": "^5.17.0"
@@ -13,5 +15,8 @@
   "scripts": {
     "db:generate": "prisma generate",
     "db:push": "prisma db push --skip-generate"
-  } 
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  }
 }

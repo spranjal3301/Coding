@@ -60,9 +60,12 @@
 
 //~ What are the common status codes the backend responds with?
 //? 1. 200 - Everything is ok
+//? 2. 201 - Resource created
+//? 3. 400 - Bad request/input error
 //? 2. 404 - Page/route not found
 //? 3. 403 - Authentication issues
 //? 4. 500 - Internal server error
+
 
 //!We use NodeJs for Backend Viva Express Library
 //*NVM:Node Version Manager: 
