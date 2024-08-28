@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Define an array of random words
+words=("apple", "banana" "cat" "dog" "elephant" "fish" "gorilla" "horse" "iguana" "jaguar")
+
+# Generate, a random sentence
+sentence=""
+for ((i=0; i<5; i++)); do
+    random_index=$((RANDOM % ${#words[@]}))
+    word=${words[$random_index]}
+    sentence+=" $word"
+done
+
+# Write the sentence to a file
+echo "$sentence" > /home/pranjalubuntu/Documents/Coding/Development/Bash/test.txt

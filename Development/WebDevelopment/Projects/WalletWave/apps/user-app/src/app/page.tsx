@@ -1,10 +1,9 @@
-"use client";
-import {useBalance} from "@repo/store";
+import { SidebarDemo } from "../components/sidebarcust";
 
-
-export default function Page(): JSX.Element {
-  const balance = useBalance();
-  return <div>
-    hi there {balance}
-  </div>
+export default function Page() {
+  return (
+   <>
+    <SidebarDemo/>
+   </>
+  )
 }

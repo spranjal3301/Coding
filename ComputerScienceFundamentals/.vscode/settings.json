@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "queue": "cpp",
+        "condition_variable": "cpp",
+        "semaphore": "cpp"
+    }
+}
