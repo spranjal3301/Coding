@@ -1,0 +1,32 @@
+!To perform a network scan using nmap on your subnet, you can use the following command:
+
+Basic Network Scan:
+If you want to scan all the devices in your subnet (172.16.112.0/23):
+-sudo nmap -sP 172.16.112.0/23
+
+
+
+More Detailed Scan (Including Port Scanning):
+If you want to scan for open ports on all devices in your subnet:
+-sudo nmap -sS 172.16.112.0/23
+-sudo nmap -sS -p 80,443 <IP>
+
+Scanning a Specific IP Range:
+If you are only interested in scanning a specific range within the subnet:
+-sudo nmap 172.16.112.1-254
+
+More Options:
+OS Detection: To detect the operating system running on devices:
+-sudo nmap -O 172.16.112.0/23
+
+
+Service Version Detection: To detect the version of services running on open ports:
+-sudo nmap -sV 172.16.112.0/23
+
+Aggressive Scan: To perform an aggressive scan with more detailed information:
+-sudo nmap -A <IP>
+
+Scan for Vulnerabilities: To scan for known vulnerabilities on devices:
+-sudo nmap --script vuln <IP>
+
+-sudo ettercap -T -S -i wlo1 -M arp:remote /<Router_IP>// /<Target_IP>//

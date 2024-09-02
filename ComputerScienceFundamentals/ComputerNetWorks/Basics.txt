@@ -1,2 +1,67 @@
-! What is Computer Networking?
-* Connecting multiple computing devices, such as computers, servers, and other hardware, to share resources and communicate with each other.
+To understand TCP/IP, we need to understand the OSI model first.
+
+!OSI model( Open Systems Interconnection model):
+- Developed by ISO( International Organization for Standardization).
+- Its is set of protocol that allows different differnt architecture systems to communicate with each other.
+- Standardization of network communication.
+
+    - 7 layers:
+        1. Physical Layer:
+            - Physical connection between devices.
+            - Data transmission.
+            - Bit(0,1).
+            - PROTOCOLS: Ethernet,fast Ethernet, Gigabit Ethernet.
+            
+        2. Data Link Layer:
+            - MAC(Media Access Control) address.(Physical addressing)
+                -Data Encapsulation: Frame (src MAC+ dest MAC+ Packet).
+                -Access the media.
+            - Contol Data transmission between devices by check buzy line.
+            - Logical Link Control(LLC).
+                -Error detection and correction.(CSMA/CD, CSMA/CA)
+                -Retransmission.
+                - resize the frame.
+
+        3. Network Layer:
+            - Routing.
+            - path determination(OSPF, RIP, BGP).
+            - Logical addressing.
+            - Packet (src IP+ dest IP+ Segment).
+        4. Transport Layer:
+            - End-to-end communication.
+            - Error detection and correction(Error control):
+                - Parity bit.
+                - Checksum.
+                - CRC(Cyclic Redundancy Check).
+            - Flow control.
+            - Segmentation(Seq no,src port no,dec port no,data unit) and reassembly Segment.
+            - PROTOCOLS: TCP, UDP.
+        5. Session Layer:
+            - Establishes, maintains and terminates connections.(session management)
+            - Synchronization.
+            - Authentication & Authorization.
+            - PROTOCOLS: NetBIOS, RPC.
+        6. Presentation Layer:
+            - Data translation.(ASCII to EBCDIC)
+            - Data compression.(lossless and lossy compression)
+            - Data encryption/decryption(SSL, TLS).
+        7.  Application Layer:
+            - User interface.
+            - Data exchange.
+
+
+Network Layer , Transport Layer ,Session Layer , Presentation Layer , Application Layer :are impelemented by software. 
+
+
+Data Encapsulation:
+                    process of adding information to a packet as it moves from one layer to the next, on its way to its destination.
+                    
+Data Decapsulation:
+                    process of removing headers and trailers from a data packet to reveal the original data payload
+
+
+
+`Application Layer:
+                    
+
+
