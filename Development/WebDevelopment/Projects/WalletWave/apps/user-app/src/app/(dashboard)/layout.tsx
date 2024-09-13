@@ -5,7 +5,11 @@ interface Props {
 }
 
 const Layout: NextPage<Props> = ({children}) => {
-  return <div></div>
+  return (
+  <>
+    {children}
+  </>
+  )
 }
 
 export default Layout

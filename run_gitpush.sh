@@ -6,11 +6,9 @@
 
 git add .
 
-if [ -z "$1" ]
-then
-    echo "Please provide a commit message"
-else
-    git commit -m "$1"
-    git push origin master
-    git status
-fi
+git commit -m "$1"
+ 
+git push origin master
+
+git status
+

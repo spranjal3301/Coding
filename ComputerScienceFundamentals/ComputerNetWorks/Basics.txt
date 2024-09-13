@@ -22,11 +22,17 @@ To understand TCP/IP, we need to understand the OSI model first.
                 -Retransmission.
                 - resize the frame.
 
+            //-Two sublayers:
+                - Logical Link Control(LLC).
+                - Media Access Control(MAC).
+
+
         3. Network Layer:
             - Routing.
             - path determination(OSPF, RIP, BGP).
             - Logical addressing.
             - Packet (src IP+ dest IP+ Segment).
+            - PROTOCOLS: IP(IPv4,IPv6), ICMP, ARP, RARP.
         4. Transport Layer:
             - End-to-end communication.
             - Error detection and correction(Error control):
@@ -36,12 +42,17 @@ To understand TCP/IP, we need to understand the OSI model first.
             - Flow control.
             - Segmentation(Seq no,src port no,dec port no,data unit) and reassembly Segment.
             - PROTOCOLS: TCP, UDP.
+            //-Three way handshake:
+                - SYN
+                - SYN-ACK
+                - ACK
         5. Session Layer:
             - Establishes, maintains and terminates connections.(session management)
             - Synchronization.
             - Authentication & Authorization.
-            - PROTOCOLS: NetBIOS, RPC.
+            - PROTOCOLS: NetBIOS, RPC, L2TP,RTCP,H.245,Socks
         6. Presentation Layer:
+            - Data Formatting.
             - Data translation.(ASCII to EBCDIC)
             - Data compression.(lossless and lossy compression)
             - Data encryption/decryption(SSL, TLS).
@@ -49,8 +60,12 @@ To understand TCP/IP, we need to understand the OSI model first.
             - User interface.
             - Data exchange.
 
+streming video->prefered TCP (RTMP(TCP),WebRTC(UDP/TCP))
+watching streming video (DASH, HLS)(TCP)
 
-Network Layer , Transport Layer ,Session Layer , Presentation Layer , Application Layer :are impelemented by software. 
+
+*Network Layer , Transport Layer ,Session Layer , Presentation Layer , Application Layer :are impelemented by software. 
+
 
 
 Data Encapsulation:
@@ -61,7 +76,75 @@ Data Decapsulation:
 
 
 
-`Application Layer:
-                    
+
+
+               
+?Common Port number
+- FTP(File Transfer Protocol): 21
+- SSH(Secure Shell): 22
+- Telnet: 23
+- SMTP(Simple Mail Transfer Protocol): 25
+- DNS(Domain Name System): 53
+- HTTP(Hypertext Transfer Protocol): 80
+- POP3(Post Office Protocol version 3): 110
+- IMAP(Internet Message Access Protocol): 143
+- HTTPS(Hypertext Transfer Protocol Secure): 443
+- RDP(Remote Desktop Protocol): 3389
+- SNMP(Simple Network Management Protocol): 161
+- LDAP(Lightweight Directory Access Protocol): 389
+
+
+
+
+
+
+` Network Layer Protocol.
+
+!Internet Protocol (IP):
+                       There are a few types of numbers associated with the Internet Protocol (IP), including IP addresses, protocol numbers, and port numbers
+                          - IP Address: A unique identifier assigned to each device connected to a network that uses the Internet Protocol for communication.
+                            - Protocol Number: A number assigned to a protocol that identifies it in the IP header.
+                                            It is used by the network layer to determine how to process the data it receives. 
+                            - Port Number: A number assigned to a process or application that identifies particular service on a system it in the IP header.
+
+?Common Protocol number
+- ICMP(Internet Control Message Protocol): 1
+- IGMP(Internet Group Management Protocol): 2
+- TCP(Transmission Control Protocol): 6
+- UDP(User Datagram Protocol): 17
+- GRE(Generic Routing Encapsulation): 47
+- ESP(Encapsulating Security Payload): 50
+- AH(Authentication Header): 51
+- OSPF(Open Shortest Path First): 89
+- SCTP(Stream Control Transmission Protocol): 132
+- L2TP(Layer 2 Tunneling Protocol): 115
+- PPTP(Point-to-Point Tunneling Protocol): 47
+- IKE(Internet Key Exchange): 50
+
+
+
+
+
+
+
+
+
+`Physical Layer:
+Enterprise access networks (Ethernet) 
+
+Internet Service Provider (ISP) role:
+? Provide internet access to the end user.
+? IP Address Assignment
+? DNS Server
+? Network Security
+? Bandwidth Management 
+
+Internet Exchange Point (IXP) role:
+? Physical infrastructure through which Internet Service Providers (ISPs) exchange Internet traffic between their networks (autonomous systems).
+? IXP allows for direct interconnection between networks, reducing latency and costs associated with routing traffic through third-party networks.
+
+
+
+
 
 

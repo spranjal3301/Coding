@@ -1,0 +1,310 @@
+`Application Layer:
+                   - Purpose: 
+                   provides protocols and services that enable applications to exchange data, perform network operations, and provide meaningful communication to the user.
+
+                   Network Application architecture:
+                     - Client-Server Model:
+                     - Peer-to-Peer Model:
+                    
+                   -Working:
+                            The process begins at the source device when an application (e.g., a web browser) sends a request, such as loading a webpage. 
+                            at destination application layer then processes the request and sends a response back to the source device.
+                    
+                    
+                    
+                    
+                    -? Protocols: DASH/HLS, RTMP, HTTP/HTTPS, FTP, SMTP, Telnet, DNS, DHCP, POP3, IMAP, SSH, WebRTC,BitTorrent
+                     TFTP, NTP, SIP, XMPP, LDAP, IRC, NNTP, RDP, SOCKS, AMQP, MQTT, BGP, NFS, SMB, AFP, RTSP, VNC, Gopher, SFTP, CoAP,DDP, XMPP, WAP, WSP, WTP, WTLS, WTP, WDP, WAP, WAE, WMA, WTA,SNMP   
+
+Key Functions of the Application Layer
+1.Network Resource Sharing:
+                           *File Transfer Protocol (FTP): 
+                                                    protocol used to transfer files between a client and a server over a TCP-based network.
+                                                    widely used for uploading and downloading files to and from a server.
+                                                    * use TCP/21,22,69.
+                                                    
+                                                    FTP Server: The machine that hosts the files and allows clients to connect to it to upload or download files.
+                                                    FTP Client: The software used by a user to connect to the FTP server to upload or download files.
+
+                                                    FTP Communication Modes:
+                                                    - Active Mode: the client opens a random port and informs the server of the port number. The server then initiates the data connection back to the client.
+                                                    - Passive Mode: the server opens a random port and informs the client, which then initiates the connection. 
+
+                                                    FTP Commands:
+                                                        USER: Specifies the username.
+                                                        PASS: Specifies the password.
+                                                        LIST: Lists the files in the directory.
+                                                        RETR: Retrieves (downloads) a file from the server.
+                                                        STOR: Stores (uploads) a file to the server.
+                                                        QUIT: Ends the session.
+
+                                                    Responses: The server responds to these commands with a three-digit status code, where:
+                                                        1xx: Positive Preliminary Reply (e.g., "150 File status okay; about to open data connection.")
+                                                        2xx: Positive Completion Reply (e.g., "200 Command okay.")
+                                                        3xx: Positive Intermediate Reply (e.g., "331 User name okay, need password.")
+                                                        4xx: Transient Negative Completion Reply (e.g., "421 Service not available, closing control connection.")
+                                                        5xx: Permanent Negative Completion Reply (e.g., "530 Not logged in.")
+
+                                                    Data Transfer Modes:
+                                                        ASCII Mode: Used for text files. Converts end-of-line characters to match the target system's requirements.
+                                                        Binary Mode: Used for binary files (e.g., images, videos, software) and transfers the files as-is without modification.
+
+                                                    How FTP Works:
+                                                            Connection Establishment: The client connects to the FTP server using the TCP port 21 for the control connection.
+                                                            Authentication: The client sends the username and password to the server for authentication.
+                                                            Command and Response: The client sends FTP commands to perform actions like listing files, uploading, or downloading files.
+                                                            Data Transfer: Data is transferred over a separate data connection, which can be in active or passive mode.
+                                                            Connection Termination: The client sends a QUIT command to close the connection.                
+
+                            *Secure File Transfer Protocol (SFTP): Securely(encrypted) transfers files over a network.
+                            *Trivial File Transfer Protocol (TFTP): Simplified version of FTP for lightweight file transfers use UDP.
+
+                           Network File System (NFS): Allows remote file access as if they were local.
+                           Common Internet File System (CIFS): Supports file sharing over the network
+
+2 .Remote Access:
+                            Telnet: Provides remote access to systems for command-line management.
+                            Secure Shell (SSH): Securely connects to remote systems for command-line management.
+                            Remote Desktop Protocol (RDP): Allows remote access to graphical desktops.
+                            Virtual Network Computing (VNC): Provides remote access to graphical desktops.
+3.Email Services:
+                            Simple Mail Transfer Protocol (SMTP): Sends email messages between servers.
+                                                *protocol used for sending emails across networks. 
+                                                * Client-Server Model: SMTP follows a client-server model where the client (e.g., an email client or another mail server) sends email data to the SMTP server, which processes and forwards it to the recipient's mail server.
+                                                Text-Based Protocol: SMTP is a text-based protocol, meaning the commands and responses are sent as plain text.
+                                                Push Protocol: SMTP is considered a "push" protocol because the client actively pushes the email to the server.
+                                                *use TCP/25,587,465.
+
+                                                ~ How SMTP Works:
+                                                    `Three Steps:
+                                                        1.Handshake
+                                                        2.Email transfer:SMTP Commands and Responses
+                                                        3.Connection Termination
+
+                                                        Connection Establishment:
+                                                            The SMTP client initiates a connection to the SMTP server using TCP on port 25 (default), or ports 587/465 for secure transmission (SMTP over SSL/TLS).
+                                                        Handshake:
+                                                            The client and server perform a handshake to establish a connection.
+                                                        SMTP Commands and Responses:
+                                                            HELO/EHLO: Introduces the client to the server. EHLO is an extended version of HELO that enables the use of extended SMTP commands.
+                                                            MAIL FROM: Specifies the sender's email address.
+                                                            RCPT TO: Specifies the recipient’s email address.
+                                                            DATA:indicates that the email message content will follow. The server responds with 354 Start mail input; end with <CRLF>.<CRLF>
+                                                            QUIT: Ends the session.
+
+
+                            Post Office Protocol version 3 (POP3): Retrieves email messages from a server.
+                                                    downloading emails from a server to a single device
+                                                    Once the emails are downloaded, they are typically deleted from the server
+
+                                                    1. Basic Operation:
+                                                        Connection to Server: The email client (e.g., Outlook, Thunderbird) connects to the mail server using POP3, typically on port 110 (or port 995 for secure connections using SSL/TLS).
+                                                        Authentication: The client sends the username and password to authenticate with the server.
+                                                        Email Download: Emails are downloaded from the server to the client’s local device. By default, POP3 downloads the entire message (including attachments).
+                                                        Deletion from Server: After downloading, the emails are usually deleted from the server, although some clients offer an option to leave a copy on the server.
+                                                        Disconnection: The client disconnects from the server.
+
+
+
+                            Internet Message Access Protocol (IMAP): Retrieves email messages from a server.
+                                                    IMAP is a more advanced protocol designed for accessing emails from multiple devices. Unlike POP3, IMAP keeps emails on the server and synchronizes them across all devices.
+                                                    IMAP, typically on port 143 (or port 993 for secure connections using SSL/TLS).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.Web Services:
+                Hypertext Transfer Protocol (HTTP): The foundation of data communication on the World Wide Web, facilitating the transfer of web pages.
+                            *Application Layer Protocol used for transmitting hypermedia documents, such as HTML.
+                            *use TCP/80,443.
+
+                            *HTTP/1.0: Simple request-response model State less every request-response required new TCP connection.
+                            *HTTP/1.1: Persistent connections, pipelining, and chunked transfer encoding.    
+                                      -Persistent Connections: Keep the connection open for multiple requests/responses.
+                                      -Pipelining: Send multiple requests without waiting for responses.  
+                                      -Chunked Transfer Encoding: Transfer data in chunks instead of a single block.
+                                      -use "Keep-Alive" header to maintain persistent connections.
+                            *HTTP/2: Multiplexing, header compression, and server push.
+                                        -Multiplexing: Send multiple requests/responses over a single connection TCP connection.
+                                        -Header Compression: Reduce the size of HTTP headers.
+                                        -Server Push: Push resources to the client before they are requested.
+
+                            *HTTP/3: Uses QUIC (Quick UDP Internet Connections) for faster and more secure connections.
+                                        -QUIC: A transport layer protocol that provides security and performance improvements over TCP.
+                                        -Multiplexing: Send multiple requests/responses over a single connection.
+                                        -Connection Migration: Move connections between IP addresses without losing data.
+                                        -Forward Error Correction: Recover lost packets without retransmission.
+                                        -Use UDP/443. 
+
+                                    
+
+                            -HTTP Request:
+                                - Request Line: Contains the HTTP method, the resource path, and the HTTP version (e.g., GET /index.html HTTP/1.1).
+                                - Request Headers: Key-value pairs that provide additional information about the request, such as Host, User-Agent, Accept, and Authorization.
+                                - Request Body: Contains data sent to the server, typically used in POST and PUT requests.           
+
+
+
+                            -HTTP Response:
+                                - Status Line: Contains the HTTP version, status code, and status message.
+                                - Response Headers: Provide additional information about the response (e.g., Content-Type, Content-Length).
+                                - Response Body: Contains the data sent from the server (e.g., HTML content, images, files).  
+
+
+                            HTTP Status Codes:
+                                1xx (Informational): Request received, continuing process.
+                                2xx (Success): The action was successfully received, understood, and accepted (e.g., 200 OK).
+                                3xx (Redirection): Further action needs to be taken to complete the request (e.g., 301 Moved Permanently).
+                                4xx (Client Error): The request contains bad syntax or cannot be fulfilled (e.g., 404 Not Found).
+                                5xx (Server Error): The server failed to fulfill an apparently valid request (e.g., 500 Internal Server Error).  
+
+                            Cookies: Small pieces of data stored on the client-side, sent with each request to maintain state (e.g., session ID, user preferences).
+                            Sessions: A server-side concept, where the server maintains user state across multiple requests using a session ID stored in a cookie.
+
+
+                            Caching Mechanisms:
+                            Cache-Control: Directives like no-cache, no-store, max-age, and public determine how and for how long a resource can be cached.
+                            ETag: A unique identifier for a resource version. Clients can send an If-None-Match request header to only retrieve a resource if it has changed.
+                            Last-Modified: Indicates the last time the resource was modified.
+                                           Clients can use the If-Modified-Since header to request only updated resources.
+
+
+                            Content Negotiation:
+                                            HTTP supports content negotiation, where the client and server agree on the content format:
+                                            Accept: The client specifies the content types it can handle (e.g., Accept: application/json).
+                                            Content-Type: The server indicates the media type of the resource (e.g., Content-Type: text/html).
+                                        
+
+
+
+
+               * HTTP Secure (HTTPS): An extension of HTTP with security features for encrypted communication.
+                            *use TCP/443.
+                             It uses SSL/TLS (Secure Sockets Layer / Transport Layer Security) to encrypt the data transmitted between the client and the server
+                             SSL/TLS Handshake: Before data transmission, the client and server perform a handshake to establish a secure connection.
+
+
+
+
+
+*4.Domain Name System (DNS): Translates domain names to IP addresses.
+                            - Domain Name(example.com) : IP address(0.0.0.0)
+                            - DNS server: store mapping of domain name to IP address.
+                            - DNS Security Extensions (DNSSEC): Provides security for DNS.
+                            - Dynamic DNS (DDNS): Automatically updates DNS records when an IP address changes.
+                            - DNS stub resolver: A client-side DNS resolver that queries DNS servers to resolve domain names to IP addresses.
+                                                -use UDP/53.
+                                                -DNS stub resolver query is unsecured(DNS spoofing).
+                            -Host file: text file on your computer that helps your computer find the correct IP address for a website's domain name,file is typically used when immediate resolution of domain names is needed without querying DNS servers
+
+                            -DOS attack: DNS amplification attack.
+                            -DOH(DNS over HTTPS): Encrypts DNS queries to improve privacy and security.
+                            - nslookup: command-line tool to query DNS servers (eg nslookup google.com).
+
+
+                            ?Types of DNS Servers:
+                            - DNS recursive Resolver: Translates domain names to IP addresses
+                                            (eg: Google Public DNS(8.8.8.8), OpenDNS, Cloudflare DNS(1.1.1.1))
+                                            -handles DNS queries from client machines
+                                            -It recursively queries other DNS servers to find the IP address associated with a domain name and returns this information to the client.
+                                            - It also caches responses to speed up future queries.
+                            
+                            - DNS Root Server: Provides the IP address of the authoritative name server for a domain.
+                                             * It doesn’t contain information about specific domain names
+                                             * but provides information on where to find the authoritative DNS servers for the top-level domains (TLDs)
+                                             *return a set of NS records for the Top-Level Domain (TLD) (e.g., .com), pointing to the TLD name servers.
+                                             * like .com, .org, .net, etc. There are 13 root server clusters distributed worldwide.
+
+                            - DNS Top-Level Domain (TLD) Server: Provides the IP address of the authoritative name server for a specific TLD.
+                                            *They store information about the authoritative DNS servers for second-level domains within a top-level domain.
+                                            * For example, a .com TLD server would direct queries for example.com to the authoritative DNS servers for example.com.
+                                            *return specific NS records for the second-level domain, pointing to the authoritative name servers for that domain.
+                            - DNS Authoritative Name Server: Stores the IP address of a domain name.
+                                                          *This server contains DNS records for specific domains. 
+                                                            A Records: domain name to IPv4 mapping.
+                                                            AAAA Records: domain name to IPv6 mapping.
+                                                            CNAME Records: domain name to domain name mapping (use to crete alias of domain name).
+                                                            MX Records: domain name to mail server mapping. 
+                                                            NS Records: domain name to authoritative name server mapping.
+
+                            Working: 
+                            When a user enters a domain name into a web browser, 
+                            DNS stub resolver first checks its cache for the IP address associated with the domain name
+                            If the IP address is not in the cache,
+                            Now DNS stub resolver sends a DNS query to a DNS resolver (such as the one provided by the user's ISP),
+                            which then sends the query to a DNS root server.  
+                            Then  DNS Root Server root provides the IP address of the Top Level Domain {.com/.net/.in} (authoritative name server),
+                            DNS Resolver then sends a query to the DNS TLD server,
+                            which provides the IP address of the second-level domains within a top-level domain.
+                            Finally, the DNS resolver sends a query to the authoritative name server for second-level domains, 
+                            which provides the IP address of the domain name. 
+                            
+
+
+
+
+
+
+5.Dynamic Host Configuration Protocol (DHCP): Assigns IP addresses to devices on a network.
+
+6.Session Management:
+                Real-Time Transport Protocol (RTP): Supports real-time data transmission, such as audio and video streaming.
+                                            *Typically uses UDP (User Datagram Protocol) but can also be used with TCP.
+                                            *Widely used in VoIP (Voice over IP) systems, video conferencing (such as WebRTC),
+                                            *paired with RTCP for real-time monitoring
+                Real-Time Control Protocol (RTCP): Controls streaming(play,pause) media servers.
+                RTMP (Real-Time Messaging Protocol): 
+                                            Supports audio, video, and data streaming between a server and a client build on top of TCP.
+                                            *used for live streaming(Youtube,OBS).
+                                            *real-time streaming + monitoring of stream.
+                
+                DASH (Dynamic Adaptive Streaming over HTTP) & HLS (HTTP Live Streaming): 
+                                            *Adaptive bitrate streaming protocols for delivering high-quality video over the internet.
+                                            *DASH uses MP4 segments and an MPD (Media Presentation Description) file to adapt to changing network conditions.
+                                            *HLS uses MPEG-2 transport streams and M3U8 playlists to deliver video content.
+                                            *Adaptive Bitrate: Like DASH, HLS can adjust the video quality dynamically based on the user's bandwidth to reduce buffering.
+                                            *It is widely used in live streaming and VOD (Video on Demand).
+
+
+
+8.Security Services:
+                Secure Sockets Layer (SSL): Provides secure communication over the internet.
+                Transport Layer Security (TLS): most secure than SSL.      
+                Internet Protocol Security (IPsec): Provides secure communication at the IP layer.
+                Kerberos: Provides secure authentication for network services.
+
+9.BitTorrent: 
+                *Peer-to-peer file sharing protocol for distributing large amounts of data.
+                Working:
+                        File Splitting:It works by dividing files into small pieces and distributing these pieces across multiple peers (computers) in the network.
+                        Torrent Files: To share a file, you first create a .torrent file, which contains metadata about the file (like size and piece hashes) and information about the tracker.
+                        Trackers: Trackers are servers that help peers find each other. They don't host the files themselves but keep track of which peers have which pieces of the file.
+                        Distributed Hash Table (DHT): In addition to trackers, BitTorrent can use DHT for peer discovery, making it more resilient and decentralized.
+                        Peers: These are computers that participate in the BitTorrent network.
+                               Each peer can download and upload pieces of the file simultaneously.
+                        Seeds: A seed is a peer that has the completed downloading file and is uploading it to others.
+                               The more seeds there are, the faster the download speeds generally are.
+                        Swarm: The network of peers sharing and downloading the file forms a "swarm."
+                               
+                        Piece Selection: BitTorrent clients use algorithms to select which pieces to download and upload.
+                                They often prioritize pieces that are rare in the swarm or needed by other peers.
+                        Verification: Each piece of the file is hashed, and the hash is checked to ensure data integrity. If a piece is corrupted, it will be re-downloaded.
+
+                        Magnet Links: Magnet links are a way to download torrents without downloading a .torrent file first.
+                
+                
+            
+
+
+10.DHCP (Dynamic Host Configuration Protocol): Assigns IP addresses to devices on a network.
+

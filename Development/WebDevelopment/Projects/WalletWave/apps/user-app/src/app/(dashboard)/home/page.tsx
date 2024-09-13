@@ -1,9 +1,15 @@
 import { NextPage } from 'next'
+import { SidebarDemo } from '../../../components/sidebarcust'
+
 
 interface Props {}
 
 const Page: NextPage<Props> = ({}) => {
-  return <div>home</div>
+  return (
+    <div className={`w-full h-screen`}>
+      <SidebarDemo/>
+    </div>
+  )
 }
 
 export default Page

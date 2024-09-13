@@ -2,7 +2,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import db from '@repo/db'
 import { compare,hash } from 'bcrypt'
 
-const providers=[ CredentialsProvider({
+const providers=[CredentialsProvider({
     name:'Credentials',
     credentials:{
         phone:{type: "text",placeholder:"Phone number"},
