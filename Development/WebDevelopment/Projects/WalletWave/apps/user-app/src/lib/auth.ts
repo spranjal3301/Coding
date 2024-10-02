@@ -1,62 +1,33 @@
-import CredentialsProvider from "next-auth/providers/credentials"   
-import db from '@repo/db'
-import { compare,hash } from 'bcrypt'
+import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import db from "@repo/db";
+import type { Adapter } from "next-auth/adapters";
+import { pages } from "next/dist/build/templates/app-page";
+                  
 
-const providers=[CredentialsProvider({
-    name:'Credentials',
-    credentials:{
-        phone:{type: "text",placeholder:"Phone number"},
-        password:{type:"password",placeholder:"Password"}
-    },
-    async authorize(credentials: any) {
-        // Do zod validation, OTP validation here
-        const hashedPassword = await hash(credentials.password, 10);
-        const existingUser = await db.user.findFirst({
-            where: {
-                number: credentials.phone
-            }
-        });
-
-        if (existingUser) {
-            const passwordValidation = await compare(credentials.password, existingUser.password);
-            if (passwordValidation) {
-                return {
-                    id: existingUser.id.toString(),
-                    name: existingUser.name,
-                    email: existingUser.number
-                }
-            }
-            return null;
-        }
-
-        try {
-            const user = await db.user.create({
-                data: {
-                    number: credentials.phone,
-                    password: hashedPassword
-                }
-            });
-        
-            return {
-                id: user.id.toString(),
-                name: user.name,
-                email: user.number
-            }
-        } catch(e) {
-            console.error(e);
-        }
-
-        return null
-      }
-})]
 
 export const authOptions = {
-    providers,
-    secret:process.env.NEXTAUTH_SECRET || "secret",
-    callback:{
-        async session({ token, session }: any) {
-            session.user.id = token.sub
-            return session
-        }
-    }
-}
+  adapter: PrismaAdapter(db) as Adapter,
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID || "",
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
+      allowDangerousEmailAccountLinking: true,
+    }),
+  ],
+  secret: process.env.NEXTAUTH_SECRET || "secret",
+  callback: {
+    async session({ session,token }: any) {
+      session.user.id = token.sub;
+      return session;
+    },
+  },
+  pages:{
+    signIn: '/signin',
+  }
+};

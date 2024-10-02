@@ -13,39 +13,101 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id                Int                 @id @default(autoincrement())
-  email             String?             @unique
-  name              String?
-  number            String              @unique
-  password          String
-  OnRampTransaction OnRampTransaction[]
-  balance           Balance?
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? @db.Text
+  refresh_token_expires_in Int?
+  access_token             String? @db.Text
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
 
-model Merchant {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  auth_type AuthType
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  type          Usertype  @default(User)
+  accounts      Account[]
+  sessions      Session[]
+  balances      Balance?
+  onRampTransactions OnRampTransaction[]
+  sentTransfers     Transfer[]       @relation(name: "FromUserRelation")
+  receivedTransfers Transfer[]       @relation(name: "ToUserRelation")
+  TransactionsHistory TransactionsHistory[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}                    
+
 
 model OnRampTransaction {
   id        Int          @id @default(autoincrement())
   status    OnRampStatus
   token     String       @unique
-  provider  String
+  provider  String?
   amount    Int
-  startTime DateTime
-  userId    Int
+  startTime DateTime     @default(now())
+  userId    String
   user      User         @relation(fields: [userId], references: [id])
 }
+
+model Transfer {
+  id         Int          @id @default(autoincrement())
+  amount     Int
+  timestamp  DateTime     @default(now())
+  fromUserId String
+  fromUser   User         @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  toUserId   String
+  toUser     User         @relation(name: "ToUserRelation", fields: [toUserId], references: [id])
+}
+
+model TransactionsHistory {
+  id         Int      @id @default(autoincrement())
+  amount     Int
+  timestamp  DateTime @default(now())
+  status     OnRampStatus @default(Declined)
+  type       TransationType @default(Deposit)
+  toUserName String
+  toUserImage String?
+  userId     String 
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+
 // amount 2 decimal 2020 => 20.20
 model Balance {
   id     Int  @id @default(autoincrement())
-  userId Int  @unique
+  userId String  @unique
   amount Int  @default(0)
-  locked Int
   user   User @relation(fields: [userId], references: [id])
 }
 
@@ -55,7 +117,18 @@ enum AuthType {
 }
 
 enum OnRampStatus {
-  Success
-  Failure
+  Success 
+  Declined
   Processing
 }
+
+enum TransationType {
+  Deposit
+  Withdraw
+}
+
+enum Usertype {
+  Merchant
+  User
+}
+

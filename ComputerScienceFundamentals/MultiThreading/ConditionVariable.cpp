@@ -28,7 +28,7 @@ void producer() {
         q.push(i);
         cout << "Produced: " << i << endl;
         
-        lck.unlock();
+        // lck.unlock();
         // Notify the consumer that an item has been produced
         cv.notify_all();
         

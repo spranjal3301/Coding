@@ -1,0 +1,21 @@
+!dig Command(advanced DNS queries)
+*Purpose: dig is a flexible and powerful tool used for querying DNS servers to retrieve 
+        *DNS records such as A, AAAA, MX, CNAME, and TXT records.
+
+Retrieves the A record (IPv4 address) for example.com.
+-Basic query: dig example.com
+
+Retrieves the Mail Exchange (MX) records for example.com.
+-Query a specific record type: dig example.com MX
+
+Queries Google’s public DNS server (8.8.8.8) for the A record of example.com.
+-Query a specific DNS server: dig @8.8.8.8 example.com
+
+!nslookup Command(basic DNS queries)
+*Purpose: nslookup is a simpler tool used to query DNS servers to retrieve DNS records, primarily used for basic lookups.
+
+Retrieves the A record (IPv4 address) for example.com.
+-Basic query: nslookup example.com
+
+Queries Google’s public DNS server (8.8.8.8) for the A record of example.com.
+-Query a specific DNS server: nslookup example.com 8.8.8.8

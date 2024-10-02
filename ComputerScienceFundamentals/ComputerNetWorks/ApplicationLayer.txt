@@ -13,7 +13,7 @@
                     
                     
                     
-                    -? Protocols: DASH/HLS, RTMP, HTTP/HTTPS, FTP, SMTP, Telnet, DNS, DHCP, POP3, IMAP, SSH, WebRTC,BitTorrent
+                    -? Protocols: DASH/HLS, RTMP, HTTP/HTTPS, FTP, SMTP, Telnet, DNS, DHCP, POP3, IMAP, SSH, WebRTC/WebSockt,BitTorrent
                      TFTP, NTP, SIP, XMPP, LDAP, IRC, NNTP, RDP, SOCKS, AMQP, MQTT, BGP, NFS, SMB, AFP, RTSP, VNC, Gopher, SFTP, CoAP,DDP, XMPP, WAP, WSP, WTP, WTLS, WTP, WDP, WAP, WAE, WMA, WTA,SNMP   
 
 Key Functions of the Application Layer
@@ -255,7 +255,7 @@ Key Functions of the Application Layer
 
 
 
-5.Dynamic Host Configuration Protocol (DHCP): Assigns IP addresses to devices on a network.
+
 
 6.Session Management:
                 Real-Time Transport Protocol (RTP): Supports real-time data transmission, such as audio and video streaming.
@@ -307,4 +307,48 @@ Key Functions of the Application Layer
 
 
 10.DHCP (Dynamic Host Configuration Protocol): Assigns IP addresses to devices on a network.
+    network management protocol used to automatically assign IP addresses and other network configuration parameters 
+    It allows devices to communicate on an IP network without manual configuration
+    -How DHCP Works(DORA process)
+        Discover: Broadcast by Client to find available DHCP servers
+        Offer: DHCP server offers an IP address and other configuration parameters such as the subnet mask, lease duration, default gateway, and DNS server to the client
+        Request: Client requests the offered IP address from the DHCP server
+        Acknowledge: DHCP server acknowledges the request and assigns the IP address to the client
 
+        Lease Time: When the DHCP server assigns an IP address, it is leased to the client for a specific amount of time (lease time). After the lease expires, the client must either renew the lease or obtain a new IP address.
+
+        DHCP Options:
+            DHCP provides additional configuration parameters beyond the IP address. These are known as DHCP options, and they include:
+            -Subnet Mask
+            -Default Gateway
+            -DNS Server
+            -Domain Name
+            - lease time
+
+            UDP Port 67: Used by the DHCP server to listen for client requests.
+            UDP Port 68: Used by the DHCP client to listen for server responses.
+
+
+
+DHCP attack
+- DHCP Spoofing: Impersonates a legitimate DHCP server to assign malicious IP addresses.
+- DHCP Starvation: Floods a DHCP server with requests to exhaust its IP address pool.
+- Rogue DHCP Server: Unauthorized DHCP servers that assign IP addresses to devices on a network.
+
+
+DNS attack
+- DNS Spoofing: Redirects DNS queries to malicious servers.
+- DNS Amplification: Sends small DNS queries to servers that respond with large responses to overwhelm the target.
+- DNS Cache Poisoning: Injects false DNS records into a server's cache to redirect traffic.
+- DNS Tunneling: Encapsulates data in DNS queries to bypass security controls.
+- DNS Hijacking: Redirects DNS queries to malicious servers to intercept traffic.
+- DNSSEC: Provides security for DNS by digitally signing DNS records to prevent tampering.
+- DDoS Attack: Distributed Denial of Service attacks can target DNS servers to disrupt services.
+- DNS over HTTPS (DoH): Encrypts DNS queries to improve privacy and security.
+
+
+
+11.Network Time Protocol (NTP): Synchronizes time across devices on a network.
+
+
+12.TELNET: Provides remote access to systems for command-line management.

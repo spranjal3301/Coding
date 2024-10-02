@@ -1,35 +1,34 @@
-function solve(nums,n,target,dp){
-    
-    if(target===0)return true;
-    if(n===0)return nums[0]===target;
-    if(dp[n][target]!==-1)return dp[n][target];
+var minNumberOfSeconds = function(h, w) {
+    let l = 1, r = 1e18; // Using regular numbers
 
-    let Nopick=solve(nums,n-1,target,dp);
-    let pick=false;
+  const cd = (t) => {
+      let total = 0;
+      for (const x of w) {
+          let lo = 0, hi = h;
+          while (lo < hi) {
+              let mid = Math.floor((lo + hi + 1) / 2);
+              if (x * mid * (mid + 1) / 2 <= t)
+                  lo = mid;
+              else
+                  hi = mid - 1;
+          }
+          total += lo;
+          if (total >= h) return true; // Early exit optimization
+      }
+      return total >= h;
+  };
 
-    if(target>=nums[n]){
-        pick=solve(nums,n-1,target-nums[n],dp);
-    }
+  let check=true;
+  while (l < r) {
+      let mid = Math.floor((l + r) / 2);
+      if(check){
+           if (cd(mid))
+              r = mid;
+          else
+              l = mid + 1;
+      }
+     
+  }
 
-    dp[n][target]=Nopick || pick;
-    return dp[n][target];
-
-}
-
-var canPartition = function(nums) {
-    const n=nums.length;
-    let sum=nums.reduce((s,e)=>s+e);
-    const dp = Array.from({ length: n + 1 }, () => Array(sum + 1).fill(-1));
-    solve(nums,n-1,sum,dp);
-
-    let mini=sum;
-    for(let j=0;j<sum+1;j++){
-        if(dp[n-1][j]==true){
-            mini=Math.min(Math.abs(2*j-sum),mini);
-        }
-        
-    }
-    return mini;
+  return l;
 };
-
-console.log(canPartition([20, 19, 18 ,20 ,16]));

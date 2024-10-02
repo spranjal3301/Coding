@@ -37,12 +37,13 @@ const [count, setCount] = useRecoilState(counterAtom);
 //? Wrap your top-level component or where you want to use with RecoilRoot:
 
 //*Selectors: (like useMemo)
+//- A selector represents a piece of derived state from atom .
 //? Selectors are derived state, computed from atoms or other selectors.
 //? Selectors cache their results. If the same selector is called with the same dependencies (atoms or other selectors), it returns the cached result instead of recomputing. This optimizes performance.
 
 //- Why Use Selectors?
 //? Encapsulation of Logic
-//?Performance: Memoization
+//? Performance: Memoization
 
 //- Selector Types
 //? Read-only Selector (get only): Returns a value based on state.

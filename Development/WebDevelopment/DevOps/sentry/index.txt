@@ -1,0 +1,11 @@
+!Sentry (https://sentry.io/)
+*application monitoring platform.
+
+
+`Features`:
+- 1.Error tracking: Automatic Error Detection + Detailed Error Reports
+- 2.Performance monitoring: Monitor the performance of your application
+- 3.Transaction tracing: Trace transactions across your application
+- 4.Release tracking: Track releases and versions of your application
+- 5.User feedback: Collect user feedback and improve your application
+- 6.Session Replay: Replay user sessions to understand user behavior

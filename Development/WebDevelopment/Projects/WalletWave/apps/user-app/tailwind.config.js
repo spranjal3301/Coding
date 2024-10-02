@@ -66,10 +66,15 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        'spinner-fade': {
+          '0%': { backgroundColor: '#69717d' },
+          '100%': { backgroundColor: 'transparent' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'spinner-fade': 'spinner-fade 1s linear infinite',
       },
     },
   },

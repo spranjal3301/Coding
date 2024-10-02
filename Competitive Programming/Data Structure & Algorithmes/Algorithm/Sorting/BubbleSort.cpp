@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-void BubbleSort(int arr[], int size)
-{
+void BubbleSort(int arr[], int size){
     for (int i = 0; i < size - 1; i++){
         bool alreadySorted = true;
         for (int j = 0; j < size - i - 1; j++){

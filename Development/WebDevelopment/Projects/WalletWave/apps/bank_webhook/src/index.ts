@@ -3,7 +3,7 @@ import { paymentInfo } from "@repo/types";
 import db from "@repo/db"
 
 const app = express();
-const PORT=parseInt(process.env.PORT || "3003");
+const PORT=parseInt(process.env.PORT || "8080");
 app.use(express.json());
 
 app.post("/",async (req, res) => {
@@ -37,7 +37,7 @@ app.post("/",async (req, res) => {
     await db.$transaction([
         db.balance.update({
             where:{
-                userId:Number(paymentInformation.userId)
+                userId:String(paymentInformation.userId)
             },
             data:{
                 amount:{

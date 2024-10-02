@@ -89,11 +89,11 @@
 //! "use client"
 
 //!Onclick Routing
-//` import { useRouter } from 'next/navigation'
-//` const router = useRouter()
-{/*//? <button type="button" onClick={() => router.push('/dashboard')}>
-//?Dashboard
-//?</button> */}
+import { useRouter } from 'next/navigation'
+const router = useRouter()
+//  <button type="button" onClick={() => router.push('/dashboard')}>
+// Dashboard
+// </button> 
 
 
 

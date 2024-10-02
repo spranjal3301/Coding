@@ -1,0 +1,18 @@
+!Continuous Integration/Continuous Deployment(CI/CD)
+
+
+`Continuous Integration (CI) 
+*is a development practice where developers frequently integrate their code changes into a 
+*shared repository, preferably several times a day. Each integration is automatically verified by 
+*1.Building the project and 
+*2.Running automated tests. 
+
+*This process allows teams to detect problems early,
+*improve software quality, and reduce the time it takes to validate 
+*and release new software updates.
+
+
+`Continuous Deployment (CD)
+*is a software release process that uses automated testing to validate if changes to a codebase are correct and stable for immediate autonomous deployment to a production environment.
+
+

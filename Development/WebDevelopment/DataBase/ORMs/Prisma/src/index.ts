@@ -152,8 +152,32 @@ await db.$transaction([
     });
 }
 */
+//`Relation-queries
+
+//*Prisma supports two strategies for loading relations:
+//? join: This strategy uses a single SQL query to load the main record and all its relations.
+//? query: This strategy uses multiple SQL queries to load the main record and its relations separately.
+
+//`Example m01 (user + posts)
+// const users = await prisma.user.findMany({
+//     relationLoadStrategy: 'join', // or 'query'
+//     include: {
+//       posts: true,
+//     },
+//   })
+
+//`Example m02 (posts)
+// const users = await prisma.user.findMany({
+//     relationLoadStrategy: 'join', // or 'query'
+//     select: {
+//       posts: true,
+//     },
+//   })
+
 //`DB Locking in postgres
 //- in  Mongodb we dont need to locked if 2 request try to access same thing at same time in transaction it revert the transaction
+//- in postgres we need to lock the
+//- Prism 
 // await prisma.$transaction(async (tx) => {
 //     await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${Number(from)} FOR UPDATE`;
 // })

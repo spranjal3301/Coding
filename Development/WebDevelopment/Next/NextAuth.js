@@ -55,21 +55,9 @@ const handler = NextAuth({
 
 export { handler as GET, handler as POST }
 
-//? page.tsx
-"use client";
-import { signIn, signOut } from "next-auth/react"
-
-export const Appbar = () => {
-    return <div>
-    <button onClick={() => signIn()}>Signin</button>
-    <button onClick={() => signOut()}>Sign out</button>
-  </div>
-}
-
 //? .env
 // NEXTAUTH_URL=http://localhost:3000
 // NEXTAUTH_SECRET=password_nextauth
-
 
 //? Add app/providers.tsx
 'use client';
@@ -83,9 +71,6 @@ export const Providers = ({ children }) => {
     </SessionProvider>
   );
 };
-
-
-
 
 //? Wrap layout with Providers
 import { Providers } from "./provider";
@@ -106,6 +91,18 @@ export default function RootLayout({
   );
 }
 
+//-Usage
+
+//? page.tsx
+"use client";
+import { signIn, signOut } from "next-auth/react"
+
+export const Appbar = () => {
+    return <div>
+    <button onClick={() => signIn()}>Signin</button>
+    <button onClick={() => signOut()}>Sign out</button>
+  </div>
+}
 
 //? User details in Client Component
 "use client"
@@ -123,8 +120,9 @@ export default function Home() {
 
 //? User details in Server Component
 import { getServerSession } from "next-auth"
+import { authOptions } from "../../../lib/auth";
 async function getUser() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   return session;
 }
 
@@ -140,13 +138,122 @@ export default async function Home() {
 // https://projects.100xdevs.com/tracks/Next-Auth/next-auth-6
 
 
-import NextAuth from "next-auth"
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
- 
-const prisma = new PrismaClient()
- 
-export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
-  providers: [],
-})
+
+
+//` Prisma Adapter for NextAuth
+
+//- npm install @prisma/client @next-auth/prisma-adapter
+
+/*
+- auth.ts
+import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import db from "@repo/db/client";
+import type { Adapter } from "next-auth/adapters";
+import { SessionStrategy } from "next-auth";
+
+export const authOptions = {
+  adapter: PrismaAdapter(db) as Adapter,
+  providers: [
+    GithubProvider({
+      clientId: process.env.GITHUB_ID || "",
+      clientSecret: process.env.GITHUB_SECRET || "",
+      allowDangerousEmailAccountLinking: true,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+      allowDangerousEmailAccountLinking: true,
+    }),
+  ],
+  secret: process.env.NEXTAUTH_SECRET || "secr3t",
+  pages: {
+    signIn: "/auth",
+  },
+  callbacks: {
+    async jwt({ token }: any) {
+      return token;
+    },
+    async session({ session, token }: any) {
+      const user = await db.user.findUnique({
+        where: {
+          id: token.sub,
+        },
+      });
+      if (token) {
+        session.accessToken = token.accessToken;
+        session.user.id = token.sub;
+        session.user.admin = user?.admin;
+      }
+      return session;
+    },
+  },
+};
+
+
+
+-schema.prisma Setup
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? @db.Text
+  refresh_token_expires_in Int?
+  access_token             String? @db.Text
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  type          Usertype  @default(User)
+  accounts      Account[]
+  sessions      Session[]
+  balances      Balance?
+  onRampTransactions OnRampTransaction[]
+  sentTransfers     Transfer[]       @relation(name: "FromUserRelation")
+  receivedTransfers Transfer[]       @relation(name: "ToUserRelation")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}      
+*/              

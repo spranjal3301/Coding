@@ -1,4 +1,7 @@
 import { NextPage } from 'next'
+import AuthProtection from '../../components/authProtection'
+import { Sidebar } from 'lucide-react'
+import { SidebarLayout } from '../../components/SidebarLayout'
 
 interface Props {
     children: React.ReactNode
@@ -6,9 +9,11 @@ interface Props {
 
 const Layout: NextPage<Props> = ({children}) => {
   return (
-  <>
-    {children}
-  </>
+  <AuthProtection to='/signin'>
+    <SidebarLayout>
+      {children}
+    </SidebarLayout>
+  </AuthProtection>
   )
 }
 

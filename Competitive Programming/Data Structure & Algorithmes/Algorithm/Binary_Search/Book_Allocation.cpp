@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 int Book_Allocation(int arr[], int n, int k)
 {
@@ -55,7 +55,8 @@ int Book_Allocation(int arr[], int n, int k)
 
     return ans;
 }
-int main(){
-    
+int main()
+{
+
     return 0;
 }

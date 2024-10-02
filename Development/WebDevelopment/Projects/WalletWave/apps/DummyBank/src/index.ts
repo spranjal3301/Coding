@@ -13,7 +13,7 @@ interface responseTypes{
 
 
 const app=express();
-const PORT=parseInt(process.env.PORT || "3003");
+const PORT=parseInt(process.env.PORT || "8081");
 app.use(express.json());
 
 app.post("/",async(req,res)=>{

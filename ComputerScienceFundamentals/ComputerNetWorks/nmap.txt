@@ -30,3 +30,16 @@ Scan for Vulnerabilities: To scan for known vulnerabilities on devices:
 -sudo nmap --script vuln <IP>
 
 -sudo ettercap -T -S -i wlo1 -M arp:remote /<Router_IP>// /<Target_IP>//
+
+
+
+
+
+Block ARP packets from a specific IP address:
+-sudo arptables -A INPUT --source-ip <IP_ADDRESS> -j DROP
+
+View the ARP block:
+-sudo arptables -L
+
+Remove the ARP block (if necessary):
+-sudo arptables -D INPUT --source-ip <IP_ADDRESS> -j DROP

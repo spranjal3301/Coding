@@ -1,0 +1,35 @@
+WebRTC (Web Real-Time Communication): Enables real-time communication in web browsers.
+    Primarily designed for peer-to-peer communication, such as audio and video calls, and data sharing between browsers.
+    Peer-to-Peer: Establishes direct connections between browsers, reducing latency and server load.
+    Security: End-to-end encryption is built into the protocol.
+    Use Cases:
+        Video conferencing
+        VoIP calls
+        File sharing between peers
+        Screen sharing
+    WebRTC uses multiple protocols to enable real-time communication and data exchange, including: 
+        Real-time Transport Protocol (RTP)
+        A minimal protocol that provides the tools to implement real-time streaming. 
+        Stream Control Transmission Protocol (SCTP)
+        A transport layer protocol that provides reliable and secure file transfer. 
+        DTLS
+        A protocol that secures all data transfers between peers. 
+        ICE (Interactive Connectivity Establishment)
+        A protocol that finds the best path to reach devices and establish a connection between them. 
+        STUN/TURN
+        A protocol that's necessary to establish and maintain a peer-to-peer connection over UDP. 
+        SDP
+        A data format used to negotiate the parameters of the peer-to-peer connection. 
+
+WebSocket 
+    Purpose:
+    Designed for full-duplex communication channels over a single TCP connection, enabling real-time messaging between a client and server.
+    -full duplex: Both the client and server can send messages independently without waiting for
+    Use Cases:
+    Real-time notifications
+    Chat applications
+    Live updates (e.g., stock tickers, gaming)
+
+
+Web Transport (WebTrans)
+    

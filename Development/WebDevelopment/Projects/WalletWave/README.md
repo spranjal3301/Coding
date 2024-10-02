@@ -18,33 +18,78 @@ yarn install
 yarn run dev
 ```
 
-## What's inside?
+# Online Wallet Project
 
-This Turborepo includes the following packages/apps:
+This project is a Venmo-like online wallet system that allows users to add money from their bank accounts, send and receive money online between users and merchants, and track transactions.
+
+## Features
+
+- Add money from bank account to wallet
+- Send & Receive Money Online (user-to-user and user-to-merchant)
+- Transaction tracking and history
+- Multi-application architecture using Turborepo
+- PostgreSQL database with Prisma ORM
+- Sentry for application monitoring and error tracking
+
+## Applications
+
+### User App (Next.js & TypeScript)
+
+- Login/Signup using NextAuth (OAuth with Google & GitHub)
+- Bank to Wallet Transfer (add money)
+- User to User Transfer
+- User to Merchant transfer
+- Recent Transaction or History
+
+### Dummy Bank API (Express.js)
+
+- Transfer balance from user account to wallet account
+- Notify webhook for successful money addition
+
+### Webhook (Express.js)
+
+- Update database balance when Bank API request is successful
+
+### Merchant App (Next.js & TypeScript)
+
+- Login/Signup
+- Recent Transaction or History
+- Profile page (view details + update details)
+- Withdraw money to bank
+
+## Project Structure
+
+This project uses Turborepo to manage multiple applications in a monorepo framework.
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` 
-- `packages/store`: a package containing [Recoil](https://recoiljs.org/) for state management
-- `packages/database`: a package containing [Prisma](https://www.prisma.io/) for database ORM
-applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `user-app`: Next.js app with Tailwind CSS for user interface
+- `merchant-app`: Next.js app with Tailwind CSS for merchant interface
+- `ui`: Shared React component library with Tailwind CSS
+- `packages/store`: Recoil for state management
+- `packages/database`: Prisma for database ORM
+- `@repo/eslint-config`: ESLint configurations
+- `@repo/typescript-config`: TypeScript configurations
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+All packages and apps are written in TypeScript.
 
+## Utilities
 
-### Utilities
+This project is set up with the following tools:
 
-This Turborepo has some additional tools already setup for you:
+- Yarn for package management
+- Tailwind CSS for styles
+- TypeScript for static type checking
+- ESLint for code linting
+- Prettier for code formatting
+- Recoil for state management in `packages/store`
+- Prisma for database management in `packages/database`
 
-- [Yarn]() for packeage manager 
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-- [Recoil](https://recoiljs.org/) for state management in `packages/store`
-- [Prisma](https://www.prisma.io/) for database management `in packages/database`
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `yarn install`
+3. Set up your PostgreSQL database and update the connection string in `packages/database/.env`
+4. Set up Sentry and add your DSN to the relevant configuration files
+5. Run the development server: `yarn dev`
 

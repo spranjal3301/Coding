@@ -90,14 +90,16 @@ public:
 
 
 
+
+
 //- function inside function
 
 int main(){
     int a = 10;
 
     //!  C++14 syntax for lambda expressions
-    auto add = [&](int b) {
-        return a + b;
+    auto cmp = [&](int a,int b) {
+        return a > b;
     };
 
     //! C++11 syntax for lambda expressions
@@ -110,6 +112,6 @@ int main(){
     // ...
     };
 
-    cout << add(5) << endl;
+    // cout << add(5) << endl;
     return 0;
 }
