@@ -13,6 +13,12 @@
 
 
 `Continuous Deployment (CD)
-*is a software release process that uses automated testing to validate if changes to a codebase are correct and stable for immediate autonomous deployment to a production environment.
+*Is a software release process that uses automated testing to validate if changes to a codebase are correct and stable for immediate autonomous deployment to a production environment.
+
+`Deploying a next.js app to EC2 servers via Docker 
 
 
+- CI: .github/workflows/main.yml 
+- CD: Dockerfile.prod
+
+docker build -t nextjs-app -f Dockerfile.prod .

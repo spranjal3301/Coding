@@ -118,11 +118,13 @@ function createPair<S, T>(v1: S, v2: T): [S, T] {
 //` Type Inference
 //* Type inference is a feature of TypeScript that allows the TypeScript compiler to automatically deduce the type of a variable or expression.
 //* This means that you do not have to explicitly specify the type of every variable and expression in your code.
+const num=1; //Type Inference number
+let str1; //Type Inference any
 
 //` Interfaces
 //* An interface in TypeScript is a way to define a contract in your code.
-//* They can only be used to define object types, and they cannot be used to define
-//* primitive types, union types, or tuple types.
+//* They can only be used to define object types,
+//* and they cannot be used to define primitive types, union types, or tuple types.
 interface Person{
     name:string;
     age:number;
@@ -139,10 +141,34 @@ class Employee implements Person{
     age=30;
 }
 
+//* Declaration Merging:you can define an interface multiple times, and TypeScript will merge them into a single interface.
+interface User {
+    name: string;
+  }
+  
+  interface User {
+    age: number;
+  }
+  
+  // This is valid, and User now has both name and age.
+ const user: User = { name: 'Alice', age: 25 };
+
+ // Define an interface.
+ interface Person {
+    name: string;
+    age: number;
+  }
+  
+  // Extend an existing interface.
+  interface Employee extends Person {
+    salary: number;
+  }
+
 
 //`types
 //* Type aliases in TypeScript allow you to create a new name for a type.
 //* Types are more flexible and can define primitive, intersection, union, tuple, or different types of data.
+//* Types do not support declaration merging.
 
 // Define a custom data structure.
 type Point = {
@@ -156,16 +182,6 @@ type Point = {
   // Define a tuple type.
   type Tuple = [number, string];
   
-  // Define an interface.
-  interface Person {
-    name: string;
-    age: number;
-  }
-  
-  // Extend an existing interface.
-  interface Employee extends Person {
-    salary: number;
-  }
 
   type user={
       name:string;
@@ -175,6 +191,21 @@ type Point = {
   type users={
       [key:string]:user //`Dynamic key
   }
+const obj:users={
+    '1':{
+        name:'John',
+        age:30
+    }
+}
+
+//* Type Extends :Types can also extend other types or interfaces using intersection (&), but it's less straightforward than interfaces.
+type Pers = {
+    name: string;
+  };
+  
+  type Emp = Pers & {
+    role: string;
+  };
 
 
 //` Type Guards
@@ -206,8 +237,7 @@ function App(props:PropsType) {
 //- Ignore the Typescript error
 // @ts-ignore
 
-//`  "!" 
-//* Non-null assertion operator
+//`  "!" (Non-null assertion operator)
 //? example; prosses.env.PORT!
 
 
