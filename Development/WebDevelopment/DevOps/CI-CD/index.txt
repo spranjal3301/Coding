@@ -19,6 +19,35 @@
 
 
 - CI: .github/workflows/main.yml 
-- CD: Dockerfile.prod
-
+- CD: Dockerfile.prod +  .github/workflows/deploy.yml
 docker build -t nextjs-app -f Dockerfile.prod .
+
+`Configuring the EC2 instance before deploying the app:
+-Crete a new EC2 instance
+-Create a new security group and add the following inbound rules:
+  -HTTP
+  -SSH
+  -Download the SSH key pair
+-SSH into the EC2 instance
+-Install Docker
+-Install nginx
+-Configuring nginx
+
+`add to secrets GitHuB  https://github.com/spranjal3301/<repo_name>/settings/secrets/actions
+DOCKER_USERNAME : spranjal3301
+DOCKER_PASSWORD : 
+SSH_HOST : EC2_PUBLIC_IP
+SSH_USERNAME : ubuntu
+SSH_KEY : cp cat AWS_KEY.pem
+
+
+
+
+`CD Pipeline : .github/workflows/deploy.yml
+-Clones the repo
+-Builds the docker image
+-Pushes the docker image to Docker Hub
+-SSH into the EC2 instance
+-Install Docker
+-Pulls the docker image from Docker Hub
+-Runs the docker container
