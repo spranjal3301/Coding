@@ -68,11 +68,7 @@ watching streming video (DASH, HLS)(TCP)
 
 
 
-Data Encapsulation:
-                    process of adding information to a packet as it moves from one layer to the next, on its way to its destination.
-                    
-Data Decapsulation:
-                    process of removing headers and trailers from a data packet to reveal the original data payload
+
 
 
 
@@ -105,7 +101,7 @@ Data Decapsulation:
                           - IP Address: A unique identifier assigned to each device connected to a network that uses the Internet Protocol for communication.
                             - Protocol Number: A number assigned to a protocol that identifies it in the IP header.
                                             It is used by the network layer to determine how to process the data it receives. 
-                            - Port Number: A number assigned to a process or application that identifies particular service on a system it in the IP header.
+                            - Port Number[0 - 2^16-1]: A number assigned to a process or application that identifies particular service on a system it in the IP header.
 
 ?Common Protocol number
 - ICMP(Internet Control Message Protocol): 1
@@ -145,6 +141,92 @@ Internet Exchange Point (IXP) role:
 
 
 
+`Packet Switching:
+
+Data Encapsulation:
+                    process of adding information to a packet as it moves from one layer to the next, on its way to its destination.
+                    
+Data Decapsulation:
+                    process of removing headers and trailers from a data packet to reveal the original data payload
 
 
+
+
+
+
+
+Packet Creation at the Source (Application Layer):
+    Initiation: application generates the data that needs to be sent, such as an HTTP request from a web browser or an email.
+    Encapsulation: No specific headers or trailers are added at this layer .
+    The data generated here is passed down to the transport layer.
+
+
+Transport Layer (Segmenting Data):
+    Segment/Datagram Creation: The data from the application layer is broken into smaller segments each with a sequence number (if using TCP) or datagrams (if using UDP).
+  
+    Headers Added:
+        TCP Header: Includes source and destination port numbers, sequence numbers, acknowledgment numbers, flags (e.g., SYN, ACK), window size, checksum, etc.
+        UDP Header: Includes source and destination port numbers, length, and checksum.
+        Result: The encapsulated data is now a TCP segment or UDP datagram.
+
+
+
+3. Internet Layer (Addressing and Routing):
+    Packet Creation: The segment/datagram from the transport layer is encapsulated into an IP packet.
+    Headers Added:
+        IP Header: Includes source and destination IP addresses, version (IPv4 or IPv6), header length, Time to Live (TTL), protocol identifier (to indicate whether the data is TCP or UDP), checksum, and other options.
+
+    Result: The encapsulated data is now an IP packet.
+
+    Routing Decision: The source device determines whether the destination is on the same local network or if the packet needs to be sent to a router (default gateway) to reach another network.
+
+
+4. Data link Layer:
+    Frame Creation: The IP packet from the internet layer is encapsulated into a frame for transmission over the physical network.
+
+    Headers and Trailers Added:
+    Frame Header: Includes source and destination MAC addresses (or the next-hop device like a router), frame type (e.g., Ethernet), and other fields depending on the specific link-layer protocol.
+    Frame Trailer: Often includes a Frame Check Sequence (FCS) for error detection (e.g., CRC—Cyclic Redundancy Check).
+    Result: The encapsulated data is now a frame, ready to be transmitted as bits over the physical medium (like an Ethernet cable or Wi-Fi).
+
+
+Traveling Through the Network:
+    Switches (Layer 2 Devices): Forward frames based on MAC addresses.
+    Routers (Layer 3 Devices):      Forward packets based on IP addresses.
+        uses its routing table to determine the next hop for the packet based on the destination IP address.
+        decrements the TTL—Time to Live field and forwards it to the next router
+
+
+Crossing Multiple Networks (The Internet)
+    Hops Between Routers: As the packet moves from router to router across different networks (hops), it follows the path determined by routing protocols like BGP (Border Gateway Protocol) for internet-scale routing
+
+Arrival at the Destination Network:
+    Final Router: The last router in the path delivers the packet to the destination network. The router forwards the packet to the appropriate device on the network, using its MAC address if necessary.
+
+
+
+Delivery to the Destination Device:
+    Data link Layer:
+        Frame Reception: The physical layer (below the link layer) receives the raw bits and reconstructs them into a frame.
+        destination device's network interface receives the frame, checks the destination MAC address, and if it matches
+
+        Decapsulation: The frame's header (MAC addresses, frame type) and trailer (FCS) are removed, leaving the IP packet and 
+            passed up to the internet layer as an IP packet.
+    
+    Internet Layer:
+        Decapsulation: The IP header (including source/destination IP addresses, TTL, etc.) is removed, leaving the TCP segment or UDP datagram.
+        Result: The data is passed up to the transport layer as a TCP segment or UDP datagram.
+
+
+    Transport Layer:
+        Error Checking: If TCP is used, the transport layer checks the sequence numbers and verifies that all packets have  arrived correctly. If any are missing or corrupted, TCP requests retransmission.
+
+        Acknowledgment (in TCP)
+            Acknowledgment: If TCP is used, the destination device sends an acknowledgment back to the source device, confirming that the packet was received successfully.
+            Retransmission (if necessary): If the acknowledgment is not received within a certain timeframe, the source device will retransmit the missing packet(s).
+        header (TCP or UDP) is removed passed up to the application layer as application data.
+
+
+    Application Layer:
+        Processing: The application processes the data according to the specific protocol used (e.g., HTTP, FTP).
 

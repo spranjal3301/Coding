@@ -1,0 +1,80 @@
+!Backend Communications:
+*Interaction between the server (back-end) and various components or systems in a web application. 
+
+~Mainly Backend Communications with:
+- Client(Frontend)
+- Database
+- Message Queues and Event-driven Communication(like RabbitMQ, Kafka)
+- WebSockets
+- Pub Sub( Publish-Subscribe) Systems
+- Third-party Services/APIs:
+    ? Payment Gateways
+    ? Social Media Platforms
+    ? Email Services
+    ? Cloud Storage
+    ? etc.
+
+
+~Types of Backend communication
+- Synchronous Communication(Strong Coupling)
+    *Direct Communication between components or systems
+    *client waits for the response before proceeding with further tasks 
+    ? RESTful APIs(HTTP/HTTPS)
+    ? GraphQL
+    ? gRPC
+    ? Database Communication
+
+- Asynchronous Communication(Weak Coupling)
+    *Indirect Communication between components or systems
+    *allows the client to send requests without waiting for an immediate response. 
+    ? Message Queues
+    ? WebSockets
+    ? Event-Driven Architecture (Pub Sub Systems)
+    ? Polling/Long Polling
+    ? etc.
+
+
+
+
+~Backend Communication Patterns:
+- Request-Response
+- Publish-Subscribe
+- Webhooks
+- WebSockets
+- Message Queues
+
+
+`RESTful APIs:
+*   REST (Representational State Transfer) is an architectural style for designing networked applications.
+*   RESTful APIs use HTTP methods to perform CRUD (Create, Read, Update, Delete) operations.
+*   It’s stateless, meaning each request-response cycle is independent of previous or next ones.
+*   Use HTTP over TCP for communication between the client and server.
+
+~RESTful API Components:
+-   Request Stucture:
+    *   HTTP Method (GET, POST, PUT, DELETE)
+    *   URL (Uniform Resource Locator)
+    *   Headers
+    *   Body (optional)
+-   Response Structure:
+    *   Status Code
+    *   Headers
+    *   Body(data)
+
+
+`WebSockets: refer to Web-Socket/WebSockets.txt
+
+
+
+
+
+
+
+
+Service Mesh (Envoy/Istio)
+SOAP APIs
+Quic
+WebRTC 
+distributed sfu architecture
+HTTP pipelining
+Web hooks

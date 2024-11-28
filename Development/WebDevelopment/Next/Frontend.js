@@ -49,8 +49,8 @@
 //- not match /blog , /blog/ & /blog/my-article/post-1 .
 
 //`[...folder]	Catch-all route segment
-//*app/shop/[...categories]/page.js This would match routes like /shop/clothes, /shop/clothes/shirts, 
-//*/shop/clothes/shirts/t-shirts, etc.
+//* app/shop/[...categories]/page.js This would match routes like /shop/clothes, /shop/clothes/shirts, 
+//* /shop/clothes/shirts/t-shirts, etc.
 //-not match /shop or /shop/ 
 
 //`[[...folder]]	Optional catch-all route segment

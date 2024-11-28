@@ -1,0 +1,22 @@
+{
+  "name": "ws",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc -b && node dist/index.js",
+    "express": "tsc -b && node dist/express.js",
+    "socketio": "tsc -b && node dist/socketio.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/ws": "^8.5.12",
+    "express": "^4.21.1",
+    "socket.io": "^4.8.0",
+    "ws": "^8.18.0"
+  }
+}

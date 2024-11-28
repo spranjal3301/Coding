@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 interface Props {}
 
 const Page: NextPage<Props> = ({}) => {
-  return <div>landing</div>
+  return <div>hello</div>
 }
 
 export default Page

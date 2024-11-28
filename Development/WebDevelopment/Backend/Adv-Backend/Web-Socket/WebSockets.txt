@@ -1,0 +1,84 @@
+`WebSockets:
+*   allow two-way communication between the server and client, maintaining a persistent connection.
+*   WebSockets are more efficient than traditional HTTP requests for real-time data exchange.
+
+*   Designed for full-duplex communication channels over a single TCP connection.
+*   This makes WebSockets a bi-directional communication protocol.
+    (Full-Duplex Communication: Both the client and server can send data to each other simultaneously.)
+
+?    It’s useful for real-time applications like chat apps, live notifications, and games.
+?    Example: A server pushes updates to the client about a stock price change or a live chat message.
+?    applications that require low-latency, real-time data exchange, such as chat applications,
+?    live notifications, or real-time updates in dashboards.
+
+
+
+~Note: 
+*    We can still use RESTful APIs In Place of WebSockets by
+*    Sending Request at Regular Intervals also know as Polling/Long Polling.
+*    WebSockets are more efficient than Polling/Long Polling as they maintain a persistent connection.
+
+~How WebSockets Work:
+*    1.  The client sends an HTTP request to the server to initiate a WebSocket connection.
+*    2.  The server responds with an HTTP 101 status code (Switching Protocols) to upgrade
+*        the connection to a "WebSocket".This upgrade process is referred to as a "handshake".
+*    3.  Once the connection is established, both the client and server can send messages to each other.
+
+
+-Establishing a WebSocket Connection (Handshake Process):
+*    1.  Client(Web-Browser) sends an HTTP request to the server with an "Upgrade" header set to "websocket".
+
+*    Handshake GET Request (from Client):
+?       GET /chat HTTP/1.1
+?       Host: example.com
+?       Upgrade: websocket
+?       Connection: Upgrade
+?       Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+?       Sec-WebSocket-Version: 13
+
+*    Handshake Response (from Server):
+?       HTTP/1.1 101 Switching Protocols
+?       Upgrade: websocket
+?       Connection: Upgrade
+?       Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+
+
+*       Use wss:// Instead of ws://:  wss:// is the secure version of WebSockets,
+*       just like HTTPS is for HTTP. It uses SSL/TLS to encrypt the communication.
+
+
+~WebSockets in Node.js:
+-    Node.js provides the 'ws' library for working with WebSockets.
+-    'Sokcket.io' is another popular library that builds on top of the 'ws' library and provides additional features.
+
+Problems with socket.io - 
+    Even though socket.io is great (it gives you constructs like rooms to make the API much cleaner), it’s harder to support multiple platforms in it (Android, IOS, Rust).
+
+
+`ws` Library:
+    npm init -y & npx tsc --init
+    npm i ws @types/ws
+
+~Scaling ws servers
+*   The way to scale websocket servers usually happens by creating a ws 'fleet'
+*   There is usually a central layer behind it that orchestrates  messages
+*   ws servers are kept stateless
+*   Node js have ws connection Limit (around 65k)
+*   Node js is single-threaded, so you can't scale it vertically
+
+~Strategies for Scaling WebSocket Servers
+
+-   1. Horizontal Scaling with Load Balancers:
+    *   Use a load balancer to distribute incoming WebSocket connections across multiple servers.
+    *   Load balancer must maintain "sticky sessions" (also called session persistence) 
+    *   to ensure that once a WebSocket connection is established, all future messages
+    *   from the client are routed to the same WebSocket server.
+   
+    *   Sticky Sessions: Ensures that the load balancer forwards the same client to the same server after the initial connection.
+
+
+-   2. Horizontal Scaling with Pub/Sub Systems
+    *   Use a Pub/Sub system like Redis or RabbitMQ to distribute messages between WebSocket servers.
+    *   When a WebSocket server receives a message from a client, it publishes the message to a Pub/Sub channel.
+    *   Other WebSocket servers subscribe to this channel and receive the message.
+    *   This approach allows WebSocket servers to communicate with each other without direct connections.

@@ -1,0 +1,330 @@
+!Transport Layer(4th Layer):
+    -provides end-to-end communication services for applications, ensuring reliable data transfer and efficient
+    -connection management between devices.
+    
+    It is responsible for:
+        *Data Segmentation: Divides data into segments and reassembles them at the destination.
+        *Connection Management: Establishes, maintains, and terminates connections.
+        *Reliability: Provides error checking, retransmission, and flow control.
+        *Multiplexing/Demultiplexing: Manages multiple application connections over a single network link.
+        
+    The two most common transport layer protocols are
+        Transmission Control Protocol (TCP) 
+            ?congestion control
+            ? flow control
+            ? connection setup
+        User Datagram Protocol (UDP)
+        QUIC (Quick UDP Internet Connections)
+
+    -network layer:  logical communication between hosts
+    -transport layer:logical communication between applications
+    +--------------------+              +--------------------+
+    |   Application 1    |              |   Application 1    |
+    |  Port 8080 (HTTP)  |<------------>|  Port 8080 (HTTP)  |
+    +--------------------+  Transport   +--------------------+
+    |   Application 2    |   Layer      |   Application 2    |
+    |  Port 22 (SSH)     |--------------|  Port 22 (SSH)     |
+    +--------------------+              +--------------------+
+
+    * send side: breaks app messages into segments, passes to network layer
+    * rcv side: reassembles segments into messages,passes to app layer
+
+    Multiplexing(at sender side): 
+        -handle data from multiple applications simultaneously and add transport layer header to each segment
+    
+    Demultiplexing(at receiver side):
+        -deliver data to the correct application based on the port number in the transport layer header
+        ~ Connectionless Demultiplexing(UDP): applications are identified by port numbers alone.
+        ~ Connection-Oriented Demultiplexing(TCP): applications are identified :
+                ? source IP address
+                ? source port number
+                ? dest IP address
+                ? dest port number
+    
+
+!UDP: User Datagram Protocol
+    -connectionless: no handshaking
+    -no congestion control: no retransmission
+    -no flow control: no buffering
+    -simple: no connection establishment
+    -small header: 8 bytes
+    -fast: no delay for connection establishment
+    -used for streaming multimedia applications
+    -used for DNS, SNMP, RIP, VOIP, etc.
+    -no guarantee of delivery, order, or duplicate protection
+
+    *Datagram:
+    +------------------------+      
+    | Source Port | dest port|  
+    +------------------------+      
+    |  length     | checksum |
+    +------------------------+ 
+    |     application data   |  
+    |     (payload)          |
+    +------------------------+             
+    `UDP Header: 8 bytes
+        *Header + data = 65535(2^16) bytes(max)
+        -Source Port: 16 bits
+        -Destination Port: 16 bits
+        -Length (16 bits) : in bytes of UDP segment,including header
+        -Checksum (optional): 16 bits
+        -Data: 0-65527 bytes
+
+    !Checksum: 
+        *Sender Side:
+            -treat segment contents,including header fields, as sequence
+            -Breaks the sequence into 16-bit blocks
+            -Adds all blocks
+            -Add the carry to the sum if any
+            -Takes 1's complement of the sum
+        *Receiver Side:
+            - Re- calculate the checksum comparing with the received checksum
+            - If the result is 0, the segment is error-free
+
+
+!Principles of reliable data transfer(RDT):
+    -provide mechanisms for ensuring accurate, managing errors, lost packets, and data duplication of data over unreliable networks(IP).
+    
+    Key Points:
+        *Error Detection: Uses checksums to detect corrupted data.
+        *Reliability : Acknowledgments (ACK) Confirms receipt of each packet.
+        *Retransmissions: Resends lost or corrupted packets.
+        *data duplication :Sequence Numbers: Helps ensure packets are delivered in order and not duplicated.
+
+    `RDT 3.0 (Reliable over Lossy Channels):
+        *Introduces retransmission mechanisms and timers to handle packet loss.
+
+        -Acknowledgment System:
+            *Positive Acknowledgment (ACK): ACK Confirms a packet was received correctly.
+            *Negative Acknowledgment (NAK): Requests retransmission of a corrupted packet.
+            ACK rev time = (RTT + L / R)
+
+        -Timers: Used to detect lost packets and trigger retransmissions.
+        -Sliding Window Protocols: Allow multiple packets to be in transit at once.
+
+!Pipelined protocols
+    *enhance data transmission efficiency by allowing the sender to transmit multiple packets before waiting for an acknowledgment. 
+
+    `Key Points:
+        *Concurrent Packet Sending: Multiple packets are sent without immediate acknowledgment, optimizing data flow.
+        *Error Handling: Uses retransmission for lost or corrupted packets while maintaining packet order.
+        *Window Size Control: The number of unacknowledged packets allowed in the pipeline, known as the "window size."
+        
+        *Window Size: Determines the number of packets that can be sent before waiting for an acknowledgment.
+        *Timers: Each unacknowledged packet has an associated timer to detect transmission timeouts and initiate retransmission.
+        *Sequence Numbers: Critical for maintaining order and tracking which packets need retransmission.
+        ~ Sequence Number Space ≥ 2×W (W = window size)
+        ~ sequence number space should be at least twice the size of the window size to avoid ambiguity.
+
+
+    `Types of Pipelined Protocols:
+        -Go-Back-N (GBN):
+        -Selective Repeat (SR):
+
+    `Go-Back-N (GBN):
+        *Single Retransmission Point: If a packet is lost, retransmit all packets starting from the lost one.
+        *Sequential ACK Requirement: Receiver only acknowledges packets in sequence.
+        *Simple but potentially inefficient for high-loss networks.
+        *rcvr sends cumulative ack for all packets upto the lost packet
+
+    `Selective Repeat (SR):
+        *Selective Retransmission: Only retransmits packets that were not acknowledged or were received with errors.
+        *Buffering at Receiver: Receiver can accept out-of-order packets and reassemble them in the correct order.
+        *More Efficient than Go-Back-N but requires more complex implementation.
+        *rcvr sends individual ack for each packet
+
+!TCP: Transmission Control Protocol
+    ~TCP creates rdt(reliable data transfer) service on top of IP’s unreliable service
+    ~pipelined segments with cumulative acks, single retransmission timer
+    -connection-oriented: handshaking
+    -reliable: error checking, retransmission
+    -uses Pipelined protocols for reliable data transfer
+    -stream-oriented: no message boundaries
+    -full-duplex: data flows in both directions
+    -guarantees delivery, order, and duplicate protection
+    -congestion(amount) control: retransmission, rate adjustment
+    -flow(speed) control: buffering, windowing
+    -connection establishment: 3-way handshake
+    -connection termination: 4-way handshake
+    -header: 20 bytes
+    -slow: delay for connection establishment
+    -used for web, email, file transfer, etc.
+
+    *Segment:
+    +------------------------+      
+    | Source Port | dest port|  
+    +------------------------+      
+    |  sequence number       |  
+    +------------------------+      
+    |  acknowledgment number |  
+    +------------------------+      
+    |  header length | flags |  
+    +------------------------+      
+    |  recv window| checksum |  
+    +------------------------+      
+    |     application data   |  
+    |     (payload)          |
+    +------------------------+             
+    `TCP Header: 20 - 60 bytes
+        -Source Port: 16 bits
+        -Destination Port: 16 bits
+        -Sequence Number: 32 bits
+        -Acknowledgment Number: 32 bits
+        -Header Length: 4 bits (header size/4)
+        -Flags: 6 bits
+            *URG(urgent data)
+            *ACK(acknowledgment)
+            *PSH(push data)
+            *RST(reset)
+            *SYN(synchronize)
+            *FIN(finish)
+
+
+        -receive window: 16 bits
+        -Checksum: 16 bits
+        -Urgent Pointer: 16 bits
+        -Options: Variable (up to 40 bytes)
+        -Data: 0-65515 bytes
+    
+    ~ Seq no(recv) + data_recv = Ack no(sent)
+    ~ACK Number: The sequence number of the next expected byte, indicating that all bytes up to this number were received correctly.
+    ~ Ack no(recv) = Seq no(sent) 
+
+    `TCP Connection Establishment:
+        *A 2-way handshake is insufficient for establishing a reliable TCP connection because it cannot reliably synchronize both ends of the connection.
+            No Confirmation of Receiver's Readiness
+            Potential for Duplicate Connections
+            Vulnerability to Delayed/Duplicated Packets
+        
+        -Three-Way Handshake:
+            *SYN: Sender requests a connection by sending a SYN packet.
+            *SYN-ACK: Receiver acknowledges the request and sends its own SYN packet.
+            *ACK : Sender acknowledges the receiver's SYN packet.
+        
+        -Four-Way Handshake:
+            *FIN: Sender requests to close the connection.
+            *ACK: Receiver acknowledges the request.
+            *FIN: Receiver requests to close the connection.
+            *ACK: Sender acknowledges the request.
+
+            *TIME-WAIT State: After sending the final ACK, the client enters the TIME-WAIT state for a brief period.
+                            *This is to ensure that any delayed packets are handled properly and that the connection is fully closed across the network.
+                            ~timed wait for 2*max segment lifetime
+            *Asymmetrical Closing: Either side can initiate the connection termination, allowing flexible and controlled shutdowns for both client and server.
+    
+    `How to set TCP timeout value(retransmission timeout (RTO))?
+        *Adaptive Timeout: TCP continuously updates the RTO based on current network conditions.
+    
+        -Steps in Calculating TCP Timeout (RTO):
+            *Measure the RTT: Round-Trip Time (RTT) between sending a packet and receiving an acknowledgment.
+            *Calculate Estimated RTT: Smoothed average RTT:
+                SRTT is an exponential weighted average of the measured RTT.
+                Formula: 
+                        SRTT = (1−α)×SRTT + α×RTT
+                Typically, α = 0.125 is used to smooth out fluctuations in RTT.
+            *Calculate Estimate RTT Variability (RTTVAR/DeviationRTT):
+                RTTVAR is used to capture the variability in RTT measurements.
+                Formula: 
+                        RTTVAR = (1−β)×RTTVAR + β×|RTT−SRTT|
+                Typically, β = 0.25 is used.
+            ~Compute Retransmission Timeout (RTO):
+                ~RTO = SRTT + 4×RTTVAR
+                ~RTO = estimated RTT  + safety margin
+
+    `TCP sender events:
+        -Data received from application layer
+        -Timer timeout
+        -ACK received
+        -Duplicate ACK received (premature timeout)
+    
+    `TCP receiver events:
+        -Segment arrival
+        -ACK sent
+        -Data passed to application layer
+
+    `TCP ACK generation:
+        *Cumulative ACKs:meaning each ACK confirms all bytes up to the specified sequence number.
+        *Immediate ACKs: Typically, an ACK is generated as soon as a segment is received
+        *Delayed ACKs: TCP receivers often use delayed ACKs to reduce the number of ACKs sent, which helps reduce network congestion.
+        *Duplicate ACKs: Sent when a receiver receives out-of-order segments, indicating potential packet loss.
+        If an out-of-order segment arrives, send a duplicate ACK to indicate packet loss.
+
+        ~ACK for Pure ACK Segments : no data, only ACK
+        ~ACK for Piggybacked Data: ACK + data
+
+    ~If sender receives triple duplicate ACKs, it assumes that the segment was lost and retransmits the segment without waiting for the timeout.
+
+    `TCP flow control:
+        *Prevents the sender from overwhelming the receiver with data.
+        *It prevents buffer overflow at the receiver by controlling the rate of data transmission based on the receiver’s capacity to process and store incoming data.
+        
+        Key Points:
+            *Receiver-Advertised Window: The receiver informs the sender of its available buffer space using a "window size" in each ACK.
+            *Sliding Window Protocol: TCP uses a sliding window to manage how much data can be sent before needing an acknowledgment.
+            *Dynamic Adjustment: The window size changes dynamically based on network conditions and the receiver’s available buffer space.
+
+        -Window Size Dynamics:
+            *Increasing Window Size: If the receiver’s buffer has available space.
+            *Zero Window: receiver’s buffer is full, stop sending data temporarily.
+            *Window Probing: When the window size is zero, the sender periodically sends small packets to check if the window size has increased (to resume transmission).
+
+    `TCP congestion control:
+            *data too fast for network to handle
+                 lost packets (buffer overflow at routers)
+                 long delays (queueing in router buffers)
+            *Goal: Avoid network congestion while maximizing throughput.
+            *Mechanism: Adjusts sending data transmission rate dynamically based on network feedback (packet loss, delay).
+            *Control Variables: Uses the Congestion Window (cwnd) to control the volume of data sent
+
+
+            -TCP congestion control relies on four main algorithms: 
+                ?Slow Start,
+                ?Congestion Avoidance,
+                ?Fast Retransmit, 
+                ?Fast Recovery.
+
+            
+            -Slow Start:
+                *Begins with a small congestion window (cwnd) and exponentially increases it to probe the network capacity.
+                *Every acknowledgment (ACK) doubles cwnd, allowing the sender to quickly find the network’s capacity.
+                *Slow Start Threshold (ssthresh): The point at which TCP transitions from slow start to congestion avoidance.
+                *ssthresh = 64KB (typical initial value)
+                ~cwnd = 1 MSS (Maximum Segment Size) at the start
+
+            -Congestion Avoidance:
+                *After reaching the ssthresh, TCP switches to congestion avoidance mode.
+                *Increases cwnd linearly by 1 MSS per RTT (Round-Trip Time) to avoid overwhelming the network.
+                ~cwnd = cwnd + 1 MSS / cwnd = cwnd + MSS/cwnd
+
+            -Fast Retransmit:
+                *Detects packet loss based on duplicate ACKs (indicating out-of-order segments).
+                *If the sender receives three duplicate ACKs, it assumes a packet loss and retransmits the missing segment.
+                *Avoids waiting for the timeout to retransmit the lost packet.
+
+            -Fast Recovery:
+                *After a fast retransmit, TCP enters fast recovery mode.
+                *Reduces cwnd by half (cwnd = cwnd/2) and enters congestion avoidance mode.
+                *Uses duplicate ACKs to detect packet loss and adjust the sending rate accordingly.
+                *~cwnd = ssthresh + 3 MSS
+
++---------------------+-----------+---------------------+
+|       Slow Start    | Congestion|     Fast Recovery   |
+|   Exponential Grow  | Avoidance |   Linear Growth     |
++---------------------+-----------+---------------------+
+     cwnd < ssthresh         |             Packet Loss
+            cwnd == ssthresh |                (3 DUP ACKs)
++----------------------------------------+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+

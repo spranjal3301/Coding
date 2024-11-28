@@ -1,0 +1,294 @@
+!Network Layer(Layer)
+    - The network layer is responsible for routing packets from the source to the destination.
+    - Protocols: Commonly uses IP (Internet Protocol) as the primary protocol.
+    - Addressing: Uses logical addressing (IP addresses) to identify devices.
+
+
+    Two key network-layer functions:
+        *1. Routing: Determines the path that packets should take from the source to the destination.
+        *2. Forwarding: Moves packets from a router's input to the appropriate router output.
+
+    Common Protocols at the Network Layer:
+        *IP (Internet Protocol): Responsible for addressing and routing packets.
+        *ICMP (Internet Control Message Protocol): Used for error reporting and diagnostics (e.g., ping).
+        *ARP (Address Resolution Protocol): Resolves IP addresses to MAC addresses within a local network.
+
+    Network Layer Devices:
+        *Router: A network device that forwards packets between networks.
+        *Layer 3 Switch: Combines the functions of a switch and a router at the network layer.
+        *Firewall: A security device that filters network traffic based on a set of rules.
+
+    `IP header added to Segment from Transport Layer to create Packet at Network Layer` 
+
+    `IP Fragmentation:
+        *A large packet is split into smaller fragments, each sent independently and reassembled at the destination.
+        *The fragments are reassembled at the destination to reconstruct the original packet.
+        *Fragmentation can occur when a packet is too large for the Maximum Transmission Unit (MTU) of a network link.
+        *Each network along a path may have different MTU sizes.
+
+        *Fields Used(IP header): Identification, Flags, Fragment Offset  
+
+        - How Fragmentation Works:
+            *1. The source sends a large packet that is too big for the next hop's MTU.
+            *2. Creation of Fragments: Each fragment is a smaller packet with its own header and a portion of the original data.
+            *3. Fragment Fields in Header:
+                ?Identification: Each fragment has the same Identification value to be recognized as part of the original datagram.
+                ?Flags: 
+                    Do Not Fragment (DF) : 0 (Fragmentation allowed) or 1 (Fragmentation not allowed).
+                    More Fragments (MF): 0 (Last fragment) or 1 (More fragments to follow).
+                ?Fragment Offset: Specifies the position of the fragment’s data relative to the start of the original datagram. (fragment size received / 8) 
+            *4. Reassembly: At the destination
+
+        +------------------ Original Datagram ------------------+
+        | Header |        Data (Large Size Exceeds MTU)         |
+        +-------------------------------------------------------+
+
+        After Fragmentation:
+
+        +----------- Fragment 1 ------------+   +------------ Fragment 2 ------------+
+        | Header | Data (First Part)        |   | Header | Data (Second Part)        |
+        | ID=X   | Offset=0   MF=1          |   | ID=X    | Offset=Fragment Size     |
+        +-----------------------------------+   +------------------------------------+
+
+
+
+
+    `Structure of the IPv4 Datagram:
+        *Header(20 - 60 bytes): Contains metadata about the datagram.
+        *Payload (Data): Segment from Transport Layer.
+
+-0         4                   8                   16                  24                  31
+-+-----------------------------------------------------------------------------------------+
+-| Version |  IHL  |   Type of Service   |                  Total Length                   |
+-+-----------------------------------------------------------------------------------------+
+-|               Identification          |Flags|           Fragment Offset                 |
+-+-----------------------------------------------------------------------------------------+
+-|      Time to Live     |    Protocol   |               Header Checksum                   |
+-+-----------------------------------------------------------------------------------------+
+-|                                Source IP Address                                        |
+-+-----------------------------------------------------------------------------------------+
+-|                             Destination IP Address                                      |
+-+-----------------------------------------------------------------------------------------+
+-|                                       Options (if any)                                  |
+-+-----------------------------------------------------------------------------------------+
+-|                                       Payload (Segment)                                 |
+-+-----------------------------------------------------------------------------------------+
+
+
+   `Field	                Size	        Description
+   *Version	               4 bits	    Indicates IP version (e.g., IPv4 = 4).
+   *Header Length	       4 bits	    Length of the header in 32-bit words.
+   *Type of Service	       8 bits	    Defines service quality (e.g., priority, delay).
+   *Total Length	       16 bits      Total length of the datagram (header + data).
+   *Identification	       16 bits	    Unique ID for datagram fragmentation and reassembly.
+   *Flags	               3 bits	    Controls fragmentation (e.g., "Do not fragment").
+   *Fragment Offset	       13 bits	    Position of fragment in original datagram.
+   *Time to Live	       8 bits	    Limits datagram lifetime in hops (decreases at each hop).
+   *Protocol	           8 bits	    Indicates the protocol in the payload (e.g., TCP = 6, UDP = 17).
+   *Header Checksum	       16 bits	    Error-checking for header integrity.
+   *Source IP Address	   32 bits	    IP address of the sender.
+   *Destination IP Address 32 bits	    IP address of the receiver.
+   *Options	               Variable	    Optional, used for control settings.
+   *Data (Payload)	       Variable	    Contains the actual data being sent.
+
+    `IP Addressing:
+        *IP addresses are used to identify devices on a network.
+        *IPv4: 32-bit address 
+        *IPv6: 128-bit address
+
+        Two Main Categories: 
+            ?Public IPs (unique across the internet) 
+            ?Private IPs (used within private networks).
+
+        `IPv4 Address:
+            *Format: 32-bit address, typically written in "dotted decimal" (e.g., 192.168.1.1).
+            *Range: Supports approximately 4.3 billion(2^32) unique addresses.
+            *Structure: Divided into network and host parts based on subnet masks.  
+            *Classes: A, B, C, D, E (A, B, C are commonly used for addressing hosts)
+
+            +-----------------------------+
+            |        IPv4 Address         |
+            +-----------------------------+
+            | Network Part | Host Part    |
+            +-----------------------------+
+            Example: 192.168.1.1
+            Network: 192.168.1.X
+            Host:    X.X.X.1
+
+        - 192.168.1.0 -> Network Address
+        - 192.168.1.255 -> Broadcast Address
+        - 192.168.1.1 -> Gateway Address(First Address in the Network)
+
+
+        Classes of IPv4 Addresses:
+        -  Class	    Range	                    Usage           subnet mask
+        -    A	    1.0.0.0 – 126.0.0.0	        Large networks      255.0.0.0
+        -    B	    128.0.0.0 – 191.255.0.0	    Medium networks     255.255.0.0
+        -    C	    192.0.0.0 – 223.255.255.0	Small networks      255.255.255.0
+        -    D	    224.0.0.0 – 239.255.255.255	Multicasting
+        -    E	    240.0.0.0 – 255.255.255.255	Reserved for future use
+
+    `Private IPs:
+        *Reserved for use within private networks.
+        *Not routable on the public internet.
+        *Commonly used for home and business networks.
+        *Defined by RFC 1918.
+
+        `Private IP Address Ranges:
+            *Class A:   10.0.0.0 – 10.255.255.255   
+            *Class B:   172.16.0.0 - 172.31.255.255
+            *Class C:   192.168.0.0 - 192.168.255.255   
+
+
+    `Subnetting:
+        *divides larger networks into smaller, more manageable sections. 
+        *Improves network performance and security.
+        *Uses subnet masks to divide the network into subnets.
+
+        `Subnet Mask:
+            *Determines the network and host portions of an IP address.
+            *Consists of a series of 1s followed by 0s 
+            *CIDR Notation(Classless InterDomain Routing): a.b.c.d/x, where x is # bits in subnet portion of address 
+                Specifies the number of bits in the subnet mask, with format IP/prefix-length 
+                (e.g., 192.168.1.0/24 where /24 means the first 24 bits are for the network).
+
+        -Subnet Address	    Subnet Mask	            Host Range	                    Available Hosts
+        -192.168.1.0	    255.255.255.0 or /24	192.168.1.1 - 192.168.1.254	    254
+        -192.168.1.128	    255.255.255.128 or /25	192.168.1.129 - 192.168.1.254	126
+        -192.168.1.192	    255.255.255.192 or /26	192.168.1.193 - 192.168.1.254	62
+
+    +---------------------------+
+    |    Network 192.168.1.0    |
+    +---------------------------+
+    | Subnet 1  |  Subnet 2     |
+    | 192.168.1.0/25 | 192.168.1.128/25 |
+    +-----------+---------------+
+    | Hosts     |  Hosts        |
+    +-----------------------------   
+
+        `NAT (Network Address Translation):
+            *multiple devices on a local network to share a single public IP address to connect to the internet.  
+            *Translates private IP addresses to a single public IP address.    
+            *Translation Table: Maintains records of private-to-public address mappings for tracking.
+
+            `Types of NAT:
+                *Static NAT: Maps a private IP address to a single public IP address.
+                *Dynamic NAT: Maps multiple private IP addresses to a pool of public IP addresses.
+                *PAT (Port Address Translation): Maps multiple private IP addresses to a single public IP address using unique port numbers.
+
+        +--------------------+             +--------------------+            +----------------------+
+        | Private Network    |             |       NAT Router   |            |       Internet       |
+        |                    |             | (Private <--> Public) |         |                      |
+        | 192.168.1.2        |--> (NAT)--> | Public IP: 203.0.113.1 | -->    |  External Server     |
+        | 192.168.1.3        |             |    Port-based       |           |                       |
+        +--------------------+             +--------------------+            +----------------------+
+
+        `NAT Translation Table:                           
+        - Private IP	Private Port	Public IP	Public Port  Destination IP	Destination Port
+        - 192.168.1.2	  4567	       203.0.113.1	  10001       8.8.8.8            80
+        
+        -NAT is controversial:
+            *PORT NO change:Routers should only process up to layer 3(IP) and not modify higher-layer protocols.
+            *violates end-to-end argument
+            *NAT possibility must be taken into account by app designers, e.g., P2P applications
+
+        -NAT traversal problem: 
+            *NAT devices block incoming connections initiated from the outside.
+            
+            *Solutions1:
+                    ?statically configure NAT to forward incoming connection requests at given port to server 
+            *Solutions2:
+                    ?Universal Plug and Play (UPnP): Allows devices to automatically configure NAT settings.
+            *solution 3: 
+                    ?relaying through a server that is not behind a NAT
+
+
+    `ICMP (Internet Control Message Protocol):
+        *Used for error reporting and diagnostics.
+        ICMP message: type + code + 8 bytes of IP datagram
+
+        *Common ICMP Message Types:
+            *Message Type	                   Description
+            *Echo Request (Type 8)	           Sent to test if a host is reachable (ping).
+            *Echo Reply (Type 0)	           Reply to an Echo Request, confirms reachability.
+            *Destination Unreachable (Type 3)  Indicates a packet couldn't reach its destination.
+            *Time Exceeded (Type 11)	       Informs that the packet's TTL (Time To Live) expired.
+            *Redirect (Type 5)	               Suggests a better route for packets.
+
+        `How Traceroute Works with ICMP:
+            *Traceroute uses ICMP Time Exceeded messages to map the path to a destination.
+            *Sends packets with increasing TTL values to elicit Time Exceeded messages from routers.
+            *Displays the IP addresses of routers along the path to the destination.
+            *Destination Reached: When the packet reaches its destination, Traceroute receives an ICMP Echo Reply or, depending on the implementation
+
+    `IPv6(Internet Protocol version 6):
+        *Address Space: Uses 128-bit addresses, allowing for 2^128 unique addresses (340 undecillion addresses).
+        *Format: Written in hexadecimal, separated by colons (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334).
+        *No NAT
+        *Built-in Security
+        *Simplified Header: Reduces processing overhead.
+        *consists of eight groups of four hexadecimal digits, separated by colons
+        *zeros can be replaced with double colons (::)
+            Example Addresses:
+                Full: 2001:0db8:0000:0042:0000:8a2e:0370:7334
+                Shortened: 2001:db8:0:42::8a2e:370:7334
+
+        *Loopback Address: ::1
+
+        `Structure of the IPv6 Header:
+            *Fixed-Length Header: 40 bytes.
+            *Fields: Version, Traffic Class, Flow Label, Payload Length, Next Header, Hop Limit, Source Address, Destination Address.
+            *Extension Headers: Optional headers that provide additional functionality.
+
+            -+--------------+---------------+----------------+----------------+
+            -| Version (4)  | Traffic Class |   Flow Label (20)               |
+            -+--------------+---------------+---------------------------------+
+            -|      Payload Length (16)     | Next Header (8) | Hop Limit (8)|
+            -+---------------------------------------------------------------+
+            -|                  Source Address (128 bits)                    |
+            -+---------------------------------------------------------------+
+            -|               Destination Address (128 bits)                  |
+            -+---------------------------------------------------------------+
+
+            `Field	                Description
+            -Version	            Indicates IPv6 (value: 6).
+            -Traffic Class	        Specifies priority and quality of service.
+            -Flow Label	            Helps route packets that require similar handling.
+            -Payload Length	        Specifies the data length.
+            -Next Header  	        Identifies the type of header following the IPv6 header (e.g., TCP, UDP).
+            -Hop Limit	            Similar to TTL in IPv4; decrements at each hop, and packet is discarded when zero.
+            -Source Address	        128-bit address of the sender.
+            -Destination Address	128-bit address of the receiver.
+
+    `Transition from IPv4 to IPv6
+        *IPv6 is gradually replacing IPv4 due to address exhaustion.
+        -Dual-Stack: Devices support both IPv4 and IPv6.
+        -Tunneling:
+            * Encapsulates IPv6 packets within IPv4 packets for compatibility
+
+
+    `Routing:
+        *Routing is the process of determining the best path for packets to reach their destination.
+        *Routing Protocols: Used by routers to exchange routing information and build routing tables.
+
+        `Types of Routing:  
+            *Static Routing: Manually configured routes that do not change.
+            *Dynamic Routing: Automatically adjusts routes based on network conditions.
+
+
+            *Centralized Routing(global):A single controller computes the best routes for the entire network.
+            *Decentralized Routing(Distributed):Each router independently determines the best route based on local information(neighbors).
+        
+        ` Routing Algorithms:
+            -Distance-Vector: 
+                *Routers exchange routing tables with neighbors.
+                *Protocols: RIP (Routing Information Protocol).
+
+            -Link-State: 
+                *Each router has a complete view of the network and calculates routes using algorithms like Dijkstra’s.
+                *  Protocols: OSPF (Open Shortest Path First), IS-IS (Intermediate System to Intermediate System).
+            
+            -Path-Vector: 
+                *Routers exchange path information to determine the best path.
+                *Routes include the path of nodes to prevent routing loops, ideal for policy-based routing.
+                *Protocols: BGP (Border Gateway Protocol).

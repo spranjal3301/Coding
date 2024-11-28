@@ -183,6 +183,24 @@ Key Functions of the Application Layer
                                             HTTP supports content negotiation, where the client and server agree on the content format:
                                             Accept: The client specifies the content types it can handle (e.g., Accept: application/json).
                                             Content-Type: The server indicates the media type of the resource (e.g., Content-Type: text/html).
+
+                            
+                            Non-persistent HTTP:
+                                    1. HTTP client initiates TCP connection to HTTP Server.
+                                    2. HTTP server “accepts” connection,
+                                    3. HTTP client sends HTTP request message (Message indicates that client wants object)
+                                    4. HTTP server receives request message, forms response message, and sends message back to client.
+                                    5. HTTP server closes TCP  connection.
+                                    6. HTTP client receives response message.
+                                    non-persistent HTTP
+                                    -response time for each = 2RTT (one RTT to initiate TCP connection + one RTT for HTTP request) + 
+                                    -                           file transmissiontime
+                                    -Drawback: Each request/response requires a new TCP connection, which can be inefficient for multiple requests.
+                            persistent HTTP:
+                                 server leaves connection open after sending response
+                                 -response time for open connection = 1RTT (one RTT for HTTP request) + 
+                                -                           file transmissiontime
+
                                         
 
 

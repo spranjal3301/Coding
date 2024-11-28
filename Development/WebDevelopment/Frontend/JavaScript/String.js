@@ -51,6 +51,7 @@ console.log("\b")//* backspace
 //* String startsWith(): Checks if the string starts with a specified substring.
 //* String endsWith(): Checks if the string ends with a specified substring.
 
+//- arr.length -1 -> -1
 console.log(temp.length); //*String Length
 temp.slice(star,end); //* [start,end)
 temp.substring(start, end);

@@ -1,3 +1,4 @@
+import SiteHeader from '@/components/site-header'
 import { NextPage } from 'next'
 
 interface Props {
@@ -6,10 +7,14 @@ interface Props {
 
 const Layout: NextPage<Props> = ({children}) => {
   return (
-    <main>
-        {children}
-    </main>
+    <>
+      <SiteHeader />
+      <main className="flex-1">
+          {children}
+      </main>
+    </>
   )
 }
+
 
 export default Layout
