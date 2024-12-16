@@ -12,6 +12,8 @@ function outerFunction(fn) {
   
 outerFunction(callbackfn);
 
+// ref: https://www.youtube.com/watch?v=Xs1EMmBLpn4&ab_channel=LydiaHallie
+
 // function hey(){
     //     console.log("HEy");
     // }

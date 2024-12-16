@@ -17,9 +17,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import TweetCard from "@/components/tweet-card";
 
-import { ComponentPreview } from "./component-preview";
+import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "./component-source";
 import { CopyButton, CopyNpmCommandButton } from "./copy-button";
+
 
 
 //-Mapping of MDX components to React components
@@ -236,7 +237,7 @@ const components = {
     __bunCommand__?: string;
     __withMeta__?: boolean;
     __src__?: string;
-    __event__?: any;
+    __event__?: null;
     __name__?: string;
   }) => {
     return (

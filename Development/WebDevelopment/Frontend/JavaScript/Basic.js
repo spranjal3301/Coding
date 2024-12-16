@@ -133,6 +133,7 @@ console.log(3!=="3"); //*not equal value or not equal type
 let x = 10;
 x += 5; //*Valid
 
+//! Unexpected Results
 console.log("3"+"3"); //*33
 console.log("3"+3); //*33
 console.log(3+3); //*6
@@ -143,8 +144,34 @@ console.log(16 + 4 + "Volvo")//* 20Volvo
 console.log("Volvo" + 16 + 4)//* Volvo164
 
 
+
+//! Falsy values :
+//- false, 
+//-   0
+//-  -0  
+//-  '' (empty string)
+//-  0n (BigInt)
+//-  null
+//-  undefined
+//-  NaN
+
+//!Truthy values :
+//- true
+//-  1
+//-  -1
+//-  '0'
+//-  'false'
+//-  'null'
+//-  'undefined'
+//-  'NaN'
+//-  [] (empty array)
+//-  {} (empty object)
+//-  function(){} (empty function)
+
+
+
 //! Nullish Coalescing Operator (??) vs (||)
-//* checks if a value is specifically "null or undefined"
+//* (??) checks if a value is specifically "null or undefined"
 let x = null;
 y = undefined;
 let z = 0;
@@ -162,6 +189,7 @@ console.log(v ?? "default"); // Output: {}
 console.log(b ?? "default"); // Output: false
 
 
+// (||) checks if a value is falsy values
  x = null;
  y = undefined;
  z = 0;

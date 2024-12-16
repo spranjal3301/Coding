@@ -59,7 +59,7 @@ export function MobileNav() {
         <MobileLink
           href="/"
           className="flex items-center"
-          onOpenChange={setOpen}
+          setOpen={setOpen}
         >
           <Icons.logo className="mr-2 size-4" />
           <span className="font-bold">{siteConfig.name}</span>
@@ -72,7 +72,8 @@ export function MobileNav() {
                   <MobileLink
                     key={item.href}
                     href={item.href}
-                    onOpenChange={setOpen}
+                    setOpen={setOpen}
+                    onClick={() => setOpen(false)}
                   >
                     {item.title}
                   </MobileLink>
@@ -88,8 +89,11 @@ export function MobileNav() {
                     <MobileLink
                       key={item.href}
                       href={item.href}
-                      onOpenChange={setOpen}
-                      onClick={() => item.event}
+                      setOpen={setOpen}
+                      onClick={() => {
+                        item.event
+                        setOpen(false)
+                      }}
                       className={cn(
                         "text-muted-foreground",
                         item.disabled && "cursor-not-allowed opacity-60",
@@ -129,14 +133,14 @@ export function MobileNav() {
 }
 
 interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void;
+  setOpen?: (open: boolean) => void;
   children: React.ReactNode;
   className?: string;
 }
 
 function MobileLink({
   href,
-  onOpenChange,
+  setOpen,
   className,
   children,
   ...props
@@ -147,7 +151,7 @@ function MobileLink({
       href={href}
       onClick={() => {
         router.push(href.toString());
-        onOpenChange?.(false);
+        // setOpen?.(false);
       }}
       className={cn(className)}
       {...props}

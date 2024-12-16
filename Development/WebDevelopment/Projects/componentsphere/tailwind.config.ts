@@ -12,7 +12,7 @@ const config: Config = {
   ],
   theme: {
   	container: {
-  		center: true,
+  		center: 'true',
   		padding: '2rem',
   		screens: {
   			'2xl': '1600px'
@@ -55,12 +55,17 @@ const config: Config = {
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
-  			}
+  			},
+  			'color-1': 'hsl(var(--color-1))',
+  			'color-2': 'hsl(var(--color-2))',
+  			'color-3': 'hsl(var(--color-3))',
+  			'color-4': 'hsl(var(--color-4))',
+  			'color-5': 'hsl(var(--color-5))'
   		},
   		borderRadius: {
-  			lg: '`var(--radius)`',
-  			md: '`calc(var(--radius) - 2px)`',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: '8px',
+  			md: '6px',
+  			sm: '4px'
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
@@ -80,8 +85,7 @@ const config: Config = {
   			'background-position-spin': 'background-position-spin 3000ms infinite alternate',
   			shine: 'shine var(--duration) infinite linear',
   			pulse: 'pulse var(--duration) ease-out infinite',
-  			rainbow: 'rainbow var(--speed, 2s) infinite linear',
-
+  			rainbow: 'rainbow var(--speed, 2s) infinite linear'
   		},
   		keyframes: {
   			'accordion-down': {
@@ -232,7 +236,7 @@ const config: Config = {
   				'100%': {
   					'background-position': '200%'
   				}
-  			},
+  			}
   		}
   	}
   },

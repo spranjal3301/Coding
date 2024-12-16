@@ -29,9 +29,11 @@ export function ComponentPreview({
   const [key, setKey] = React.useState(0);
   const [config] = useConfig();
   const index = styles.findIndex((style) => style.name === config.style);
+  
 
   const Codes = React.Children.toArray(children) as React.ReactElement[];
   const Code = Codes[index];
+  // console.log();
 
   const Preview = React.useMemo(() => {
     const Component = Index[config.style][name]?.component;
@@ -79,6 +81,8 @@ export function ComponentPreview({
             </TabsList>
           </div>
         )}
+
+        {/*//- Demo Component Tab  */}
         <TabsContent value="preview" className="relative rounded-md" key={key}>
           <ComponentWrapper>
             <Button
@@ -100,6 +104,9 @@ export function ComponentPreview({
             </React.Suspense>
           </ComponentWrapper>
         </TabsContent>
+
+
+        {/*//- Code Tabs  */}
         <TabsContent value="code">
           <div className="flex flex-col space-y-4">
             <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">

@@ -1,0 +1,238 @@
+---
+title: Contribution
+description: How to add your own component to it.
+---
+
+
+We appreciate your support and look forward to your contributions.
+This guide will help you understand the directory structure and provide detailed instructions on how to add a new component to MagicUI.
+
+
+## Getting Started
+
+
+<Steps> 
+
+### Fork and Clone the Repository
+
+1. **Fork this repository**  
+   Click [here](https://github.com/spranjal3301/Component-Sphere/fork) to fork the repository.
+
+2. **Clone your forked repository to your local machine**
+
+   ```bash
+   git clone https://github.com/<YOUR_USERNAME>/Component-Sphere.git
+   ```
+
+3. **Navigate to the project directory**
+
+   ```bash
+   cd Component-Sphere
+   ```
+
+4. **Create a new branch for your changes**
+
+   ```bash
+   git checkout -b my-new-branch
+   ```
+
+5. **Install dependencies**
+
+   ```bash
+   npm i
+   ```
+
+6. **Create a `.env.local` file**
+
+   ```bash
+   touch .env.local && echo "NEXT_PUBLIC_APP_URL=http://localhost:3000" > .env.local
+   ```
+
+7. **Run the project**
+   ```bash
+   npm dev
+   ```
+
+
+###  Create Component
+
+Create the main component in `registry/default/ui/example-component.tsx`
+
+```typescript
+import React from 'react'
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+
+export default function ExampleComponent() {
+  return (
+    <div>
+      This is your component.
+    </div>
+  )
+}
+```
+
+### Create Component Demo
+
+Provide a basic example to showcase your component in `registry/default/example/example-component-demo.tsx`
+
+```typescript
+import ExampleComponent from '@/registry/default/ui/example-component'
+
+export default function ExampleComponentDemo() {
+  return (
+    <div className="relative justify-center">
+      <ExampleComponent />
+    </div>
+  )
+}
+```
+
+### Update Sidebar
+
+Add your component to the sidebar in `config/docs.ts`
+
+```typescript
+{
+    title: "Example Component",
+    href: `/docs/components/example-component`,
+    items: [],
+    label: "New",
+}
+```
+
+### Create docs
+
+Create an MDX file for documenting your component in `content/docs/components/example-component.mdx`
+
+````md
+---
+title: Example Component
+date: 2024-06-01
+description: Example component for <_>
+author: Your Name
+published: true
+---
+
+<ComponentPreview name="example-component-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://example.com/r/example-component"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="example-component" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+<ComponentSource name="example-component" />
+
+</Steps>
+
+## Props
+
+| Prop  | Type   | Description                | Default |
+| ----- | ------ | -------------------------- | ------- |
+| color | String | The color of the component | "blue"  |
+````
+
+###  Update Registry
+
+Export your component and example in the registry files:
+
+In `registry/registry-ui.ts`:
+
+```typescript
+export const ui: Registry = [
+  // ... existing components ...
+  {
+    name: "example-component",
+    type: "registry:ui",
+    files: ["ui/example-component.tsx"],
+    dependencies: ["framer-motion"],
+    cssVars: {
+      light: {
+        "--color-1": "0 100% 63%",
+        "--color-2": "270 100% 63%",
+        "--color-3": "210 100% 63%",
+        "--color-4": "195 100% 63%",
+        "--color-5": "90 100% 63%",
+      },
+      dark: {
+        "--color-1": "0 100% 63%",
+        "--color-2": "270 100% 63%",
+        "--color-3": "210 100% 63%",
+        "--color-4": "195 100% 63%",
+        "--color-5": "90 100% 63%",
+      },
+    },
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              "color-1": "hsl(var(--color-1))",
+              "color-2": "hsl(var(--color-2))",
+              "color-3": "hsl(var(--color-3))",
+              "color-4": "hsl(var(--color-4))",
+              "color-5": "hsl(var(--color-5))",
+            },
+            animation: {
+              rainbow: "rainbow var(--speed, 2s) infinite linear",
+            },
+            keyframes: {
+              rainbow: {
+                "0%": { "background-position": "0%" },
+                "100%": { "background-position": "200%" },
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+];
+```
+
+In `registry/registry-examples.ts`:
+
+```typescript
+export const examples: Registry = [
+  // ... existing examples ...
+  {
+    name: "example-component-demo",
+    type: "registry:example",
+    registryDependencies: ["example-component"],
+    files: ["example/example-component-demo.tsx"],
+  },
+];
+```
+
+Make sure to add any necessary dependencies, tailwind configurations, or other properties as needed for your specific component.
+
+</Steps>
+
+
+

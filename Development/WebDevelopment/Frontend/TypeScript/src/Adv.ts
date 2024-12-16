@@ -29,6 +29,8 @@ type  Todos= {
 type TodoPreview = Pick<Todo, "title" | "completed">;
 type TodoPreview1 = Pick<Todos, "title" | "completed">;
 
+
+
 //`Partial:
 //* Partial<T> Constructs a type with all properties of T set to optional.
 //? Example:
@@ -40,6 +42,8 @@ type optinalTodo = Partial<Todo>;
 //?     description?: string | undefined;
 //?     completed?: boolean | undefined;
 //? }
+
+
 
 
 //`Readonly:
@@ -59,10 +63,27 @@ type readOnlyTodo2 = {
 //Todo.title="" X can't reassign the value of the properties of the object of type readOnlyTodo
 
 
+
+
 //`Record: 
 //* Record<K, T> Constructs an object type whose property keys are K and whose property values are T.
+//* When you have dynamic keys and need a fixed value type associated with each key.
+//* When you want to avoid manually defining every possible key in an object type,
+//* but still want to ensure type safety for values.
 //? Example:
 type TodoRecord = Record<string, Todo>;
+
+type Users = {
+    id: number;
+    name: string;
+  };
+  
+  const users: Record<string, Users> = {
+    "user1": { id: 1, name: "Alice" },
+    "user2": { id: 2, name: "Bob" },
+  };
+
+
 
 //`Map<key,value>:(js) 
 const map = new Map<string, number>();
@@ -70,6 +91,7 @@ map.set('foo', 1);
 map.set('bar', 2);
 
 map.get('foo'); // 1
+
 
 //`Exclude:
 //* Exclude<T, U> Constructs a type by excluding from T all properties that are assignable to U.

@@ -29,8 +29,8 @@
 
 
 
-//` Client Side rendering:
-//* Client-side rendering (CSR) is a modern technique used in web development where the rendering of a webpage is 
+//` Client-side rendering (CSR)
+//*  is a modern technique used in web development where the rendering of a webpage is 
 //* performed in the browser using JavaScript. Instead of the server sending a fully rendered HTML page to the client
  
 //? Good example of CSR - React(You write components, JS renders them to the DOM)
@@ -39,6 +39,8 @@
 // Not SEO optimised
 // User sees a flash before the page renders
 // Waterfalling problem
+
+
 
 
 //` Server Side rendering:
@@ -55,6 +57,10 @@
 
 //? Good example of SSR - Next.js, pure HTML websites
 
+
+
+
+
 //` Static Site Generation:
 //* If a page uses Static Generation, the page HTML is generated at build time. That means in production, the page
 //*  HTML is generated when you run next build. This HTML will then be reused on each request. It can be cached by a CDN.
@@ -68,9 +74,16 @@
 //* Not good for pages that need to be personalised (Same page for everyone Problem)
 
 
+
+
+
+//` Incremental Static Regeneration: (control SSR + SSG)
+//* Update static content without rebuilding the entire site.
+//* Incremental Static Regeneration allows you to update static content instantly without rebuilding the entire site.
+
 //- Clear cache every 10 seconds and revalidate
 const res = await fetch('https://sum-server.100xdevs.com/todos', {
-    next: { revalidate: 10 }
+  next: { revalidate: 10 }
 });
 
 
@@ -79,10 +92,28 @@ import { revalidateTag } from 'next/cache'
 const resp = await fetch('https://sum-server.100xdevs.com/todos', { next: { tags: ['todos'] } })
 revalidate()
 
- 
+
 'use server'
- 
+
 import { revalidateTag } from 'next/cache'
 export default async function revalidate() {
-  revalidateTag('todos')
+revalidateTag('todos')
 }
+
+
+//` Convert a SSR page to SSG/ISR
+
+  //- Example of a SSR page : pages/[userId].tsx
+
+  //* genrateStaticParams() is reseved function which is used to generate static paths
+  //* generateStaticParams should return an array of objects where each object represents the populated dynamic segments of a single route.
+
+  export const revalidate = 10; //- this pagerevalidate every 10 seconds
+
+  export async function generateStaticParams() {
+    const posts = await fetch('https://.../posts').then((res) => res.json()) 
+   
+    return posts.map((post) => ({
+      slug: post.slug,
+    }))
+  }

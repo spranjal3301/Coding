@@ -7,7 +7,7 @@
 
 //* The TypeScript Compiler (tsc) is a command-line tool that processes TypeScript code
 
-//* "TypeScript" check types at Compile time "Zod" check at runtime
+//- "TypeScript" check types at Compile time "Zod" check at runtime
 
 // npm install -g typescript
 // npm inti -y
@@ -88,6 +88,7 @@ let c:Color=Color.Red;
 function test():never{
     throw new Error('Error');
 }
+
 //` Functions
 function greet(str:string):string{
     return str;
@@ -123,7 +124,7 @@ let str1; //Type Inference any
 
 //` Interfaces
 //* An interface in TypeScript is a way to define a contract in your code.
-//* They can only be used to define object types,
+//* They can only be used to define object & classes types,
 //* and they cannot be used to define primitive types, union types, or tuple types.
 interface Person{
     name:string;
@@ -141,7 +142,7 @@ class Employee implements Person{
     age=30;
 }
 
-//* Declaration Merging:you can define an interface multiple times, and TypeScript will merge them into a single interface.
+//- Declaration Merging:you can define an interface multiple times, and TypeScript will merge them into a single interface.
 interface User {
     name: string;
   }

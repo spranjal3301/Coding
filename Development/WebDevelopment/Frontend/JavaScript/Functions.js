@@ -27,6 +27,25 @@ function greet(a){
 }
 console.log(myfuntion(2,3));
 
+
+
+
+
+//!Arrow Function
+//* Arrow functions allow us to write shorter function syntax:
+//* The return keyword is omitted.
+//* The function keyword is omitted.
+//* Parentheses are omitted.
+//* The function is written after the arrow (=>) sign.
+//* Arrow fn do not have "this". (lexical this)
+//~ Arrow functions are lexically scoped, which means that their this binding is bound to the context of the surrounding scope.
+//~ This means that whatever "this" refers to can be preserved by using an arrow function.
+
+const x = (x, y) =>{ x * y};
+y = (x, y) => x * y;
+c = z => z*3;
+console.log(x(5, 6)); //*30
+
 //! Anonymous Functions
 //* A function without a name is called an anonymous function.
 //* An anonymous function is often not accessible after its initial creation.
@@ -47,22 +66,6 @@ const myFunction = function(a,b){
 const myFunction1 = (a,b) => a+b;
 
 
-
-
-//!Arrow Function
-//* Arrow functions allow us to write shorter function syntax:
-//* The return keyword is omitted.
-//* The function keyword is omitted.
-//* Parentheses are omitted.
-//* The function is written after the arrow (=>) sign.
-//* Arrow fn do not have "this". (lexical this)
-//~ Arrow functions are lexically scoped, which means that their this binding is bound to the context of the surrounding scope.
-//~ This means that whatever "this" refers to can be preserved by using an arrow function.
-
-const x = (x, y) =>{ x * y};
-y = (x, y) => x * y;
-c = z => z*3;
-console.log(x(5, 6)); //*30
 
 //! Immediately Invoked Function Expressions IIFE
 //*auto executed function expression 

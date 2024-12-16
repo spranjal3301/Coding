@@ -10,6 +10,10 @@ const car = {type:"Fiat",
 //* type,model,color --> propertys
 //* fullName ---> Method
 
+
+
+
+
 //!Factory Function
 function circle(radius){
     return{
@@ -19,6 +23,8 @@ function circle(radius){
         }
     }
 }
+
+
 //~New Keyword
 //* in JavaScript is used to create an instance of an object by calling the constructor method 
 //* it prevent to create Global instance
@@ -26,6 +32,10 @@ function circle(radius){
         //? Create Empty Object
         //? "this" point Empty Object
         //? return this;
+
+
+
+
 //!Constructor Function
 function Circle(radius){
     this.radius=radius;
@@ -34,6 +44,9 @@ function Circle(radius){
     }
 }
 const c1=new Circle(10);
+
+
+
 
 //! Class Key word are "Primarily Syntactic Sugar"
 class MyClass {
@@ -60,5 +73,55 @@ class MyClass {
   MyClass.staticMethod();
 
 
+//! Public, Private, Protected
+class temp {
+  #name;
+  constructor() {
+      this.#name = "temp"; //- Private
+      this._name = "temp"; //- Protected
+      this.name = "temp"; //- Public
+  }
+}
 
+
+
+
+//! Getter and Setter
+//* Getter and Setter are used to get and set the properties of an object/Class
+//* Getter and Setter name should be same as property name
+//* Getter and Setter both defined or neither of defined
+class Circles{
+    constructor(radius){
+        this.radius=radius;
+    }
+    //- Getter
+    get radius(){
+        //- always return value 
+        return this._radius;
+    }
+    //- Setter
+    set radius(value){
+        //- do not return value
+        this._radius=value/2;
+    }
+}
   
+const c=new Circles(10);
+console.log(c.radius); //5
+
+
+//- In Constructor Function
+function Circle(radius){
+  this._radius = radius;
+
+  //- Getter & Setter
+  Object.defineProperty(this,'radius',{
+    get:function(){
+      return this._radius;
+    },
+    set:function(value){
+      this._radius=value;
+    }
+  });
+
+}

@@ -1,0 +1,24 @@
+//!Question Types
+//*1.BFS(minization problem)
+//*2.DFS
+//* Two DFS 
+//*3.Use track Parent Data Structure
+//*4.Topological Sort
+//*5.Cycle Detection
+//*6.Dijkstra's Algorithm
+//*7.BellmanFord
+//*8.FloydWarshall
+//*9.MST(Prims or Kruskal)
+//*10.DisjSet(Union-Find)
+//*11.Kosaraju's Algorithm(Strongly Connected Components)
+//*12.Tarjan's Algorithm(Articulation Point, Strongly Connected Components, Bridges in Graph)
+
+
+!Eulerian Path and Circuit
+-Undirected Graph:
+*Eulerian circuit - every vertex has an even degree.
+*Eulerian path - either every vertex has an even degree or exactly two vertices have an odd degree.
+
+-Directed Graph:
+*Eulerian circuit - every vertex has equal indegree and outdegree.
+*Eulerian path - at most one vertex has (outdegree) - (indegree) = 1 and at most one vertex has (indegree) - (outdegree) = 1, and all other vertices have equal in and outdegrees.

@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -20,9 +27,31 @@
     "paths": {
       "@/*": ["./src/*"],
       "content-collections": ["./.content-collections/generated"],
-      "env.mjs":["./env.mjs"]
+
+      "env.mjs": ["./env.mjs"],
+      "@/components/registry/ui/*": [
+        "./src/registry/default/ui/*"
+      ],
+      "@/components/example/*": [
+        "./src/registry/default/example/*"
+      ],
+      "__registry__":[
+        "./__registry__"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts",".content-colletions/generated",],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".content-colletions/generated",
+    ""
+  ],
+  "exclude": [
+    "node_modules",
+    "src/scripts/**/*",
+    "src/scripts/build-registry.mts", 
+    "__registry__"
+  ]
 }

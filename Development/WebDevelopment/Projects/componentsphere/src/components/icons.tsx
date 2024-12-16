@@ -28,7 +28,7 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export const Icons = {
   logo: ({ className, ...props }: { className: string }) => (
-    <img src="/icon.png" alt="Magic UI" className={className} {...props} />
+    <img src="/icon.png" alt="UI" className={className} {...props} />
   ),
   close: X,
   spinner: Loader2,

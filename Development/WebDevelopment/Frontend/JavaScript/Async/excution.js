@@ -4,6 +4,7 @@
 
 const { forEach } = require("async");
 
+//ref : https://www.youtube.com/watch?v=eiC58R16hb8&list=WL&index=17&ab_channel=LydiaHallie
 
 //! Asynchronous natual
 //* Asynchronous programming, on the other hand, allows code to be executed in a non-linear fashion.
@@ -45,7 +46,7 @@ console.log("hello");
 
 
 
-const { log } = require("console");
+
 const fs=require("fs");
 //*Async Funtions
 fs.readFile("file.txt","utf-8",(err,data)=>{
@@ -53,10 +54,18 @@ fs.readFile("file.txt","utf-8",(err,data)=>{
 });
 console.log("hello");
 
-//! Message Queue:(callback queue)
+//! Message Queue/Callback Queue
 //* Asynchronous tasks, such as callbacks from I/O operations, timers, or user interactions, are placed in a message queue.
 //* Each message represents a task is complete but that needs to be executed on main stack .
 //* complete first executed on main stack first
+
+//- 1. Task Queue:
+    //* Holdes Web api(fetch,setTimeout) and EventHandler(onclick,onChange) tasks. 
+//- 2. MicroTask Queue:
+    //* Holdes Promises and async await tasks.
+    //* Microtask queue has higher priority (executed before the task queue).
+    //* Microtask can also schedule other microtasks, which will be executed before any other task.
+
 
 //! Event Loop :
 //~ The event loop is a mechanism that allows JavaScript to perform asynchronous operations and handle events without getting blocked.
@@ -65,59 +74,10 @@ console.log("hello");
 //* pull task from Message Queue:(callback queue) and push to execution stack.
 
 
-//!SetTimeOut
-//@ setTimeout(function, milliseconds,fn arg1, fn arg2.....);do not call fn
-
-//*  method is used to execute a function after a specified delay. The delay is specified in milliseconds
-//* The setTimeout() method calls a function or evaluates an expression after a specified number of milliseconds.
-//* Tip: 1000 ms = 1 second.
-//!M01
-setTimeout(() => {
-    console.log("TimeOut");
-}, 1000);
-//!M02
-setTimeout(hide,5000); //~ (fn name, Time ms, fn arg1, fn arg2.....) do not call fn
 
 
-//!ClearTimeOut
-//* The clearTimeout() method clears a timer set with the setTimeout() method.
-//* The ID value returned by setTimeout() is used as the parameter for the clearTimeout() method.
-let time=setTimeout(() => {
-    console.log("TimeOut");
-}, 1000);
-clearTimeout(time);
-
-//!SetInterval
-//@ setInterval(function, milliseconds ,fn arg1, fn arg2.....);
-//* The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).
-//* The setInterval() method will continue calling the function until clearInterval() is called, or the window is closed.
-//*  method in JavaScript is used to repeat a specified function at every given time-interval
-let i=0;
-let interval=setInterval(() => {
-    i++;
-    console.log("Interval");
-    if(i==5){
-        clearInterval(interval);
-    }
-}, 1000);
-setInterval(hide,1000);//~ (fn name, Time ms, fn arg1, fn arg2.....) do not call fn
-clearInterval(interval);
 
 
-//! callback(funtional argument)
-//* A more formal definition would be - Any function that is passed as an argument to another function so that 
-//* it can be executed in that other function is called as a callback function.
-//* A JavaScript callback is a function which is to be executed after another function has finished execution.
-//* usfull in async programming
-function callbackfn() {
-    console.log("The callback function has been executed.");
-  }
-function outerFunction(fn) {
-    console.log("The outer function has been executed.");
-    fn();
-  }
-  
-outerFunction(callbackfn);
 
 
 
