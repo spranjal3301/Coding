@@ -14,6 +14,11 @@ export const ui: Registry = [
     files: ["ui/flickering-grid.tsx"],
   },
   {
+    name: "animated-hover-button",
+    type: "registry:ui",
+    files: ["ui/animated-hover-button.tsx"],
+  },
+  {
     name: "rainbow-button",
     type: "registry:ui",
     files: ["ui/rainbow-button.tsx"],

@@ -26,6 +26,16 @@
     ]
   },
   {
+    "name": "animated-hover-button",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/animated-hover-button.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "rainbow-button",
     "type": "registry:ui",
     "files": [

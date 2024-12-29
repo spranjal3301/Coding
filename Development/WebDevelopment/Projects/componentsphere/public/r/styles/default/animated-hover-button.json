@@ -1,0 +1,12 @@
+{
+  "name": "animated-hover-button",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "ui/animated-hover-button.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\ninterface AnimatedHoverButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  icon?: any;\n}\n\nexport function AnimatedHoverButton({\n  children,\n  className,\n  icon,\n  ...props\n}: AnimatedHoverButtonProps) {\n  return (\n    <div className=\"container flex flex-col justify-center items-center \">\n      <button\n        className={cn(\n          \"px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden\",\n          \"bg-black dark:bg-white dark:text-black text-white flex justify-center group/modal-btn\"\n        )}\n      >\n        <span className=\"group-hover/modal-btn:translate-x-40 text-center transition duration-500\">\n          {children}\n        </span>\n        <div className=\"-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20\">\n          {icon ?? \"🖕🏻\"}\n        </div>\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

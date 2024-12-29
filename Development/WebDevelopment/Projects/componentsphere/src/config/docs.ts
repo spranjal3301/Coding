@@ -10,7 +10,7 @@ export const docsConfig: DashboardConfig = {
     // },
     // {
     //   title: "Templates",
-    //   href: "https://pro.magicui.design",
+    //   href: "https://component-sphere.vercel.app/",
     //   event: "header_cta_clicked",
     //   label: "New",
     // },
@@ -136,6 +136,18 @@ export const docsConfig: DashboardConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Animated Hover Button",
+          href: `/docs/components/animated-hover-button`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Button Collection",
+          href: `/docs/components/button-collection`,
+          items: [],
+          label: "",
+        }
       ],
     },
     {

@@ -46,6 +46,8 @@
 
 
 
+
+
 //! TypeScript Types
 //* Number
 const x:number=1;
@@ -122,6 +124,9 @@ function createPair<S, T>(v1: S, v2: T): [S, T] {
 const num=1; //Type Inference number
 let str1; //Type Inference any
 
+
+
+
 //` Interfaces
 //* An interface in TypeScript is a way to define a contract in your code.
 //* They can only be used to define object & classes types,
@@ -160,22 +165,25 @@ interface User {
     age: number;
   }
   
-  // Extend an existing interface.
+//- Extend an existing interface.
   interface Employee extends Person {
     salary: number;
   }
 
 
+
+
 //`types
 //* Type aliases in TypeScript allow you to create a new name for a type.
 //* Types are more flexible and can define primitive, intersection, union, tuple, or different types of data.
-//* Types do not support declaration merging.
+//- Types do not support declaration merging , and not extends dirctly
 
 // Define a custom data structure.
 type Point = {
     x: number;
     y: number;
   };
+
   
   // Define a union type.
   type NumberOrString = number | string;
@@ -189,9 +197,10 @@ type Point = {
       age:number;
   }
 
-  type users={
+type users={
       [key:string]:user //`Dynamic key
-  }
+}
+
 const obj:users={
     '1':{
         name:'John',
@@ -199,14 +208,14 @@ const obj:users={
     }
 }
 
-//* Type Extends :Types can also extend other types or interfaces using intersection (&), but it's less straightforward than interfaces.
+//- Type Extends :Types can also extend other types or interfaces using intersection (&), but it's less straightforward than interfaces.
 type Pers = {
     name: string;
   };
   
-  type Emp = Pers & {
+type Emp = Pers & {
     role: string;
-  };
+};
 
 
 //` Type Guards
@@ -238,8 +247,10 @@ function App(props:PropsType) {
 //- Ignore the Typescript error
 // @ts-ignore
 
+
 //`  "!" (Non-null assertion operator)
-//? example; prosses.env.PORT!
+//* give Typescript ensure the value is Not NULL
+//- example; prosses.env.PORT!
 
 
 

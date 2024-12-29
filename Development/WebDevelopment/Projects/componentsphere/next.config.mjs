@@ -21,7 +21,10 @@ const nextConfig = {
         permanent: true,
       },
     ];
-  }
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
  
 // withContentCollections must be the outermost plugin

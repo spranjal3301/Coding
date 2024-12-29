@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 const config = {
   darkMode: ['class'],
@@ -19,6 +20,8 @@ const config = {
   	},
   	extend: {
   		colors: {
+			"main1":'#72C6EF',
+    		"main2":'#004E8F',
   			'in-active': '#545454',
   			connector: '#F0F1F6',
   			'keyword-yellow': '#E1CE26',
@@ -78,7 +81,12 @@ const config = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+  			'color-1': 'hsl(var(--color-1))',
+  			'color-2': 'hsl(var(--color-2))',
+  			'color-3': 'hsl(var(--color-3))',
+  			'color-4': 'hsl(var(--color-4))',
+  			'color-5': 'hsl(var(--color-5))'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -102,26 +110,101 @@ const config = {
   					height: '0'
   				}
   			},
-			"fade-in-down": {
-				"0%": {
-					opacity:'0',
-					transform: "translate3d(0, -100%, 0)",
-				},
-				"100%": {
-					opacity: '1',
-					transform: "translate3d(0, 0, 0)",
-				},
-			},
-  
+  			'fade-in-down': {
+  				'0%': {
+  					opacity: '0',
+  					transform: 'translate3d(0, -100%, 0)'
+  				},
+  				'100%': {
+  					opacity: '1',
+  					transform: 'translate3d(0, 0, 0)'
+  				}
+  			},
+  			rainbow: {
+  				'0%': {
+  					'background-position': '0%'
+  				},
+  				'100%': {
+  					'background-position': '200%'
+  				}
+  			},
+  			'shiny-text': {
+  				'0%, 90%, 100%': {
+  					'background-position': 'calc(-100% - var(--shiny-width)) 0'
+  				},
+  				'30%, 60%': {
+  					'background-position': 'calc(100% + var(--shiny-width)) 0'
+  				}
+  			},
+  			pulse: {
+  				'0%, 100%': {
+  					boxShadow: '0 0 0 0 var(--pulse-color)'
+  				},
+  				'50%': {
+  					boxShadow: '0 0 0 8px var(--pulse-color)'
+  				}
+  			},
+  			'border-beam': {
+  				'100%': {
+  					'offset-distance': '100%'
+  				}
+  			},
+  			'background-position-spin': {
+  				'0%': {
+  					backgroundPosition: 'top center'
+  				},
+  				'100%': {
+  					backgroundPosition: 'bottom center'
+  				}
+  			},
+  			marquee: {
+  				from: {
+  					transform: 'translateX(0)'
+  				},
+  				to: {
+  					transform: 'translateX(calc(-100% - var(--gap)))'
+  				}
+  			},
+  			'marquee-vertical': {
+  				from: {
+  					transform: 'translateY(0)'
+  				},
+  				to: {
+  					transform: 'translateY(calc(-100% - var(--gap)))'
+  				}
+  			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-			'fadeindown': 'fade-in-down 1s ease-in 0.25s 1'
-  		}
+  			fadeindown: 'fade-in-down 1s ease-in 0.25s 1',
+  			rainbow: 'rainbow var(--speed, 2s) infinite linear',
+  			'shiny-text': 'shiny-text 8s infinite',
+  			pulse: 'pulse var(--duration) ease-out infinite',
+  			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
+  			'background-position-spin': 'background-position-spin 3000ms infinite alternate',
+  			marquee: 'marquee var(--duration) infinite linear',
+  			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
+  		},
+		themeGradient: {
+			'theme-gradient': 'inline-block bg-gradient-to-r from-[#72C6EF] to-[#004E8F] bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]'
+		  }
   	}
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+	require('tailwindcss-animate'),
+	plugin(function({ addUtilities }:any) {
+		addUtilities({
+		  '.theme-gradient': {
+			'background-image': 'linear-gradient(to right, #72C6EF, #004E8F)',
+			'-webkit-background-clip': 'text',
+			'background-clip': 'text',
+			'color': 'transparent',
+			'display': 'inline-block'
+		  }
+		})
+	  })
+],
 } satisfies Config
 
 export default config

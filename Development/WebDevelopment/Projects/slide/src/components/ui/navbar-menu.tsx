@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const transition = {
   type: "spring",
@@ -28,7 +29,7 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer hover:opacity-[0.9] "
+        className="cursor-pointer hover:opacity-[0.8] text-md"
       >
         {item}
       </motion.p>
@@ -48,7 +49,7 @@ export const MenuItem = ({
               >
                 <motion.div
                   layout // layout ensures smooth animation
-                  className="w-max h-full p-4 backdrop-blur-md bg-background/80 "
+                  className="w-max h-full p-4 backdrop-blur-md bg-background/90 "
                 >
                   {children}
                 </motion.div>
@@ -71,7 +72,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="dark:border-white/[0.2] shadow-input flex justify-center space-x-4 px-8 py-4 "
+      className="dark:border-white/[0.2] shadow-input flex justify-center space-x-8 px-8 py-4 "
     >
       {children}
     </nav>
@@ -114,9 +115,38 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-200 hover:text-blue-500 "
+      className="text-neutral-200 hover:opacity-[0.8]"
     >
       {children}
     </Link>
   );
 };
+
+
+interface NavFeatureCardProps {
+  className?: string;
+  title: string;
+  titleClass?: string;
+  description?: string;
+}
+
+export function NavFeatureCard({
+  className,
+  title,
+  titleClass,
+  description,
+  ...props
+}: NavFeatureCardProps): JSX.Element {
+  return (
+    <div
+      className={cn(
+        "flex max-w-60 flex-col flex-wrap rounded-md transition-colors hover:bg-secondary/50 hover:text-accent-foreground cursor-pointer  p-2",
+        className
+      )}
+      {...props}
+    >
+      <h4 className={cn("text-base",titleClass)}>{title}</h4>
+      <p className=" text-sm  text-gray-400">{description}</p>
+    </div>
+  );
+}

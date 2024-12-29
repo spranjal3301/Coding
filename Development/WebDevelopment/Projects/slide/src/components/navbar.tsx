@@ -1,30 +1,38 @@
 "use client";
 import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
-import { cn } from "@/lib/utils";
+import { HoveredLink, Menu, MenuItem, NavFeatureCard, ProductItem } from "./ui/navbar-menu";
+import Image from "next/image";
 
-export function Navbar() {
+
+export function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   return (
     <div className="w-full md:flex items-center justify-center hidden ">
-      <Navbar2/>
-    </div>
-  );
-}
-
-export function Navbar2({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
-  return (
-    <div
-
-    >
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="Features">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Web Development</HoveredLink>
-            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-            <HoveredLink href="/branding">Branding</HoveredLink>
+          <div className="text-sm grid grid-cols-2 gap-4 p-2">
+            <div className="flex flex-col justify-end p-4 rounded-xl bg-secondary/50">
+              <Image src='/ai-icon.png' alt="✨" width={100} height={100}/>
+              <NavFeatureCard
+                title="AI-Powered Automation"
+                titleClass="text-xl"
+                description="Streamline your workflow with intelligent automation."
+              />
+            </div>
+            <div className="flex flex-col space-y-2">
+              <NavFeatureCard
+                title="Task Automation"
+                description="Automate repetitive tasks and save time."
+              />
+              <NavFeatureCard
+                title="Workflow Optimization"
+                description="Optimize your processes with AI- driven insights"
+              />
+              <NavFeatureCard
+                title="Intelligent Scheduling"
+                description="AI-powered scheduling for maximum efficiency."
+              />
+            </div>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Pricing">
@@ -43,15 +51,14 @@ export function Navbar2({ className }: { className?: string }) {
             />
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="About">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
-          </div>
-        </MenuItem>
+
+        <HoveredLink href="/about">About</HoveredLink>
       </Menu>
     </div>
   );
 }
+
+
+
+
+

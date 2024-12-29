@@ -36,6 +36,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+./src/app/expriment
+
 
 # auto generated files
 .content-collections

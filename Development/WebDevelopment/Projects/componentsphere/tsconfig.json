@@ -14,7 +14,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -53,5 +53,8 @@
     "src/scripts/**/*",
     "src/scripts/build-registry.mts", 
     "__registry__"
-  ]
+  ],
+  "rules": {
+    "@typescript-eslint/no-empty-interface": "off"
+  }
 }

@@ -17,6 +17,25 @@ export const examples: Registry = [
     type: "registry:example",
     files: ["example/rainbow-button-demo.tsx"],
   },
+  {
+    name: "animated-hover-button-demo",
+    type: "registry:example",
+    files: ["example/animated-hover-button-demo.tsx"],
+    dependencies: ["lucide-react"],
+  },
+  {
+    name: "button-1",
+    type: "registry:example",
+    files: ["example/button-1.tsx"],
+    registryDependencies: ["shadcn:button"],
+  },
+  {
+    name: "button-2",
+    type: "registry:example",
+    files: ["example/button-2.tsx"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["shadcn:button"],
+  },
   
 ];
 

@@ -48,7 +48,7 @@ type optinalTodo = Partial<Todo>;
 
 //`Readonly:
 //* Readonly<T> Constructs a type with all properties of T set to readonly,
-//* meaning the properties of the constructed type cannot be reassigned.
+//* meaning the properties of the constructed type cannot be reassigned(make const).
 //? Example:
 //!M01
 type readOnlyTodo = Readonly<Todo>;

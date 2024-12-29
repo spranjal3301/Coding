@@ -44,6 +44,19 @@
     --scrollbar-thumb-hover: #5c5c5f;
 
     --scrollbar-width: 12px;
+
+    --color-1: 0 100% 63%;
+
+    --color-2: 270 100% 63%;
+
+    --color-3: 210 100% 63%;
+
+    --color-4: 195 100% 63%;
+
+    --color-5: 90 100% 63%;
+
+    --main-1:#72C6EF;
+    --main-2:#004E8F;
   }
 
   .dark {
@@ -79,6 +92,13 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+    --main-1:#72C6EF;
+    --main-2:#004E8F;
   }
 }
 

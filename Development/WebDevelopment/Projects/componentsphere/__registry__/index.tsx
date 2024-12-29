@@ -27,6 +27,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "animated-hover-button": {
+      name: "animated-hover-button",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["src/registry/default/ui/animated-hover-button.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/animated-hover-button.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "rainbow-button": {
       name: "rainbow-button",
       type: "registry:ui",
@@ -66,6 +77,39 @@ export const Index: Record<string, any> = {
       registryDependencies: undefined,
       files: ["src/registry/default/example/rainbow-button-demo.tsx"],
       component: React.lazy(() => import("@/registry/default/example/rainbow-button-demo.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-hover-button-demo": {
+      name: "animated-hover-button-demo",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["src/registry/default/example/animated-hover-button-demo.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/animated-hover-button-demo.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "button-1": {
+      name: "button-1",
+      type: "registry:example",
+      registryDependencies: ["shadcn:button"],
+      files: ["src/registry/default/example/button-1.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/button-1.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "button-2": {
+      name: "button-2",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["src/registry/default/example/button-2.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/button-2.tsx")),
       source: "",
       category: "undefined",
       subcategory: "undefined",

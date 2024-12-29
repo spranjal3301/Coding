@@ -6,13 +6,6 @@ import { capitalize } from "@/lib/utils";
 
 export const runtime = "edge";
 
-const inter600 = fetch(
-  new URL(`../../assets/fonts/Inter-SemiBold.ttf`, import.meta.url),
-).then((res) => res.arrayBuffer());
-
-const inter700 = fetch(
-  new URL(`../../assets/fonts/Inter-Bold.ttf`, import.meta.url),
-).then((res) => res.arrayBuffer());
 
 const image = fetch(
   new URL("../../assets/images/og-bg-2.jpg", import.meta.url),
@@ -47,19 +40,6 @@ export async function GET(req: Request) {
             // @ts-ignore
             src={imageData}
           />
-
-          {/* Lighting Effects */}
-          {/* <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              backgroundImage:
-                "radial-gradient(circle at 0% 15%, #FFBD7A22, rgba(0,0,0,0) 40%), radial-gradient(circle at 100% 85%, #9E7AFF22,rgba(0,0,0,0) 40%)",
-            }}
-          ></div> */}
-
           <h1 tw="absolute inset-0 flex justify-center items-center mb-57 flex-row">
             <img
               tw="h-10 w-10"
@@ -134,16 +114,6 @@ export async function GET(req: Request) {
       {
         width: 1200,
         height: 630,
-        fonts: [
-          {
-            name: "Inter 600",
-            data: await inter600,
-          },
-          {
-            name: "Inter 700",
-            data: await inter700,
-          },
-        ],
       },
     );
   } catch (e: any) {

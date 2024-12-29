@@ -7,7 +7,7 @@ export const siteConfig = {
     links: {
       twitter: "#",
       discord: "#",
-      github: "#",
+      github: "https://github.com/spranjal3301/Component-Sphere",
       instagram: "#",
     },
     keywords: [
