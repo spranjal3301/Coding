@@ -8,30 +8,31 @@ import { Calendar } from "@/components/ui/calendar";
 import { BentoCard, BentoGrid } from "../ui/bento-grid";
 import Marquee from "../ui/marquee";
 import React from "react";
-import { AnimatedBeamMultipleOutputDemo } from "../animated-beam-multiple-output-demo";
-import { AnimatedListDemo } from "../animated-list-demo";
+import { AnimatedBeamMultipleOutputDemo } from "../global/Landing/animated-beam-multiple-output-demo";
+import { AnimatedListDemo } from "../global/Landing/animated-list-demo";
+import ShinyText from "../ui/shiny-text";
 
 const files = [
   {
-    "name": "automate_comments.json",
-    "body": "Automatically respond to comments in real-time, boosting engagement and visibility across Instagram posts."
+    name: "automate_comments.json",
+    body: "Automatically respond to comments in real-time, boosting engagement and visibility across Instagram posts.",
   },
   {
-    "name": "dm_responses.ai",
-    "body": "Deliver personalized, AI-powered responses to Instagram DMs and streamline lead generation effortlessly."
+    name: "dm_responses.ai",
+    body: "Deliver personalized, AI-powered responses to Instagram DMs and streamline lead generation effortlessly.",
   },
   {
-    "name": "story_mentions.md",
-    "body": "Handle every story mention and reaction automatically, ensuring no interaction goes unnoticed."
+    name: "story_mentions.md",
+    body: "Handle every story mention and reaction automatically, ensuring no interaction goes unnoticed.",
   },
   {
-    "name": "analytics_dashboard.csv",
-    "body": "Track and analyze your engagement metrics with a real-time, intuitive analytics dashboard."
+    name: "analytics_dashboard.csv",
+    body: "Track and analyze your engagement metrics with a real-time, intuitive analytics dashboard.",
   },
   {
-    "name": "lead_qualifier.xml",
-    "body": "Qualify leads with smart automation, guiding them through funnels directly from Instagram interactions."
-  }
+    name: "lead_qualifier.xml",
+    body: "Qualify leads with smart automation, guiding them through funnels directly from Instagram interactions.",
+  },
 ];
 
 const features = [
@@ -113,14 +114,19 @@ interface Props {}
 
 const Feature: NextPage<Props> = ({}) => {
   return (
-    <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-28 md:px-8">
+    <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 md:px-8 py-10  md:py-28">
       <div className="mx-auto max-w-5xl text-center flex flex-col lg:flex-row items-center lg:items-end gap-3">
         <h2 className="text-3xl font-semibold tracking-tight text-black dark:text-white sm:text-4xl">
           What's in <span className="theme-gradient">LINK?</span>
         </h2>
-        <p className="text-xl leading-8 text-black/80 dark:text-white/70">
-          Everything you need to Automate your Instagram.
-        </p>
+        <div className="text-xl leading-8 text-black/80 dark:text-white/70">
+          <ShinyText
+            text="Everything you need to Automate your Instagram."
+            disabled={false}
+            speed={3}
+            className="custom-class"
+          />
+        </div>
       </div>
       <BentoGrid className="md:max-w-5xl max-w-[95%] mx-auto">
         {features.map((feature, idx) => (

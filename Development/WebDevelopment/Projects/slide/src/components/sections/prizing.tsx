@@ -5,6 +5,7 @@ import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { AnimatePresence ,motion} from 'framer-motion';
+import { productPrices } from '@/config/site';
 
 const toHumanPrice = (price:any, decimals = 2) => {
   return (price / 100).toFixed(decimals);
@@ -12,37 +13,7 @@ const toHumanPrice = (price:any, decimals = 2) => {
 
 
 
-const productPrices = [
-  {
-    id: 'price_1',
-    name: 'Free Plan',
-    description: 'A basic plan for startups and individual users',
-    features: [
-        "Boost engagement with target responses",
-        "Automate comment replies to enhance audience interaction",
-        "Turn followers into customers with targeted messaging",
-    ],
-    monthlyPrice: 0,
-    yearlyPrice: 0,
-    cta: "Get Started",
-    isMostPopular: false
-  },
-  {
-    id: 'price_2',
-    name: 'Smart AI Plan',
-    description: 'A premium plan for growing businesses',
-    features: [
-        "AI-powered response generation",
-        "Advanced analytics and insights",
-        "Priority customer support",
-        "Custom branding options",
-    ],
-    monthlyPrice: 900,
-    yearlyPrice: 9900,
-    cta: "Upgrade Now",
-    isMostPopular: true
-  },
-];
+
 
 const PricingSection = () => {
   const [interval, setInterval] = useState('month');
@@ -69,7 +40,7 @@ const PricingSection = () => {
           <h2 className="text-5xl font-bold tracking-tight text-black dark:text-white sm:text-6xl">
             Simple <span className='theme-gradient'>pricing</span> for everyone.
           </h2>
-          <p className="mt-4 text-xl leading-8 text-black/80 dark:text-white/70">
+          <p className="hidden md:inline mt-4 text-xl leading-8 text-black/80 dark:text-white/70">
             Choose an <strong>affordable plan</strong> that's packed with the best features for 
             engaging your audience, creating customer loyalty, and driving sales.
           </p>

@@ -6,13 +6,14 @@ import { cn } from "@/lib/utils";
 import AnimatedShinyText from "../ui/animated-shiny-text";
 import AnimatedGridPattern from "../ui/animated-grid-pattern";
 import HeroVideoDialog from "../ui/hero-video-dialog";
+import GetStartedBtn from "../global/Landing/get-started-btn";
+
 
 export default async function Hero() {
   return (
     <section id="hero">
       <div className="relative overflow-hidden py-5 md:py-14 ">
         <div className="z-10 flex flex-col">
-          {" "}
           {/*//- for video  model on top*/}
           <AnimatedGridPatternDemo>
             <div
@@ -20,12 +21,15 @@ export default async function Hero() {
               md:mt-10"
             >
               <Herobanner />
+
               <Herotitle />
+
               <Herosubtitle />
-              <Herobtn />
+
+              <GetStartedBtn />
             </div>
           </AnimatedGridPatternDemo>
-          
+
           <HeroVideoDialog
             className="md:max-w-5xl w-[90%] mx-auto"
             animationStyle="from-center"
@@ -100,7 +104,7 @@ function Herotitle() {
       <h1
         className={cn(
           "text-black dark:text-white",
-          "relative mx-0   md:mx-auto md:px-4 md:py-2",
+          "relative mx-0   md:mx-auto md:px-4 md:py-2 py-0",
           "text-balance font-semibold tracking-tighter md:text-center",
           "text-5xl sm:text-7xl md:text-7xl lg:text-7xl"
         )}
@@ -116,15 +120,17 @@ function Herotitle() {
 
 function Herosubtitle() {
   return (
-    <p className="max-w-5xl text-balance text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-lg ">
+    <div className="max-w-5xl w-full text-balance text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-lg ">
       {/* Deliver fast responses to Comments , DMs ,StoryReply, and Mention ,Automatically answer every reaction using AI power personal assistant that sounds 
 exactly like you!  */}
-      Deliver fast responses to <b>Comments</b>,<b> DMs</b>, <b> Story Reply</b>{" "}
-      and <b>Mention</b> .
-      <br />
+      <span className="hidden md:inline">
+        Deliver fast responses to <b>Comments</b>,<b> DMs</b>,{" "}
+        <b> Story Reply</b> and <b>Mention</b> .
+      </span>
+      {/* <br /> */}
       Automatically answer every reaction using AI power personal assistant that
       sounds exactly like you!
-    </p>
+    </div>
   );
 }
 

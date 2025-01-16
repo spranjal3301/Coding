@@ -12,7 +12,7 @@ const SphereMask: NextPage<Props> = ({ color,reverse = false }) => {
       <div
         className={cn(
           // color
-          color?`[--color:${color}]`:"[--color:#72C6EF]",
+          color?.length ?`[--color:${color}]`:"[--color:#72C6EF]",
           "pointer-events-none relative  mx-auto  h-[50rem] overflow-hidden",
 
           // sphere mask
