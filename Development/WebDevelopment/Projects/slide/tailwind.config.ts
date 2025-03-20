@@ -185,12 +185,16 @@ const config = {
           "0%": { transform: "translate(0%, 0%)", opacity: "1" },
           "100%": { transform: "translate(100%, 0%)", opacity: "0" },
         },
+        'caret-blink': {
+          '0%,70%,100%': { opacity: '1' },
+          '20%,50%': { opacity: '0' },
+        },
       },
       animation: {
         shine: "shine 5s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        fadeindown: "fade-in-down 1s ease-in 0.25s 1",
+        fadeindown: "fade-in-down 0.8s ease-in 0.5s 1",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         "shiny-text": "shiny-text 8s infinite",
         pulse: "pulse var(--duration) ease-out infinite",
@@ -199,8 +203,9 @@ const config = {
           "background-position-spin 3000ms infinite alternate",
         marquee: "marquee var(--duration) infinite linear",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
-		'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
+		    'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
         'star-movement-top': 'star-movement-top linear infinite alternate',
+        'caret-blink': 'caret-blink 1.25s ease-out infinite',
       },
       themeGradient: {
         "theme-gradient":
@@ -223,5 +228,9 @@ const config = {
     }),
   ],
 } satisfies Config;
+
+// from-main1 via-[#398ABF] to-main2
+//  from-main1 via-[#3B82F6] to-main2
+//  from-main1 via-[#2B6DB1] to-main2
 
 export default config;

@@ -107,7 +107,7 @@ export const Index: Record<string, any> = {
     "button-2": {
       name: "button-2",
       type: "registry:example",
-      registryDependencies: undefined,
+      registryDependencies: ["shadcn:button"],
       files: ["src/registry/default/example/button-2.tsx"],
       component: React.lazy(() => import("@/registry/default/example/button-2.tsx")),
       source: "",

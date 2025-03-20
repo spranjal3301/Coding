@@ -14,7 +14,7 @@ const Layout: NextPage<Props> = ({children}) => {
           {children}
       </main>
       {/*//- Raindow Lighting Component below Nav-Bar*/}
-      <RainbowLighting/>
+      {/* <RainbowLighting/> */}
     </>
   )
 }

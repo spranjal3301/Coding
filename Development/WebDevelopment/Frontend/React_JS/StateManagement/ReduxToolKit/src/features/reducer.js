@@ -1,7 +1,7 @@
-import { createSlice,nanoid} from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 //`Slice:
-//* A "slice" refers to a portion of the state or independent piece of data in a Redux store. 
+//* A "slice" refers to a portion of the state or independent piece of data in a Redux store.
 //* anything that you want to track as part of your React app's state.
 //* A slice is a collection of Redux reducer logic and actions for a single feature of your app.
 
@@ -14,27 +14,28 @@ import { createSlice,nanoid} from "@reduxjs/toolkit";
 //- In Redux-toolkit we can diretly update state because it use :
 // use Immer inside to allow us to write "mutating" update logic that becomes correct immutable updates.
 
-const initialState={
-    username:"",
-    password:"",
-}
+const initialState = {
+  username: "",
+  password: "",
+};
 
-const signinSlice=createSlice({
-    name:"signin", //?unqiue  name of the slice
-    initialState,
-    reducers:{ //? functions that are used to update the state of the slice
+const signinSlice = createSlice({
+  name: "signin", //?unqiue  name of the slice
+  initialState,
+  reducers: {
+    //? functions that are used to update the state of the slice
 
-        setUsername:(state,action)=>{ 
-            //? {state,action} are the always the default parameters of the reducer function
-            //? state is the current state of the slice
-            //? action is the payload that is passed to the reducer
-            state.username=action.payload; //? diretly update 
-        },
-        setPassword:(state,action)=>{
-            state.password=action.payload;
-        }
-    }
-})
+    setUsername: (state, action) => {
+      //? {state,action} are the always the default parameters of the reducer function
+      //? state is the current state of the slice
+      //? action is the payload that is passed to the reducer
+      state.username = action.payload; //? diretly update
+    },
+    setPassword: (state, action) => {
+      state.password = action.payload;
+    },
+  },
+});
 
-export const {setUsername,setPassword}=signinSlice.actions; //? use in the component to dispatch the action
-export default signinSlice.reducer //? use this reducer to create the root reducer in the store
+export const { setUsername, setPassword } = signinSlice.actions; //? use in the component to dispatch the action
+export default signinSlice.reducer; //? use this reducer to create the root reducer in the store

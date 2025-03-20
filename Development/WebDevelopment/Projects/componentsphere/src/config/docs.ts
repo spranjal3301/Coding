@@ -84,13 +84,13 @@ export const docsConfig: DashboardConfig = {
     {
       title: "Templates",
       items: [
-        {
-          title: "Portfolio",
-          href: `/docs/templates/portfolio`,
-          items: [],
-          label: "",
-          event: "template_portfolio_clicked",
-        },
+        // {
+        //   title: "Portfolio",
+        //   href: `/docs/templates/portfolio`,
+        //   items: [],
+        //   label: "",
+        //   event: "template_portfolio_clicked",
+        // },
         {
           title: "SaaS",
           href: `/docs/templates/saas`,

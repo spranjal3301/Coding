@@ -5,7 +5,7 @@ using namespace std;
 //* To find cycle in a directed graph we can use the Depth First Traversal (DFS) technique.
 //*  It is based on the idea that there is a cycle in a graph only if there is a back edge
 //* [i.e., a node points to one of its ancestors] present in the graph.
-//*on the same path it is possible to reach a previously visited node.
+//* on the same path it is possible to reach a previously visited node.
 class Solution {
     bool DFS(int V,vector<int> adj[],unordered_map<int ,bool> &visited,unordered_map<int, bool> &dfsStack){
         
@@ -32,6 +32,8 @@ class Solution {
         return false;
     }
 };
+
+
 //!Detect cycle in a directed graph BFS
 //~Topological Sort is Exist for DAG.
 //~if(Topological Sort not exist)
@@ -77,9 +79,8 @@ public:
         }
 
         if (no_of_elements_in_topological_sort==V)//~cycle not present(no_of_elements_in_topological_sort==no. of vertex)
-        {
             return false;
-        }
+        
         
 
         return true;//~cycle present

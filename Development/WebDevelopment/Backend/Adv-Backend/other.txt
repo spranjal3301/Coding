@@ -21,14 +21,7 @@ WebRTC (Web Real-Time Communication): Enables real-time communication in web bro
         SDP
         A data format used to negotiate the parameters of the peer-to-peer connection. 
 
-WebSocket 
-    Purpose:
-    Designed for full-duplex communication channels over a single TCP connection, enabling real-time messaging between a client and server.
-    -full duplex: Both the client and server can send messages independently without waiting for
-    Use Cases:
-    Real-time notifications
-    Chat applications
-    Live updates (e.g., stock tickers, gaming)
+
 
 
 Web Transport (WebTrans)

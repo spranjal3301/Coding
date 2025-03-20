@@ -18,12 +18,13 @@ model User {
   clerkId      String         @unique
   email        String?        @unique
   phone        String?        @unique  //~ change
-  firstname    String?        @unique
-  lastname     String?        @unique
+  firstname    String?        
+  lastname     String?        
   createdAt    DateTime       @default(now())
   subscription Subscription?
   integrations Integrations[]   //- user -> [Instagram,whatsapp,X,LinkedIn]
   automations  Automation[]
+  keywords     Keyword[]      // Optionally, you can set up a relation directly if needed
 }
 
 model Subscription {
@@ -31,7 +32,7 @@ model Subscription {
   plan       SUBSCRIPTION_PLAN @default(FREE)
   createdAt  DateTime          @default(now())
   updatedAt  DateTime          @default(now())
-  customerId String?           @unique
+  paymentId  String?           @unique
   UserId     String            @unique @db.Uuid
   User       User?             @relation(fields: [UserId], references: [id], onDelete: Cascade)
 }
@@ -57,9 +58,10 @@ model Automation {
   posts     Post[]
   dms       Dms[]
   keywords  Keyword[]
-  userId    String?   @db.Uuid
-  User      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String     @db.Uuid
+  User      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
 
 model Post {
   id           String      @id @default(uuid()) @db.Uuid
@@ -86,6 +88,7 @@ model Listener {
   listener     LISTENERS  @default(MESSAGE)
   prompt       String
   commentReply String?
+  reelReaction String?
   dmCount      Int        @default(0)
   commentCount Int        @default(0)
   automationId String     @unique @db.Uuid
@@ -97,13 +100,15 @@ model Keyword {
   word         String
   automationId String?     @db.Uuid
   Automation   Automation? @relation(fields: [automationId], references: [id], onDelete: Cascade)
+  clerkId      String
+  User         User        @relation(fields: [clerkId], references: [clerkId], onDelete: Cascade)
 
-  @@unique([automationId, word]) //~this constraints ensure user cant use the same keyword on multiple automations
+  @@unique([clerkId, word])//~ unique keyword for user
 }
 
 model Trigger {
   id           String     @id @default(uuid()) @db.Uuid
-  type         String    //~ comment or Dm
+  type         String    //~ COMMENT , DM , REEL_REPLY
   automationId String?     @db.Uuid
   Automation   Automation? @relation(fields: [automationId], references: [id], onDelete: Cascade)
 }

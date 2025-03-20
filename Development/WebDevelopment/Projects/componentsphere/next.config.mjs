@@ -7,7 +7,7 @@ const nextConfig = {
     return [
       {
         source: "/components",
-        destination: "/docs/components",
+        destination: "/docs/installation",
         permanent: true,
       },
       {

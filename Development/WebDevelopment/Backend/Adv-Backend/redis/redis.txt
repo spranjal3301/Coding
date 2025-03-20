@@ -1,0 +1,65 @@
+! Redis
+*  Redis is an open-source, in-memory data structure store, used as a database, cache, and message broker
+*  One of the key features of Redis is its ability to keep all data in memory,
+*  which allows for high performance and low latency access to data.
+
+- RDB (Redis Database File): The RDB persistence performs point-in-time snapshots of your dataset at specified intervals.
+*   It creates a compact single-file representation of the entire Redis dataset.
+*   The snapshotting process can be configured to run at specified intervals, such as every X minutes if Y keys have changed.
+
+- AOF (Append Only File): The AOF persistence logs every write operation received by the server, appending each operation to a file. 
+*   This file can then be replayed on startup to reconstruct the dataset. 
+
+` Redis is often used for caching, real-time analytics, messing queue,Pub-Sub , session storage, and ranking.
+
+
+- Starting redis locally
+
+Let’s start redis locally and start using it as a DB
+? docker run --name my-redis -d -p 6379:6379 redis
+
+Connecting to your container
+? docker exec -it container_id /bin/bash
+
+Connecting to the redis cli
+? redis-cli
+
+
+- Redis Commands as DB
+
+Setting data
+?  SET mykey "Hello" 
+
+Getting data
+?  GET mykey
+
+Deleting data
+?  DEL mykey
+
+ 
+HSET/HGET/HDEL (H = Hash)
+? HSET user:100 name "John Doe" email "user@example.com" age "30"
+? HGET user:100 name
+? HGET user:100 email
+
+
+- Redis Commands as Queue
+
+Pushing to a queue
+? LPUSH problems 1
+? LPUSH problems 2
+
+ 
+Popping from a queue
+? RPOP problems
+? RPOP problems 
+
+ 
+Blocked pop
+? BRPOP problems 0
+? BRPOP problems 30
+
+
+
+ npm install redis
+` Redis on your local machine (or in a local environment), the client will assume it's hosted at localhost:6379 unless you specify otherwise.

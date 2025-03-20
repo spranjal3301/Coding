@@ -1,4 +1,4 @@
-import Hero from "@/components/sections/hero";
+import Hero, { Hero1 } from "@/components/sections/hero";
 import { cn } from "@/lib/utils";
 import { NextPage } from "next";
 
@@ -7,7 +7,7 @@ interface Props {}
 const Page: NextPage<Props> = async ({}) => {
   return (
     <>
-      <Hero />
+      <Hero1 />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Logo from "../global/logo";
 import { Navbar } from "@/components/global/Landing/navbar";
-import { Modalbtn } from "@/components/global/Landing/loginBtn";
+import { Loginbtn } from "@/components/global/Landing/loginBtn";
 
 
 interface Props {}
@@ -14,7 +14,7 @@ const Header: NextPage<Props> = ({}) => {
         <div className="container flex h-[3.5rem] items-center justify-between">
           <Logo />
           <Navbar />
-          <Modalbtn />
+          <Loginbtn/>
         </div>
         <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" />
     </header>

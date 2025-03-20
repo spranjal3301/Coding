@@ -3,6 +3,7 @@ import Link from "next/link";
 import TechStack from "@/components/tech-stack";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import BackgroundPaths from "./background-paths";
 
 export default async function Hero() {
   return (
@@ -83,4 +84,8 @@ export default async function Hero() {
       </div>
     </section>
   );
+}
+
+export function Hero1 () {
+  return <BackgroundPaths />
 }
