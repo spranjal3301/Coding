@@ -16,8 +16,8 @@ console.log(car.fullName()); //*you access a method without the () parentheses, 
 //* Object.values(): Returns an array containing the property values.
 //* Object.entries(): Returns an array containing both the property values and property names.
 //* Object.assign(): Copies one object into another.
-//* Object.freeze(): Freezes an object.
 //* Object.seal(): Prevents new properties from being added to an object, but allows the modification of existing properties.
+//* Object.freeze(): Same as seal(), but also prevents the modification of existing properties.
 //* Object.create(): Creates a new object with the specified prototype object and properties.
 //* Object.defineProperty(): Adds the named property described by a given descriptor to an object.
 //* Object.defineProperties(): Adds the named properties described by the given descriptors to an object.
@@ -27,7 +27,7 @@ console.log(car.fullName()); //*you access a method without the () parentheses, 
 
 console.log(Object.keys(car).length);
 console.log(Object.keys(car));
-console.log(Object.values(car));
+console.log(Object.values(car)); //
 console.log(Object.entries(car));
 
 

@@ -63,7 +63,31 @@ outerFunction(callbackfn);
       //~ default (run in any of case) ---> .finally()
       myPromise.finally(()=>console.log("finally Promise resolve or reject"));
       
-    
+   
+      
+    //!Promise Chaining
+    //* Promise chaining is a way to call multiple asynchronous operations one after the other.
+    //* When you chain promises, you can pass the result of one promise to the next promise.
+    //* This allows you to perform multiple asynchronous operations in a specific order.
+
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Promise resolved");
+        }, 1000);
+      }
+    );
+
+    promise.then((data) => {
+      console.log(data);
+      return "First then";
+    }
+    ).then((data) => {
+      console.log(data);
+      return "Second then";
+    }
+    ).then((data) => {
+      console.log(data);
+    });
     
     //! Promise.all()
     //* Promise.all() takes an array of promises and returns a single promise.
@@ -98,7 +122,13 @@ outerFunction(callbackfn);
     // Promise.all(promises).then((data) => console.log(data[0]));
     // Promise.all(promises).then((data) => console.log(data[1]));
     // Promise.all(promises).then((data) => console.log(data[2]));
+
     
+
+
+
+
+
     //!Async_Await
     //* async and await are syntactical sugar that make promises easier to work with.built on top of promises.
     //* "async and await make promises easier to write"

@@ -1,17 +1,15 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../lib/auth";
-import Landing from "../components/landing";
-import { BackgroundLines } from "../components/ui/background-lines";
-import ShowToast from '../components/showToast';
+import Header from "../components/Header"
+import Hero from "../components/Hero"
 
 
 export default async function Page() {
 
   return (
-    <>
-    <BackgroundLines className="min-h-screen flex items-center justify-center w-full ">
-      <Landing />
-    </BackgroundLines>
-    </>
+    <div className="flex bg-black flex-col min-h-screen">
+      <Header />
+      <main>
+        <Hero />
+      </main>
+    </div>
   );
 }

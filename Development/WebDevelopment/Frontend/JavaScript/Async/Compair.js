@@ -1,5 +1,8 @@
 // const { log } = require("async");
 
+//! WHat is Promise?
+//* A Promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
 function doSomeAsyncTask(){
 
     // setTimeout(()=>console.log("hello1"),2000)

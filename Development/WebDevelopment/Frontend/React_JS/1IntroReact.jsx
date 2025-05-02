@@ -10,9 +10,9 @@
 
 
 //!Why we need to learn React, Vue & Angular why not Vanilla JS(Raw JS)?
-//*DOM manipulation is very hard to write as a developer
-//*Making dynamic websites, with the primitives that DOM provides you is very hard
-//*Better Way of Doing DOM Manipulation
+//* DOM manipulation is very hard to write as a developer
+//* Making dynamic websites, with the primitives that DOM provides you is very hard
+//* Better Way of Doing DOM Manipulation
 
 //* 1. Structure and Organization:
 //- Component-based structure:

@@ -105,7 +105,7 @@ revalidateTag('todos')
 
   //- Example of a SSR page : pages/[userId].tsx
 
-  //* genrateStaticParams() is reseved function which is used to generate static paths
+  //! genrateStaticParams() is reseved function which is used to generate static paths
   //* generateStaticParams should return an array of objects where each object represents the populated dynamic segments of a single route.
 
   export const revalidate = 10; //- this pagerevalidate every 10 seconds
