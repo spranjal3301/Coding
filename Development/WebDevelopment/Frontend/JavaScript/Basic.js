@@ -431,8 +431,12 @@ console.log(3===3); //*equal value and equal type
 
 
 
-
-
+//! eval() function
+//* The eval() function evaluates JavaScript code represented as a string.
+//? The eval() function is a global function that evaluates JavaScript code represented as a string.
+eval('2+2-3');
+eval('console.log("Hello World")'); // Output: Hello World
+eval('console.log(2+2-3)'); // Output: 1
 
 
 

@@ -5,6 +5,8 @@
 @import url("mystyle.css");
  @import "mystyle.css";
 
+/*! specificity  */
+/*- the algorithm used by browsers to determine the CSS declaration that is the most relevant to an element, which in turn, determines the property value to apply to the element */
     
 *{/** Universal Selector */
     margin: 0;

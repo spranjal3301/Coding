@@ -1,0 +1,42 @@
+! Why rate limitting
+
+* 1. Preventing Overload:
+* 2. Mitigating Abuse: (abuse such as brute force attacks on passwords or spamming behavior)
+* 3. Managing Traffic
+* 4. DDoS Protection:
+
+
+
+
+
+`Library for rate limiting` (ref indexjs)
+npm install express-rate-limit
+
+
+! DDoS (Distributed Denial of Service) attack
+* 1. Definition: A DDoS attack is a malicious attempt to disrupt the normal functioning of a targeted server, service, or network by overwhelming it with a flood of traffic.
+
+- DDoS preventions:
+* 1. Rate Limiting: Implement rate limiting to restrict the number of requests a user can make in a given time period.
+* 2. Traffic Analysis: Monitor traffic patterns to identify and block suspicious activity.
+* 3. Web Application Firewalls (WAF): Use WAFs to filter and monitor HTTP traffic to and from a web application.
+
+- Use : Cloudflare, AWS Shield, or other DDoS protection services.
+
+
+ 
+!CAPTCHA (app.jsx , captcha.js)
+* 1. Definition: CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart) is a type of challenge-response test used to determine whether the user is human or a bot.
+* 2. Purpose: CAPTCHAs are used to prevent automated software from performing actions that degrade the quality of service of a given system, such as spamming, brute-force attacks, or scraping.
+
+- Captcha: Implement CAPTCHA challenges to verify that requests are coming from real users and not automated scripts.
+
+
+- Adding captchas via cloudflare
+*   Add a new site to turnstile
+*   Keep your site key and site secret safe
+*   Create a react project
+*   Add https://github.com/marsidev/react-turnstile
+
+
+

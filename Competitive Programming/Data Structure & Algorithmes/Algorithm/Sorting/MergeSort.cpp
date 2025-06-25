@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-void merge(int arr[], int start, int end)
-{
+
+
+void merge(int arr[], int start, int end){
     int mid = start + (end - start) / 2;
     int len1 = mid - start + 1;
     int len2 = end - mid;
@@ -39,8 +40,7 @@ void merge(int arr[], int start, int end)
     delete[] arr1;
     delete[] arr2;
 }
-void MergeSort(int arr[], int start, int end)
-{
+void MergeSort(int arr[], int start, int end){
     int mid = start + (end - start) / 2;
     if (start >= end)return;
     
@@ -67,9 +67,8 @@ int main(){
     int arr[] = {1, 2, 3, 4, 5, 2, 3, 3, 4};
     MergeSort(arr, 0, 9);
     for (auto &i : arr)
-    {
         cout << i << " ";
-    }
+    
 
     return 0;
 }

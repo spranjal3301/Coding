@@ -1,0 +1,45 @@
+! Why gRPC(Google Remote Procedure Call) ?
+* High-performance, open-source RPC framework developed by Google.
+* It allows services to communicate with each other easily and efficiently — across different languages and platforms.
+
+~ gRPC is not Replacment for REST , Browsers don't support gRPC natively.
+
+`🧠 Key Idea
+* gRPC lets you define service methods and data structures in a .proto file and automatically
+* generates code to call those methods remotely — fast, type-safe, and efficient.
+
+`🔧 Tech Stack Behind gRPC
+-| Component                       | Description                                                            |
+-| ------------------------------- | ---------------------------------------------------------------------- |
+-| **Protocol Buffers (Protobuf)** | Language-neutral, compact serialization format                         |
+-| **HTTP/2**                      | Underlying transport, allows multiplexing, compression                 |
+-| **Codegen**                     | Generates client/server code in multiple languages from `.proto` files |
+
+
+
+~ gRPC heavily used in polyglot environment.
+
+- Polyglot Environment: a system or architecture where multiple programming languages and technologies are used together to build and manage applications. 
+
+
+`Step-by-Step Guide to gRPC
+- Step 1: Define Service (example.proto)
+- Step 2: Generate code 
+    ? protoc --go_out=. --go-grpc_out=. example.proto  # for Go
+- Step 3: Use like this in code 
+    ? client.Add(context.TODO(), &AddRequest{a: 2, b: 3}) // returns { result: 5 }
+
+
+* | Feature     | REST     | gRPC                              |
+* | ----------- | -------- | --------------------------------- |
+* | Transport   | HTTP/1.1 | HTTP/2                            |
+* | Payload     | JSON     | Protobuf (binary, faster)         |
+* | Codegen     | Manual   | Auto (via .proto)                 |
+* | Streaming   | Limited  | Built-in support (bi-directional) |
+* | Performance | Slower   | Fast, low-latency   
+
+
+`🚫 When Not to Use gRPC
+* Public web APIs (since browsers don't natively support HTTP/2 + Protobuf)
+* If human-readability or easy debugging (like JSON) is more important              
+

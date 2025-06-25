@@ -1,0 +1,41 @@
+! Testing Application
+* Testing is crucial in application development to ensure a reliable, high-quality product that meets 
+* user needs and expectations, while also identifying and addressing potential issues early in the 
+* development cycle, thus saving time and money. 
+
+- Automated Testing
+* Automated testing involves using software tools to run tests on the application automatically,
+* which can significantly speed up the testing process and improve accuracy by reducing human error.
+
+- Types of Testing
+  * Unit Testing: Testing individual components or functions for correctness.
+          ? Unit tests are usally test individual functions or methods in isolation, 
+          ? Unit tests do not cover database interactions or external services.  
+  * Integration Testing: Ensuring that different components work together as expected.
+  * End-to-End Testing: Validating the complete flow of the application from start to finish.
+
+- Other Testing Types
+    Functional Testing: Validating the application against functional requirements.
+    Regression Testing: Checking that new changes do not adversely affect existing functionality.
+    Performance Testing: Assessing the application's responsiveness and stability under load.
+    User Acceptance Testing (UAT): Verifying that the application meets user requirements and is ready for deployment.
+    Smoke Testing: A preliminary test to check the basic functionality of the application.
+    System Testing: Testing the complete and integrated application to ensure it meets specified requirements.
+    Stress Testing: Evaluating how the application behaves under extreme conditions or loads.
+
+
+- Testing Frameworks
+` Jest: A popular testing framework for JavaScript applications that supports unit and integration testing.
+` vitest: A fast and lightweight testing framework that supports modern JavaScript features and provides a great developer experience.
+` Cypress: A powerful end-to-end testing framework that allows for testing web applications in a real browser environment.
+* Mocha: A flexible testing framework that can be used for unit and integration testing in JavaScript applications.
+* Selenium: A widely used tool for automating web browsers, suitable for end-to-end testing of web applications.
+
+
+
+- Terms 
+  * Test Case: A specific scenario to be tested, including input data and expected results.
+  * Test Suite: A collection of test cases that are executed together.
+  * Mocking: Simulating the behavior of complex components or services to isolate tests.Eg: database calls, API requests.
+  * Code Coverage: A measure of how much of the application's code is executed during testing, indicating the effectiveness of tests.
+  * Assertion: A statement in a test that checks if a condition is true, helping to validate the application's behavior.

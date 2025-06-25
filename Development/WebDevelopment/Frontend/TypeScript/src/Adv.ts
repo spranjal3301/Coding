@@ -108,3 +108,43 @@ type T1 = Extract<Todo,'title'>; //? {title: string;}
 //* Omit<T, K> Constructs a type by picking all properties from T and then removing K.
 //? Example:
 type T2 = Omit<Todo,'title'>; //? {description: string; completed: boolean;}
+
+
+
+
+
+//` Decorators
+//* TypeScript are a special type of declaration that can be attached to classes, methods, accessors, properties, or parameters. 
+//* provide a way to add metadata or modify the behavior of the decorated element in a declarative and reusable manner. 
+//- It is similar to middlwares where add a funtionalty to class, Methods and function
+//- Example use Case : decorators for measure time taken for every function
+
+
+//- Pre build helpful-decorators
+// npm install helpful-decorators
+// https://github.com/NetanelBasal/helpful-decorators
+
+// tsconfig.json
+// {
+//   "compilerOptions": {
+//     "experimentalDecorators": true
+//   }
+// }
+
+//- Class decorator
+function sealed(constructor: Function) {
+  Object.seal(constructor);
+  Object.seal(constructor.prototype);
+}
+
+@sealed
+class Greeter {
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message;
+  }
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+

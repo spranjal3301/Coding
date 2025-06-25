@@ -1,0 +1,63 @@
+! Prettier (Ref - https://prettier.io/)
+* An opinionated code formatter
+
+- Install dependency
+yarn add --dev --exact prettier
+
+- Create a .prettierrc file in the root 
+{}
+
+- Create .prettierignore
+build
+coverage
+dist
+
+- Try formatting
+npx prettier . --write
+
+
+
+
+- Update .vscode/settings.json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript", "typescript"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+}
+
+
+-Install eslint-config-prettier (this is to ensure they dont conflict with each others configs)
+npm install --save-dev eslint-config-prettier
+
+
+Extend eslint config to use prettier 
+	"extends": [
+		"next/core-web-vitals",
+		"airbnb",
+		"airbnb-typescript",
+		"airbnb/hooks",
+		"prettier"
+	],
+
+Add prettier script
+"prettier": "prettier . --write"
+
+Try running npm run prettier
+ 
+Openionated nature
+Prettier is an opinionated code formatter. This means that it has a certain code formatting structure that the team felt is ideal and is enforced. 
+You can update it by editing .prettierrc
+{
+  "tabWidth": 2,
+  "useTabs": false
+}

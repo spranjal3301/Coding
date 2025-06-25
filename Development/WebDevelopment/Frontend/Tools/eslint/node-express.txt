@@ -1,0 +1,77 @@
+!ESLint in Node.js or express app
+* Install ESLint
+```bash
+npm init @eslint/config@latest
+
+```eslint.config.mjs
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+
+export default [
+  {languageOptions: { globals: globals.node }},
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+];
+
+
+```package.json
+"scripts": {
+    "lint": "eslint . "
+},
+
+npm run lint
+
+* Eslint ignores Error of line
+//- eslint-disable-next-line
+
+
+
+`Code formatting in ESLint
+```eslint.config.mjs
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+
+export default [
+  {
+    languageOptions: { globals: globals.node },
+    rules: {
+      //- Indentation rule: 2 spaces
+      "indent": ["error", 2],
+      //- Space before function parenthesis
+      "space-before-function-paren": ["error", "always"],
+      //- No space inside parentheses
+      "space-in-parens": ["error", "never"]
+    }
+  },
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+];
+
+
+- Automatically fix Code formatting issues
+```bash
+npx eslint . --fix
+```
+* --fix : Automatically fix Code formatting issues
+* --fix-dry-run : Show what would be fixed without actually fixing it
+* --fix-type : Specify the type of fixes to apply
+    * code : Code formatting issues
+    * layout : Layout issues
+    * problem : Problematic issues
+    * all : All issues
+
+
+
+!ESLint VSCode plugin
+
+-Code gets auto linted every time you save now
+```.vscode/settings.json
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.validate": ["javascript", "typescript"]
+}
+

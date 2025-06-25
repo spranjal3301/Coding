@@ -1,0 +1,25 @@
+//! Stateful vs Stateless
+
+//- Stateless: 
+    //* No internal state, no data stored between requests
+    //* Each request is independent
+    //~ User Date persist at the Database
+    //* Example: REST APIs
+
+//- Stateful:
+    //* Maintain internal state, data stored between requests
+    //* In Memory Data Store
+    //* Each request can depend on previous requests
+    //* Example: WebSocket connections, session-based applications
+
+//` Stateful Backend Use Cases
+    //- low latency applications
+    //* Real-time applications (e.g., chat applications, online gaming)
+    //* Applications with complex user interactions (e.g., collaborative editing)
+    //* Applications requiring session management (e.g., e-commerce platforms)
+    //* Applications with long-lived connections (e.g., streaming services)
+
+
+//` Challenges of Stateful Backend
+    //* Stickness : stick to a specific server(or use PUB/SUB)
+    //* Scalability: Harder to scale horizontally   

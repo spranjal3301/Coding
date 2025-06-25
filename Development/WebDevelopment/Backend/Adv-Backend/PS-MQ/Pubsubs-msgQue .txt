@@ -1,9 +1,0 @@
-! Pub/Sub (publish-subscribe) and Message Queues
-*   Pub/Sub is a messaging pattern where publishers publishes/send events/messages to pub-sub(environment) and
-*   subscribers subscribe/receive events/messages that they are interested in.
-
-! Message Queues
-*   Message Queues are a way of sending messages between applications, systems, or services.
-*   It is a form of asynchronous service-to-service communication .
-*   Messages are stored on the queue until they are processed and deleted.
-*   Message Queues are often used when backend systems too busy/slow to process requests/task immediately.

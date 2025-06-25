@@ -22,6 +22,19 @@ public:
     }
 };
 
+
+//- Oppsite of sort comparator
+class MyComparator2 {
+public:
+   bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) const {
+        if (a.first == b.first) {
+            return a.second < b.second; // If first elements are equal, compare second elements in decreasing order
+        }
+        return a.first > b.first; // Otherwise, compare first elements in increasing order
+    }
+    };
+
+
 class MyClass {
 //!M03
    static bool custCmp(pair<int, int> a, pair<int, int> b){
@@ -56,13 +69,8 @@ int main(){
     vector<pair<int, int>> v={{1,2},{1,4},{1,6}};
     // vector<pair<int, int>> v={{1,2},{2,2},{3,2}};
     sort(v.begin(), v.end(), custCmp);  
-
-    for(auto it : v){
-        cout << it.first << " " << it.second << endl;
-    } 
-
-     set<int, MyComparator> mySet;
-
+    set<int, MyComparator> mySet;
+    priority_queue<pair<int,int>,vector<pair<int,int>>,MyComparator2>;
 
     return 0;
 }

@@ -1,0 +1,20 @@
+! Pre commit hooks
+Ref - https://typicode.github.io/husky/
+
+How to start
+Install husky
+npm install --save-dev husky
+
+Initialise husky
+npx husky init
+
+Update .husky/pre-commit
+npm prettier
+
+Try to commit
+git init
+git add .
+git commit -m "Init"
+
+You can get past it by using --no-verify
+git commit -m "init" --no-verify

@@ -1,0 +1,34 @@
+!ESLint with nextjs
+
+*Create a next application (Select yes on ESLint)
+npx create-next-app
+
+
+- Default config
+{
+  "extends": ["next/core-web-vitals"]
+}
+
+- Add .vscode/settings.json
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+}
+
+
+- Add airbnb config
+yarn add eslint-config-airbnb eslint-config-airbnb-typescript @typescript-eslint/dot-notation eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-import 
+
+
+- Update the eslint config
+{
+  "extends": ["next/core-web-vitals", "airbnb", "airbnb/hooks"]
+}
+
+npm run lint
+
+
+-Fix some automatically
+yarn lint --fix

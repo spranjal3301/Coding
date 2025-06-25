@@ -1,0 +1,91 @@
+! Remote Procedure Call(RPC)
+* As the name suggests, it lets you call a function in on a different 
+* process/server/backend and get back a response from it. 
+
+- Call a function located on a remote machine just like a local function — abstracting the network communication.
+
+! Why RPC?
+* We send out an http request , get back a response this is how we’ve made our backends talk to each other until now.
+
+- flaws in this approach
+* 1. No types. You don’t know what is the shape of the data you will get back. 
+* 2. We use JSON to serialize and deserialize data
+* 3. We have to understand the API documentation to know what data to send and what data we will get back.
+* 4. We have to write a lot of boilerplate code to make the request and handle the response.
+* 5. We have to handle errors manually.
+~ Imp: Normal HTTP requests have to much overhead(headers, status codes, etc.) ,
+~ Which is not needed for backend to backend communication and are not type-safe
+
+`Note : we can use TRPC solve this problem from two Nodes Backend (Cons: what is Rust Backend)
+~ Note: Monorepo, RPC, OpenAPI spec 
+
+
+
+
+-How it works (simplified)
+* Client calls a "stub" (local placeholder function/ auto generate client).
+* Stub serializes data (called marshalling), sends the request over the network.
+* Server receives the request, deserializes data, calls the actual function.
+* Response is serialized, sent back to the client.
+* Client stub receives, deserializes, and returns result as if local.
+
+
+? Popular RPC Frameworks: gRPC(HTTP/2 + Protobuf), JSON-RPC(JSON over HTTP), tRPC,Thrift, Apache Avro, XML-RPC, 
+
+await getTodos() // This is how you call a function in RPC
+```Example Request:
+POST /jsonrpc HTTP/1.1
+Host: example.com
+Content-Type: application/json
+{
+  "jsonrpc": "2.0",
+  "method": "getTodos", // The function you want to call
+  "params": [],
+  "id": 1
+}
+
+
+
+* 🟢 Pros
+? Abstracts network complexity
+? Feels like a local function
+? Great for microservices
+
+! 🔴 Cons
+? Debugging is harder than local calls
+? Network latency involved
+? Tight coupling if not handled carefully
+
+
+
+
+- OpenAPI and RPC
+* OpenAPI = defines what resources exist and how to manipulate them
+* gRPC (RPC) = defines what remote functions exist and how to call them
+
+
+
+`📝 Key Differences
+* RPC is way to write API Endpoints
+* OpenAPI is just a specification for describing REST APIs
+
+
+` OpenAPI = Best for...
+* Public-facing APIs
+* Human-readable documentation
+* Easy onboarding for devs using Postman, Swagger UI
+
+`⚙️ gRPC/RPC = Best for...
+* Internal service-to-service communication
+* Performance-critical systems (e.g., real-time, low latency)
+* Type-safe contracts across teams
+
+
+~🔥 Verdict (Opinionated)
+* Use gRPC/RPC for microservices, where performance and type safety are top priorities.
+* Use OpenAPI/REST for public APIs, integrations, or where ease of use & debugging matters more.
+
+
+
+
+

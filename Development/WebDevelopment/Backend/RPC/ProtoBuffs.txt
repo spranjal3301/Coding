@@ -1,0 +1,57 @@
+!Proto buffs
+* Protocol buffers are Google’s language-neutral, platform-neutral, extensible mechanism for serializing structured data 
+* – like a faster, smaller alternative to JSON or XML.
+
+- Protobuf provide a way to store data in extremly compact format with benifit of language-neutral, platform-neutral
+
+* Define your schema once using a .proto file, then auto-generate code to serialize (convert to bytes) 
+* and deserialize (parse bytes) that data in any supported language.
+
+`Jurgun
+- Serialization :is the process of converting an object into a stream of bytes (or other format suitable for storage or transmission), 
+- Deserialization: is the reverse process of reconstructing the object from that stream
+~ Purpose: Serialization and deserialization enable persistence (saving data), data transfer, and inter-process communication. 
+
+- Binary Serialization: Protocol Buffers serialize data into a binary format, which is more compact and efficient compared to text-based formats like XML and JSON. 
+
+
+`📝 .proto File Example
+syntax = "proto3";
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+}
+
+* This defines a Person structure with:
+* A string name
+* An integer id
+* A string email
+* The numbers (1, 2, 3) are field tags — used for binary serialization.
+* field tags : Is just a unique identifier for each field in the message, used for Efficient Encoding ,Backward Compatibility,Language Independence
+
+
+
+*✅ Advantages of Protobuf
+* ⚡ Very fast and small (binary format)
+* 🧬 Strongly typed and schema-defined
+* 🛠️ Auto-code generation in multiple languages
+* 📡 Optimized for gRPC & high-throughput systems
+
+!🚫 Disadvantages
+`❌ Not human-readable
+`❌ Requires .proto files & codegen
+`❌ Versioning (backward compatibility) needs care
+
+
+
+-🧪 Sample Serialized (Protobuf vs JSON)
+* Let’s say you serialize this: { "id": 123, "name": "Alice", "email": "a@b.com" }
+* JSON output: 48 bytes (text)
+* Protobuf output: ~18 bytes (binary)
+
+
+~ Protobuf is use for high-performance applications where speed and size matter, like gRPC.
+
+

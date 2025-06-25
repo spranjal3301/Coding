@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+// Define a message type representing a person.
+message Person {
+  string name = 1;
+  int32 age = 2;
+}
+
+//- Declares a RPC service (think of it like a class or API controller).
+//- This service will have multiple remote callable methods (RPCs).
+service PersonService {
+  // Add a person to the address book.
+  rpc AddPerson(Person) returns (Person);
+  
+  // Get a person from their name
+  rpc GetPersonByName(GetPersonByNameRequest) returns (Person);
+}
+
+message GetPersonByNameRequest {
+  string name = 1;
+}

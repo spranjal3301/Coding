@@ -1,0 +1,70 @@
+!Eslint in React Project
+
+- Vite already has eslint and prettier setup
+npm create vite@latest 
+
+
+- Popular eslint configurations 
+
+- https://github.com/airbnb/javascript
+- https://github.com/dustinspecker/awesome-eslint#configs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+  },
+}
+
+`Using airbnb config
+* Add dependencies
+yarn add eslint-config-airbnb eslint-config-airbnb-typescript eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-import  @typescript-eslint/eslint-plugin
+
+
+*Update .eslintrc.cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
+    tsconfigRootDir: __dirname,
+  },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "airbnb",
+    "airbnb/hooks",
+  ],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "vite.config.ts"],
+  parser: "@typescript-eslint/parser",
+  plugins: ["react-refresh"],
+  rules: {
+    "react/jsx-filename-extension": [
+      1,
+      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
+    ],
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
+  },
+};
+
+
+*Fix the rest of the errors manually
+*Update .eslintrc.cjs to ignore vite.config.js
+ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],

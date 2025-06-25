@@ -1,0 +1,30 @@
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    name VARCHAR(255)
+);
+
+CREATE TABLE posts (
+    post_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    image VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+! Add an Index to user_id
+
+
+
+* Create an index on the user_id column:
+```SQL       
+-    CREATE INDEX idx_user_id ON posts (user_id);
+```
+
+
+* Without Indexes: The query scans the entire posts table to find the relevant rows, which can be slow for large datasets.
+* With Indexes: The query uses the index to quickly locate the relevant rows, significantly reducing the execution time.
+

@@ -1,0 +1,76 @@
+! SQL vs NOSQL
+- SQL (Relational DBs like PostgreSQL, MySQL):
+    * Data is highly structured and relational
+    * Strong consistency is a priority (ACID transactions (Atomicity, Consistency, Isolation, Durability))
+    * Fixed schema design
+    ~ Difficult to scale horizontally
+    ~ Sharding and replication are common for scaling
+    ? Example : MySQL, PostgreSQL, Oracle, SQL Server
+
+- NoSQL (MongoDB, Cassandra, DynamoDB, etc.):
+    * Data is semi-structured or unstructured
+    * Eventual consistency is acceptable (BASE model (Basically Available, Soft state, Eventually consistent))
+    * High scalability is a priority (horizontal scaling)
+    * Flexible schema design
+    * Support for large volumes of data and high throughput
+    ~ For applications with high write requirements, NoSQL databases generally outperform SQL databases due to their flexibility, scalability, and ability to handle large volumes of data efficiently
+    ? Example : MongoDB, Cassandra(high write throughput), DynamoDB, Redis, Couchbase
+
+
+- Terms 
+* Warm pool : A warm pool is a collection of pre-warmed resources that are ready to be used immediately when needed. It is typically used in cloud computing environments to reduce the time it takes to provision resources for new workloads.
+* Cool Start : A cool start is the process of starting a new resource from scratch, which can take longer than using a warm pool. It typically involves provisioning new resources and configuring them for use.
+
+
+! Capacity Estimation
+
+
+! Horizontal vs Vertical scaling
+
+- Vertical Scaling:
+    * Adding more resources (CPU, RAM) to an existing machine
+    * Limited by the maximum capacity of a single machine
+    * Can lead to downtime during upgrades
+    * Examples: Upgrading server hardware, increasing instance size in cloud services
+
+- Horizontal Scaling:
+    * Adding more machines to handle increased load
+    * More cost-effective for large-scale applications
+    * Better fault tolerance and redundancy
+    * Examples: Load balancers, distributed databases, microservices architecture
+    ~ Example: AWS Auto Scaling, Kubernetes scaling
+
+
+` AWS ASG(Auto Scaling Group) `:
+    * Automatically adjusts the number of EC2 instances in response to traffic
+    * Can scale out (add instances) or scale in (remove instances)
+    * Uses CloudWatch metrics to trigger scaling actions
+    * Supports both scheduled and dynamic scaling policies
+    * Helps maintain application performance and availability during varying loads
+    ~ Image : Snapshot of AWS ASG configuration
+
+` Load Balancing `:
+    * Distributes incoming traffic across multiple instances
+    * Improves fault tolerance and availability
+    * Types: Classic Load Balancer, Application Load Balancer, Network Load Balancer
+    * Can be used with both vertical and horizontal scaling
+    * Example: AWS Elastic Load Balancing (ELB),Nxginx, HAProxy
+
+
+
+
+
+
+
+
+` ASG vs Containers
+    * 
+
+
+! Deployment Strategies
+` Image Deployment Strategies `:
+- Blue-Green Deployment:
+    * Two identical environments (blue and green)
+    * Traffic is switched from blue to green after testing
+    * Minimal downtime and easy rollback
+    * Example: Deploying a new version of an application with zero downtime

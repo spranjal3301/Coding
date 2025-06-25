@@ -1,0 +1,78 @@
+! ESLint (https://eslint.org/)
+-https://projects.100xdevs.com/tracks/eslint/ESLint--Prettier-and-Pre-commit-hooks
+* Linting is the process of running a program that analyzes source code
+*  to flag programming errors, bugs, stylistic errors
+* Static code analysis (process of analyzing code without executing it)
+
+` Why lint?
+* Multiple developers in a team can have a similar coding pattern
+* Good readability of the code
+* Automatic Linting so developer doesnt have to manually lint their code
+
+` Tools
+- ESLint (https://eslint.org/) : 
+        * A static code analysis tool for identifying problematic patterns in JavaScript code.
+        * It`s is superSet of Prettier
+- Prettier - https://prettier.io/
+        * A code formatter that enforces a consistent style by parsing your code and re-printing it with its own rules.
+- Husky - https://typicode.github.io/husky/
+        * Git hooks made easy
+        * It allows you to run scripts at different stages of the git process
+        * For example, you can run a script before a commit is made, or before a push is made
+        * This is useful for running linting and testing scripts before a commit or push is made
+
+`Two types of lints
+      - 1. Code analysis (Similar to TS checks)
+          * solve issues of : undefined variables, unused variables, etc
+          * It is a static code analysis tool for identifying problematic patterns in JavaScript code.
+      - 2. Code formatting (Similar to Prettier checks)
+          * solve issues of : space, tabs, semicolons, single('')/double("") qutoes ,etc
+
+Eslint lets you do both 1 and 2
+Prettier is used for 2
+
+
+
+
+
+
+
+
+
+
+- Automatically fix Code formatting issues
+```bash
+npx eslint . --fix
+```
+* --fix : Automatically fix Code formatting issues
+* --fix-dry-run : Show what would be fixed without actually fixing it
+* --fix-type : Specify the type of fixes to apply
+    * code : Code formatting issues
+    * layout : Layout issues
+    * problem : Problematic issues
+    * all : All issues
+
+
+
+!ESLint VSCode plugin
+
+-Code gets auto linted every time you save now
+```.vscode/settings.json
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.validate": ["javascript", "typescript"]
+}
+
+
+
+
+
+
+
+
+
+
+
+
