@@ -39,3 +39,10 @@
   * Mocking: Simulating the behavior of complex components or services to isolate tests.Eg: database calls, API requests.
   * Code Coverage: A measure of how much of the application's code is executed during testing, indicating the effectiveness of tests.
   * Assertion: A statement in a test that checks if a condition is true, helping to validate the application's behavior.
+
+
+!Integration Test with CI/CD pipeline  
+
+* Create a CI/CD pipeline that runs npm run test 
+* Create .github/workflows/test.yml
+

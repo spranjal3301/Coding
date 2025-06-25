@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,82 @@
+! Moving from jest to vitest (https://vitest.dev/)
+* Vitest is the mildly recent entrant in the testing framework market.
+- It has a bunch of benefits over jest, specially has great support for TS.
+* So we’ll be moving to vitest for all future tests
+* It is highly compatable with jest
+
+Link to why vitest - https://vitest.dev/guide/why.html
+
+- vistest is higly compatible with jest, so we can use most of the jest code as it is
+- It has a lot of features like snapshot testing, mocking, and code coverage built-in
+- It is designed to be fast and efficient, making it suitable for large projects
+- It has a great community and ecosystem, with many plugins and integrations available 
+
+npm i -D vitest
+
+` When writing unit tests , you mock out all external service calls. 
+- This means you test the core of your logic, and assume the database calls would succeed. 
+- This is done so tests can run without starting a database / external services
+
+
+` Mocking :
+vi.mock('../db', () => ({
+      prismaClient: { sum: { create: vi.fn() }}
+    }));
+
+
+`Deep mocking: mock all methods of an object at once
+npm i -D vitest-mock-extended 
+
+~ Create a __mocks__ directory in the same directory as the module you want to mock.
+```__mocks__/FileName 
+export const prismaClient = mockDeep<PrismaClient>()
+vi.mock('../db');
+
+- Problem : What if I want to use the value that the database call returns?
+
+
+`mokeReturnValue:
+* You can mock the values returned from a mock by using "mockResolvedValue" 
+import { prismaClient } from "../__mocks__/db"; //- require for moke return value
+prismaClient.sum.create.mockResolvedValue({
+        id: 1,
+        a: 1,
+        b: 1,
+        result: 3
+      });
+
+
+- Problem : Try flipping the a and b inputs to the endpoint,
+const response = await prismaClient.sum.create({
+    data: {
+`       a: parsedResponse.data.b,
+`       b: parsedResponse.data.a,
+        result: answer
+    }
+})  
+
+` Spys:
+* You can also spy on methods to see if they were called,
+* how many times they were called, and with what arguments
+
+* Put a spy on the prismaClient.sum.create function which ensures that the db call inputs are correct
+
+ //- Spying the database call for testing purposes
+    vi.spyOn(prismaClient.sum, "create");
+
+    const res = await request(app).post("/spy").send({
+      a: 1,
+      b: 2,
+    });
+
+
+    //- Check if the database call was made with correct inputs
+    expect(prismaClient.sum.create).toHaveBeenCalledWith({
+      data: {
+        a: 1,
+        b: 2,
+        result: 3,
+      },
+    });
+    //- Check if the database call was made once
+    expect(prismaClient.sum.create).toHaveBeenCalledTimes(1);
